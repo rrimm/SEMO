@@ -1,7 +1,7 @@
 # DB
 
 해당 스키마는 `MySQL`로 구성하였습니다.</br>
-해당 스키마의 생성을 위한 `sql`문은 `schema.sql` 에 있습니다.
+해당 스키마의 생성을 위한 `sql`문은 [schema.sql](https://github.com/MultiProject23/Shop_SemiProject/blob/main/back-end/src/main/resources/sql/schema.sql) 에서 확인할 수 있습니다.
 
 ## ER 다이어그램
 
