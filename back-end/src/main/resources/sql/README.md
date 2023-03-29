@@ -1,5 +1,8 @@
 # DB
 
+해당 스키마는 `MySQL`로 구성하였습니다.</br>
+해당 스키마의 생성을 위한 `sql`문은 `schema.sql` 에 있습니다.
+
 ## ER 다이어그램
 
 ![ERD](https://user-images.githubusercontent.com/74192619/228433185-423b2fcd-8718-4932-a436-8f7efcb74365.png)
