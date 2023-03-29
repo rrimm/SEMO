@@ -14,7 +14,7 @@ Controller <-> Service <-> Repository <-> Mapper</br>
 ### Service
 
 - `@Service` 이 사용되어야 하는 영역
-- 일반적으로 `Controller` 와 `Resopository` 의 중간 영역에서 사용
+- 일반적으로 `Controller` 와 `Repository` 의 중간 영역에서 사용
 - `@Transactional` 이 사용되어야 하는 영역
 
 ### Repository
@@ -23,7 +23,7 @@ Controller <-> Service <-> Repository <-> Mapper</br>
 
 ### DTO
 
-- Data Transter Object
+- Data Transfer Object
 - 계층간에 데이터 교환을 위한 객체
 
 ### Domain
