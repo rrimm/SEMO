@@ -1,0 +1,7 @@
+spring:
+  config:
+    import: security/application-datasource.yml
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:sql/schema.sql
