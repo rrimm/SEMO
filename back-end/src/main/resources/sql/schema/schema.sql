@@ -42,13 +42,13 @@ create table product
 (
     id       bigint auto_increment
         primary key,
-    category varchar(255) not null,
+    category varchar(10) not null,
     image    mediumblob   not null,
     info     varchar(255) not null,
-    name     varchar(255) not null,
+    name     varchar(50) not null,
     price    int          not null,
     stock    int          not null,
-    target   varchar(255) not null
+    target   varchar(10) not null
 );
 
 create table carousel
