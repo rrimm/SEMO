@@ -1,10 +1,7 @@
 spring:
   config:
     import:
+      - application-mybatis.yml
+      - application-sql.yml
       - security/application-datasource.yml
       - security/application-security.yml
-  sql:
-    init:
-      mode: always
-      schema-locations: classpath:sql/schema/schema.sql
-      data-locations: classpath:sql/data/**/*.sql
