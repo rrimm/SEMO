@@ -30,6 +30,6 @@ public class AuthService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .phone(request.getPhone())
                 .build();
-        return memberRepository.joinMember(dao);
+        return authRepository.joinMember(dao);
     }
 }
