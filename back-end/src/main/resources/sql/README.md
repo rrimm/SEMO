@@ -27,7 +27,7 @@
 | -------- | ------------ | ------------- | --- | --- | --- | ------------- |
 | Id       | bigint       | Long          | O   |     |     | 제품 식별자   |
 | Category | varchar(255) | Enum          |     |     | O   | 제품 카테고리 |
-| Image    | CLOB         | String        |     |     | O   | 제품 이미지   |
+| Image    | MediumBlob         | String        |     |     | O   | 제품 이미지   |
 | Info     | varchar(255) | String        |     |     | O   | 제품 설명     |
 | Name     | varchar(255) | String        |     |     | O   | 제품 이름     |
 | Price    | integer      | int           |     |     | O   | 제품 가격     |
@@ -40,7 +40,7 @@
 | ----------- | -------- | ------------- | --- | --- | --- | ------------- |
 | Carousel_Id | bigint   | Long          | O   |     |     | 캐러셀 식별자 |
 | Product_Id  | bigint   | Long          |     | O   | O   | 제품 식별자   |
-| Image       | CLOB     | String        |     |     | O   | 캐러셀 이미지 |
+| Image       | MediumBlob     | String        |     |     | O   | 캐러셀 이미지 |
 
 - `Product ----< Carousel`
 
@@ -80,7 +80,7 @@
 | Product_Id | bigint       | Long          |     | O   |     | 제품 식별자   |
 | Category   | varchar(255) | Enum          |     |     | O   | 제품 카테고리 |
 | Content    | varchar(255) | String        |     |     |     | 리뷰 내용     |
-| Image      | CLOB         | String        |     |     | O   | 리뷰 이미지   |
+| Image      | MediumBlob         | String        |     |     | O   | 리뷰 이미지   |
 
 - `Member ----< Review`
 - `Product ----< Review`
