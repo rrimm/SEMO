@@ -1,6 +1,8 @@
 spring:
   config:
-    import: security/application-datasource.yml
+    import:
+      - security/application-datasource.yml
+      - security/application-security.yml
   sql:
     init:
       mode: always
