@@ -2,6 +2,8 @@ package com.multi.shop.member.service;
 
 import com.multi.shop.auth.dto.request.MemberJoinRequest;
 import com.multi.shop.member.domain.dao.MemberJoinDAO;
+import com.multi.shop.member.exception.MemberErrorCode;
+import com.multi.shop.member.exception.MemberException;
 import com.multi.shop.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +20,6 @@ public class MemberService {
 
     @Transactional
     public Long join(MemberJoinRequest request) {
-        // TODO: 이메일, 전화번호로 중복 가입 검사
         validateMemberEmailIsNotDuplicated(request.getEmail());
         validateMemberPhoneIsNotDuplicated(request.getPhone());
         MemberJoinDAO dao = MemberJoinDAO.builder()
@@ -33,13 +34,13 @@ public class MemberService {
 
     private void validateMemberEmailIsNotDuplicated(String email) {
         if(memberRepository.existByMemberEmail(email)) {
-            throw new RuntimeException("해당 이메일로 가입된 사용자가 있습니다.");
+            throw new MemberException(MemberErrorCode.JOIN_INVALID_EMAIL);
         }
     }
 
     private void validateMemberPhoneIsNotDuplicated(String phone) {
         if (memberRepository.existByMemberPhone(phone)) {
-            throw new RuntimeException("해당 전화번호로 가입된 사용자가 있습니다.");
+            throw new MemberException(MemberErrorCode.JOIN_INVALID_PHONE);
         }
     }
 }
