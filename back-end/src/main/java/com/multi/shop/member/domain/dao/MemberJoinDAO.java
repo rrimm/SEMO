@@ -1,4 +1,4 @@
-package com.multi.shop.auth.domain.dao;
+package com.multi.shop.member.domain.dao;
 
 import com.multi.shop.member.domain.Role;
 import lombok.Builder;
