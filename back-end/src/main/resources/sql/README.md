@@ -24,15 +24,15 @@
 ### 2. Product
 
 | Column   | DataType     | Java DataType | PK  | FK  | NN  | Description   |
-| -------- | ------------ | ------------- | --- | --- | --- | ------------- |
+| -------- |--------------| ------------- | --- | --- | --- | ------------- |
 | Id       | bigint       | Long          | O   |     |     | 제품 식별자   |
-| Category | varchar(255) | Enum          |     |     | O   | 제품 카테고리 |
-| Image    | MediumBlob         | String        |     |     | O   | 제품 이미지   |
+| Category | varchar(10)  | Enum          |     |     | O   | 제품 카테고리 |
+| Image    | MediumBlob   | String        |     |     | O   | 제품 이미지   |
 | Info     | varchar(255) | String        |     |     | O   | 제품 설명     |
-| Name     | varchar(255) | String        |     |     | O   | 제품 이름     |
+| Name     | varchar(50)  | String        |     |     | O   | 제품 이름     |
 | Price    | integer      | int           |     |     | O   | 제품 가격     |
 | Stock    | integer      | int           |     |     | O   | 제품 재고     |
-| Target   | varchar(255) | Enum          |     |     | O   | 제품 고객층   |
+| Target   | varchar(10)  | Enum          |     |     | O   | 제품 고객층   |
 
 ### 3. Carousel
 
