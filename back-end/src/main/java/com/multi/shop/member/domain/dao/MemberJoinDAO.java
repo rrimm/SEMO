@@ -1,5 +1,5 @@
 package com.multi.shop.member.domain.dao;
-
+//dao: 어떤 테이블에 어떤 행위를 할지
 import com.multi.shop.member.domain.Role;
 import lombok.Builder;
 import lombok.Data;
