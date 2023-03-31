@@ -19,11 +19,11 @@ public class OrderRepository {
         return orderMapper.save(dao);
     }
 
-    public void cancel(OrderCancelDAO dao) {
-        orderMapper.cancel(dao);
-    }
-
     public List<OrderFindVO> findByMemberId(Long memberId) {
         return orderMapper.findByMemberId(memberId);
+    }
+
+    public void cancel(OrderCancelDAO dao) {
+        orderMapper.cancel(dao);
     }
 }

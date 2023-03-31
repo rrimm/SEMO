@@ -26,18 +26,18 @@ public class OrderService {
         return orderRepository.save(dao);
     }
 
-    @Transactional
-    public void cancel(OrderCancelRequest request) {
-        // TODO: 해당 주문 Id 가 존재하지 않으면 예외 처리
-        OrderCancelDAO dao = OrderCancelDAO.from(request.getOrderId());
-        orderRepository.cancel(dao);
-    }
-
     public List<OrderResponse> findByMemberId(Long memberId) {
         // TODO: 해당 멤버의 Id 가 존재하지 않으면 예외 처리
         return orderRepository.findByMemberId(memberId)
                 .stream()
                 .map(OrderResponse::from)
                 .toList();
+    }
+
+    @Transactional
+    public void cancel(OrderCancelRequest request) {
+        // TODO: 해당 주문 Id 가 존재하지 않으면 예외 처리
+        OrderCancelDAO dao = OrderCancelDAO.from(request.getOrderId());
+        orderRepository.cancel(dao);
     }
 }

@@ -9,7 +9,7 @@ import java.util.List;
 public interface OrderMapper {
     Long save(OrderSaveDAO dao);
 
-    void cancel(OrderCancelDAO dao);
-
     List<OrderFindVO> findByMemberId(Long memberId);
+
+    void cancel(OrderCancelDAO dao);
 }
