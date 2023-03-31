@@ -14,6 +14,7 @@ public class OrderService {
 
     private final OrderRepository orderRepository;
 
+    @Transactional
     public Long save(OrderSaveRequest request) {
         OrderSaveDAO dao = OrderSaveDAO.from(request.getMemberId(), request.getProductId());
         return orderRepository.save(dao);
