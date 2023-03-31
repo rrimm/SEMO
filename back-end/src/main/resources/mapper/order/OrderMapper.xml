@@ -6,4 +6,10 @@
         insert into orders(date, quantity, order_status, member_id, product_id)
             VALUE (#{date}, #{quantity}, #{status}, #{memberId}, #{productId})
     </insert>
+
+    <update id="cancel" parameterType="OrderCancelDAO">
+        update orders
+        set order_status = #{status}
+        where id = #{orderId}
+    </update>
 </mapper>
