@@ -4,6 +4,6 @@
 <mapper namespace="com.multi.shop.order.mapper.OrderMapper">
     <insert id="save" parameterType="OrderSaveDAO">
         insert into orders(date, quantity, order_status, member_id, product_id)
-            VALUE (#{date}, #{quantity}, #{checked}, #{memberId}, #{productId})
+            VALUE (#{date}, #{quantity}, #{status}, #{memberId}, #{productId})
     </insert>
 </mapper>
