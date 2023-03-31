@@ -3,6 +3,7 @@ package com.multi.shop.auth.service;
 import com.multi.shop.auth.domain.dao.RefreshTokenDAO;
 import com.multi.shop.auth.dto.TokenDto;
 import com.multi.shop.auth.dto.request.MemberLoginRequest;
+import com.multi.shop.auth.dto.request.MemberLogoutRequest;
 import com.multi.shop.auth.repository.RefreshTokenRepository;
 import com.multi.shop.auth.support.JwtTokenProvider;
 import com.multi.shop.member.domain.vo.MemberVO;
@@ -44,5 +45,10 @@ public class AuthService {
         refreshTokenRepository.save(token);
 
         return tokenDto;
+    }
+
+    @Transactional
+    public void logout(MemberLogoutRequest request) {
+        refreshTokenRepository.remove(request.getToken());
     }
 }

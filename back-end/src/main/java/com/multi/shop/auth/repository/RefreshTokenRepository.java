@@ -13,4 +13,8 @@ public class RefreshTokenRepository {
     public void save(RefreshTokenDAO dao) {
         refreshTokenMapper.save(dao);
     }
+
+    public void remove(String token) {
+        refreshTokenMapper.remove(token);
+    }
 }

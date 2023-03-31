@@ -4,4 +4,6 @@ import com.multi.shop.auth.domain.dao.RefreshTokenDAO;
 
 public interface RefreshTokenMapper {
     void save(RefreshTokenDAO dao);
+
+    void remove(String token);
 }

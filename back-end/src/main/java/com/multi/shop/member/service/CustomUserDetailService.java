@@ -25,16 +25,9 @@ public class CustomUserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        log.info("RUN loadUserByEmail");
-        MemberVO member = memberRepository.findByMemberEmail(email).orElseThrow(RuntimeException::new);
-        log.info("member Id " + member.getId());
-        UserDetails userDetails = memberRepository.findByMemberEmail(email)
+        return memberRepository.findByMemberEmail(email)
                 .map(this::createUserDetails)
                 .orElseThrow(() -> new UsernameNotFoundException("해당 이메일(" + email + ")을 가진 회원이 존재하지 않습니다."));
-        log.info("username : " + userDetails.getUsername());
-        log.info("password : " + userDetails.getPassword());
-        log.info("authorities : " + userDetails.getAuthorities());
-        return userDetails;
     }
 
     private UserDetails createUserDetails(MemberVO member) {

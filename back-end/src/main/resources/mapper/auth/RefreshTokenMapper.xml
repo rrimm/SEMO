@@ -5,4 +5,10 @@
     <insert id="save" parameterType="RefreshTokenDAO">
         insert into refresh_token(rt_key, rt_value) VALUE (#{key}, #{value})
     </insert>
+
+    <delete id="remove" parameterType="String">
+        delete
+        from refresh_token
+        where rt_value = #{token}
+    </delete>
 </mapper>

@@ -2,6 +2,7 @@ package com.multi.shop.auth.controller;
 
 import com.multi.shop.auth.dto.TokenDto;
 import com.multi.shop.auth.dto.request.MemberLoginRequest;
+import com.multi.shop.auth.dto.request.MemberLogoutRequest;
 import com.multi.shop.auth.service.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -21,5 +22,11 @@ public class AuthController {
     public ResponseEntity<TokenDto> login(@RequestBody @Valid MemberLoginRequest request) {
         TokenDto response = authService.login(request);
         return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout(@RequestBody @Valid MemberLogoutRequest request) {
+        authService.logout(request);
+        return ResponseEntity.ok().build();
     }
 }
