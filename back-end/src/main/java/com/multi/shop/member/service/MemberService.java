@@ -1,6 +1,6 @@
 package com.multi.shop.member.service;
 
-import com.multi.shop.auth.dto.request.MemberJoinRequest;
+import com.multi.shop.member.dto.request.MemberJoinRequest;
 import com.multi.shop.member.domain.Password;
 import com.multi.shop.member.domain.Phone;
 import com.multi.shop.member.domain.dao.MemberJoinDAO;
@@ -36,6 +36,7 @@ public class MemberService {
                 .password(password.getValue())
                 .phone(phone.getValue())
                 .build();
+
         return memberRepository.save(dao);
     }
 

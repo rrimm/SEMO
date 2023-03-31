@@ -1,4 +1,4 @@
-package com.multi.shop.auth.dto.request;
+package com.multi.shop.member.dto.request;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;

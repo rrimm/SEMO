@@ -22,6 +22,6 @@ public class MemberJoinDAO {
         this.name = name;
         this.password = password;
         this.phone = phone;
-        this.role = Role.USER;
+        this.role = Role.ROLE_USER;
     }
 }

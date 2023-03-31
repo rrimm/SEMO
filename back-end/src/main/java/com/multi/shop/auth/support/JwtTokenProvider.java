@@ -1,6 +1,7 @@
 package com.multi.shop.auth.support;
 
 import com.multi.shop.auth.dto.TokenDto;
+import com.multi.shop.member.domain.vo.MemberVO;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -35,7 +36,7 @@ public class JwtTokenProvider {
         this.key = Keys.hmacShaKeyFor(keyBytes);
     }
 
-    public TokenDto generateTokenDto(Authentication authentication) {
+    public TokenDto generateTokenDto(Authentication authentication, MemberVO member) {
         // 권한들 가져오기
         String authorities = authentication.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
@@ -63,8 +64,7 @@ public class JwtTokenProvider {
                 .accessToken(accessToken)
                 .accessTokenExpiresIn(accessTokenExpiresIn.getTime())
                 .refreshToken(refreshToken)
-//                .memberId(member.getId())
-//                .role(member.getRole())
+                .memberId(member.getId())
                 .build();
     }
 
