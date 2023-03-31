@@ -2,6 +2,7 @@ package com.multi.shop.member.service;
 
 import com.multi.shop.auth.dto.request.MemberJoinRequest;
 import com.multi.shop.member.domain.Password;
+import com.multi.shop.member.domain.Phone;
 import com.multi.shop.member.domain.dao.MemberJoinDAO;
 import com.multi.shop.member.exception.MemberErrorCode;
 import com.multi.shop.member.exception.MemberException;
@@ -26,13 +27,14 @@ public class MemberService {
         validateMemberPhoneIsNotDuplicated(request.getPhone());
 
         Password password = Password.encode(request.getPassword(), passwordEncoder);
+        Phone phone = Phone.of(request.getPhone());
 
         MemberJoinDAO dao = MemberJoinDAO.builder()
                 .brith(request.getBirth())
                 .email(request.getEmail())
                 .name(request.getName())
                 .password(password.getValue())
-                .phone(request.getPhone())
+                .phone(phone.getValue())
                 .build();
         return memberRepository.save(dao);
     }

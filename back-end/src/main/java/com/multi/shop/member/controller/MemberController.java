@@ -17,8 +17,7 @@ public class MemberController {
     private final MemberService memberService;
     @PostMapping("/join")
     public ResponseEntity<Void> join(@RequestBody @Valid MemberJoinRequest request) {
-        Long memberId = memberService.join(request);
-        log.info(memberId.toString());
+        memberService.join(request);
         return ResponseEntity.ok().build();
     }
 }
