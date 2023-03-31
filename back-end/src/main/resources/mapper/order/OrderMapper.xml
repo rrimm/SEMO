@@ -19,5 +19,6 @@
                  join product p
                       on o.product_id = p.id
         where o.member_id = #{memberId}
+        order by o.id desc;
     </select>
 </mapper>

@@ -34,6 +34,7 @@ public class OrderService {
     }
 
     public List<OrderResponse> findByMemberId(Long memberId) {
+        // TODO: 해당 멤버의 Id 가 존재하지 않으면 예외 처리
         return orderRepository.findByMemberId(memberId)
                 .stream()
                 .map(OrderResponse::from)
