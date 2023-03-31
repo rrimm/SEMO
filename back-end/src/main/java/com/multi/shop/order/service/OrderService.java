@@ -1,6 +1,8 @@
 package com.multi.shop.order.service;
 
+import com.multi.shop.order.domain.dao.OrderCancelDAO;
 import com.multi.shop.order.domain.dao.OrderSaveDAO;
+import com.multi.shop.order.dto.request.OrderCancelRequest;
 import com.multi.shop.order.dto.request.OrderSaveRequest;
 import com.multi.shop.order.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +18,15 @@ public class OrderService {
 
     @Transactional
     public Long save(OrderSaveRequest request) {
+        // TODO: 해당 멤버의 Id 와 제품 Id 가 존재하지 않으면 예외 처리
         OrderSaveDAO dao = OrderSaveDAO.from(request.getMemberId(), request.getProductId());
         return orderRepository.save(dao);
+    }
+
+    @Transactional
+    public void cancel(OrderCancelRequest request) {
+        // TODO: 해당 주문 Id 가 존재하지 않으면 예외 처리
+        OrderCancelDAO dao = OrderCancelDAO.from(request.getOrderId());
+        orderRepository.cancel(dao);
     }
 }
