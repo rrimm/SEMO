@@ -7,6 +7,12 @@
             value (#{brith}, #{email}, #{name}, #{password}, #{phone}, #{role});
     </insert>
 
+    <select id="findByMemberEmail" parameterType="String" resultType="MemberVO">
+        SELECT *
+        FROM member
+        WHERE email = #{email}
+    </select>
+
     <select id="existByMemberEmail" parameterType="String" resultType="boolean">
         SELECT if(count(*) = 1, 1, 0)
         FROM member
