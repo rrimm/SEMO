@@ -1,0 +1,29 @@
+{
+    "count": 3,
+    "carts": [
+        {
+            "id": 1,
+            "product_id": 1,
+            "image": "img/03.jpg",
+            "name": "데님 자켓",
+            "quantity": 1,
+            "price": 100000
+        },
+        {
+            "id": 2,
+            "product_id": 2,
+            "image": "img/04.jpg",
+            "name": "청바지",
+            "quantity": 2,
+            "price": 96000
+        },
+        {
+            "id": 3,
+            "product_id": 3,
+            "image": "img/05.jpg",
+            "name": "가죽 자켓",
+            "quantity": 1,
+            "price": 299000
+        }
+    ]
+}

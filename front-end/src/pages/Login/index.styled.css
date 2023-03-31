@@ -1,0 +1,125 @@
+@font-face {
+  font-family: "MICEGothic Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+.centered-container {
+  display: flex;
+  width: 40vh;
+  height: 55vh;
+  margin: 15vh auto;
+  border: 0.5px;
+  background: #d9d9d9;
+  border-radius: 25px;
+  justify-content: center;
+  align-items: center;
+  font-family: "MICEGothic Bold";
+}
+
+h2 {
+  font-style: bold;
+  text-align: center;
+}
+
+form-group label {
+  display: block;
+  font-weight: bold;
+}
+.login-form {
+  background-color: #d9d9d9;
+  width: 300px;
+  padding: 20px;
+  margin: 0 auto;
+}
+.form-group {
+  margin-bottom: 10px;
+}
+
+#inputEmail,
+#inputPw {
+  box-sizing: border-box;
+  align-content: center;
+  position: flex;
+  width: 100%;
+  height: 50px;
+  display: block;
+  background-color: #d9d9d9;
+  border: 2px solid #ffffff;
+  border-radius: 15px;
+  /*border-bottom: 2px solid #ffffff;*/
+  margin: 15px 10px;
+  padding: 0px 10px;
+  font-family: "MICEGothic Bold";
+}
+
+#inputEmail:focus,
+#inputPw:focus {
+  outline: 1px solid #ffffff;
+}
+
+button.submit {
+  box-sizing: border-box;
+  text-decoration-style: bold;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 15px 12px;
+  display: block;
+  position: flex;
+  width: 72px;
+  height: 52px;
+  margin: 0 auto;
+  background: #807675;
+  border: 1px solid #807675;
+  border-radius: 18px;
+  font-size: 19px;
+  color: #ffffff;
+  align-items: center;
+  font-family: "MICEGothic Bold";
+}
+button.submit:hover {
+  background: #e5cdce;
+  cursor: pointer;
+}
+
+.inline-group {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+inline-group span {
+  position: flex;
+  display: inline-block;
+  align-content: center;
+  font-size: 10px;
+  margin-right: 10px;
+}
+
+button.join {
+  box-sizing: border-box;
+  display: inline-block;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin-left: 55px;
+  color: blue;
+  position: flex;
+  width: 80px;
+  height: 20px;
+  background: #d9d9d9;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  font-size: 17px;
+  font-family: "MICEGothic Bold";
+}
+
+button.join:hover {
+  color: #2acaea;
+  cursor: pointer;
+}

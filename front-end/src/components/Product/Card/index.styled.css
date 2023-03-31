@@ -1,0 +1,19 @@
+.img-container {
+  width: 300px;
+  margin: 16px;
+  /* display: inline-flex; */
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.img-container img {
+  max-width: 100%;
+}
+
+.text-container {
+  text-align: center;
+}
+
+.name {
+  font-family: "GmarketSans";
+}
