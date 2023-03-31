@@ -1,0 +1,41 @@
+
+{
+    "product_id":10001,
+    "product_name":"Short Jacket",
+    "product_image":"jacket1.jpg",
+    "product_price":100000,
+    "product_info":"오가닉 코튼과 재활용 코튼 혼방의 부드러운 촉감이 특징인 레귤러 핏 데님 재킷입니다. ",
+    "product_stock":50,
+    "product_kind":"outer",
+    "carousel":[
+       {
+          "product_image":"jacket1.jpg"
+       },
+       {
+          "product_image":"jacket2.jpg "
+       },
+       {
+          "product_image":"jacket3.jpg "
+       }
+    ],
+    "related_products":[
+       {
+          "product_id":10002,
+          "product_name":"Coat",
+          "product_price":120000,
+          "product_image":"coat1.jpg"
+       },
+       {
+          "product_id":10003,
+          "product_name":"Boots",
+          "product_price":60000,
+          "product_image":"boots1.jpg"
+       },
+       {
+          "product_id":10004,
+          "product_name":"Bag",
+          "product_price":80000,
+          "product_image":"bag1.jpg"
+       }
+    ]
+  }

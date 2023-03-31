@@ -1,0 +1,101 @@
+@font-face {
+  font-family: "MICEGothic Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+.center-container {
+  width: 57vh;
+  height: 90vh;
+  display: flex;
+  margin: 10vh auto;
+  background: #d9d9d9;
+  border-radius: 30px;
+  border: 0.5px;
+  justify-content: center;
+  align-items: center;
+  margin: 15vh auto;
+  font-family: "MICEGothic Bold";
+}
+h2 {
+  text-align: center;
+}
+
+.list-group {
+  margin: 13px auto;
+  display: inline-block;
+}
+
+label {
+  margin-left: 35px;
+  width: 110px;
+  height: 50px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+#email,
+#pw,
+#pwCheck,
+#name,
+#birth,
+#phone {
+  margin: 0 auto;
+  padding: 0px 15px;
+  position: flex;
+  display: inline-block;
+  width: 350px;
+  height: 50px;
+  box-sizing: border-box;
+  background-color: #d9d9d9;
+  border: none;
+  border-bottom: 2px solid #ffffff;
+  font-family: "MICEGothic Bold";
+  justify-content: center;
+  align-items: center;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+input:focus {
+  outline: 1px solid #ffffff;
+}
+
+p {
+  color: red;
+  margin-left: 150px;
+  position: flex;
+  font-size: 13px;
+}
+
+button.register {
+  box-sizing: border-box;
+  display: block;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px 15px;
+  position: flex;
+  width: 90px;
+  height: 45px;
+  margin: 0 auto;
+  font-size: 16px;
+  color: #ffffff;
+  background: #807675;
+  border: 1px solid #807675;
+  border-radius: 18px;
+  font-family: "MICEGothic Bold";
+}
+
+button.register:hover {
+  background: #e5cdce;
+  cursor: pointer;
+}
