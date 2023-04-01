@@ -9,9 +9,21 @@
         WHERE id = #{productId}
     </select>
 
+    <select id="existByProductId" parameterType="Long" resultType="boolean">
+        SELECT if(count(*) = 1, 1, 0)
+        FROM product
+        WHERE id = #{productId}
+    </select>
+
     <select id="findCarouselByProductId" parameterType="Long" resultType="String">
         SELECT img
         FROM carousel
         WHERE product_id = #{productId}
+    </select>
+
+    <select id="findRelatedProductsByProductId" parameterType="RelatedProductsRequest" resultType="ProductVO">
+        SELECT *
+        FROM product
+        WHERE category = #{category} AND target = #{target}
     </select>
 </mapper>

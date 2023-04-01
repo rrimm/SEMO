@@ -2,6 +2,7 @@ package com.multi.shop.product.service;
 
 import com.multi.shop.product.domain.vo.ProductVO;
 import com.multi.shop.product.dto.response.ProductResponse;
+import com.multi.shop.product.dto.response.ProductsResponse;
 import com.multi.shop.product.exception.ProductErrorCode;
 import com.multi.shop.product.exception.ProductException;
 import com.multi.shop.product.repository.ProductRepository;
@@ -17,19 +18,17 @@ import java.util.List;
 public class ProductService {
     private final ProductRepository productRepository;
 
-    //상품 정보 조회
     public ProductResponse findByProductId(Long productId) {
-
-        validateProductIdIsNotFound(productId);
-
+        if (!productRepository.existByProductId(productId)) {
+            throw new ProductException(ProductErrorCode.PRODUCT_NOT_FOUND);
+        }
         ProductVO product = productRepository.findByProductId(productId);
         List<String> carousel = productRepository.findCarouselByProductId(productId);
         return ProductResponse.of(product, carousel);
     }
 
-    private void validateProductIdIsNotFound(Long productId) {
-        if (productRepository.findByProductId(productId) == null) {
-            throw new ProductException(ProductErrorCode.PRODUCT_NOT_FOUND);
-        }
+    public List<ProductsResponse> findRelatedProductsByProductId(Long productId) {
+        List<ProductVO> relatedProducts = productRepository.findRelatedProductsByProductId(productId);
+        return relatedProducts;
     }
 }

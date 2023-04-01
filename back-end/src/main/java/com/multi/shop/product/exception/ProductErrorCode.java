@@ -4,7 +4,7 @@ import com.multi.shop.global.exception.exception.ErrorCode;
 
 public enum ProductErrorCode implements ErrorCode {
 
-    PRODUCT_NOT_FOUND(500, "PRODUCT_01", "존재하지 않는 상품입니다.");
+    PRODUCT_NOT_FOUND(400, "PRODUCT_01", "존재하지 않는 상품입니다.");
 
     private final int statusCode;
     private final String errorCode;

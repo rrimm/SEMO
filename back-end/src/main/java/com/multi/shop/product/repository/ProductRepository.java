@@ -12,14 +12,19 @@ import java.util.List;
 public class ProductRepository {
     private final ProductMapper productMapper;
 
-    //상품 정보 조회
     public ProductVO findByProductId(Long productId) {
-
         return productMapper.findByProductId(productId);
+    }
+
+    public boolean existByProductId(Long productId) {
+        return productMapper.existByProductId(productId);
     }
 
     public List<String> findCarouselByProductId(Long productId) {
         return productMapper.findCarouselByProductId(productId);
     }
 
+    public List<ProductVO> findRelatedProductsByProductId(Long productId) {
+        return productMapper.findRelatedProductsByProductId(productId);
+    }
 }
