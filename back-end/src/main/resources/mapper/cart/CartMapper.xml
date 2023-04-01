@@ -12,4 +12,11 @@
         FROM cart
         WHERE member_id = #{memberId}
     </select>
+
+    <select id="existByProductId" parameterType="CartSaveRequest" resultType="boolean">
+        SELECT if(count(*) = 1, 1, 0)
+        FROM cart
+        WHERE member_id = #{memberId}
+          AND product_id = #{productId}
+    </select>
 </mapper>

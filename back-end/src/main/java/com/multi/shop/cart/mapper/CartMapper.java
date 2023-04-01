@@ -6,4 +6,6 @@ public interface CartMapper {
     Long save(CartSaveRequest request);
 
     int findCartQuantityByMemberId(Long memberId);
+
+    boolean existByProductId(CartSaveRequest request);
 }

@@ -16,4 +16,8 @@ public class CartRepository {
     public Long save(CartSaveRequest request) {
         return cartMapper.save(request);
     }
+
+    public boolean existByProductId(CartSaveRequest request) {
+        return cartMapper.existByProductId(request);
+    }
 }
