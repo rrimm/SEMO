@@ -1,6 +1,6 @@
 package com.multi.shop.auth.service;
 
-import com.multi.shop.auth.domain.dao.RefreshTokenDAO;
+import com.multi.shop.auth.domain.vo.RefreshTokenVO;
 import com.multi.shop.auth.dto.TokenDto;
 import com.multi.shop.auth.dto.request.MemberLoginRequest;
 import com.multi.shop.auth.dto.request.MemberLogoutRequest;
@@ -38,7 +38,7 @@ public class AuthService {
                 .orElseThrow(RuntimeException::new);
 
         TokenDto tokenDto = jwtTokenProvider.generateTokenDto(authentication, findMember);
-        RefreshTokenDAO token = RefreshTokenDAO.builder()
+        RefreshTokenVO token = RefreshTokenVO.builder()
                 .key(authentication.getName())
                 .value(tokenDto.getRefreshToken())
                 .build();

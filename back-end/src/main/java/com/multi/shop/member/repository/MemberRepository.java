@@ -1,6 +1,5 @@
 package com.multi.shop.member.repository;
 
-import com.multi.shop.member.domain.dao.MemberJoinDAO;
 import com.multi.shop.member.domain.vo.MemberVO;
 import com.multi.shop.member.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
