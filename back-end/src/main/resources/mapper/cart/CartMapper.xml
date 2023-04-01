@@ -7,6 +7,10 @@
             VALUE (#{checked}, #{quantity}, #{memberId}, #{productId});
     </insert>
 
+    <select id="findByMemberId" parameterType="Long" resultType="CartVO">
+
+    </select>
+
     <select id="findCartQuantityByMemberId" parameterType="Long" resultType="int">
         SELECT count(id)
         FROM cart
