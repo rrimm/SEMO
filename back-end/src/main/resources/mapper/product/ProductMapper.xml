@@ -3,15 +3,15 @@
 
 <mapper namespace="com.multi.shop.product.mapper.ProductMapper">
 
-    <select id="findProductById" parameterType="Long" resultType="ProductVO">
+    <select id="findByProductId" parameterType="Long" resultType="ProductVO">
         SELECT *
         FROM product
         WHERE id = #{productId}
     </select>
 
-    <select id="findRelatedProductsByCategory" parameterType="Category" resultType="ProductDAO">
-        SELECT *
-        FROM product
-        WHERE category = #{category}
+    <select id="findCarouselByProductId" parameterType="Long" resultType="String">
+        SELECT img
+        FROM carousel
+        WHERE product_id = #{productId}
     </select>
 </mapper>

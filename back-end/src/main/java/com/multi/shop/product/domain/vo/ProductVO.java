@@ -5,8 +5,6 @@ import com.multi.shop.product.domain.Category;
 import com.multi.shop.product.domain.Target;
 import lombok.Data;
 
-import java.util.List;
-
 @Data
 public class ProductVO {
     private Long id;

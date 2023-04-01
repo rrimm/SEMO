@@ -33,7 +33,7 @@ public class ProductResponse {
         this.category = category;
         this.target = target;
     }
-    public static ProductResponse of(ProductVO vo){
+    public static ProductResponse of(ProductVO vo, List<String> carousel){
         return ProductResponse.builder()
                 .id(vo.getId())
                 .name(vo.getName())
@@ -43,6 +43,7 @@ public class ProductResponse {
                 .stock(vo.getStock())
                 .category(vo.getCategory())
                 .target(vo.getTarget())
+                .carousel(carousel)
                 .build();
     }
 }
