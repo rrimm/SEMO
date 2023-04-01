@@ -24,6 +24,8 @@
     <select id="findRelatedProductsByProductId" parameterType="RelatedProductsRequest" resultType="ProductVO">
         SELECT *
         FROM product
-        WHERE category = #{category} AND target = #{target}
+        WHERE category= #{category} AND target= #{target} AND id != {productId}
+        ORDER BY RAND()
+        LIMIT 10
     </select>
 </mapper>
