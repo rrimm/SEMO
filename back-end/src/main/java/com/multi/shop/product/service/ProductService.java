@@ -19,12 +19,16 @@ public class ProductService {
     private final ProductRepository productRepository;
 
     public ProductResponse findByProductId(Long productId) {
-        if (!productRepository.existByProductId(productId)) {
-            throw new ProductException(ProductErrorCode.PRODUCT_NOT_FOUND);
-        }
+        validateProductIsExistById(productId);
         ProductVO product = productRepository.findByProductId(productId);
         List<String> carousel = productRepository.findCarouselByProductId(productId);
         return ProductResponse.of(product, carousel);
+    }
+
+    private void validateProductIsExistById(Long productId) {
+        if (!productRepository.existByProductId(productId)) {
+            throw new ProductException(ProductErrorCode.PRODUCT_NOT_FOUND);
+        }
     }
 
     public List<ProductsResponse> findRelatedProductsByProductId(Long productId) {
