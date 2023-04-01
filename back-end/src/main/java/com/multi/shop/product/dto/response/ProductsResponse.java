@@ -20,7 +20,7 @@ public class ProductsResponse {
         this.price = price;
     }
 
-    public static ProductsResponse of(ProductVO vo) {
+    public static ProductsResponse from(ProductVO vo) {
         return ProductsResponse.builder()
                 .id(vo.getId())
                 .name(vo.getName())
