@@ -1,5 +1,6 @@
 package com.multi.shop.member.service;
 
+import com.multi.shop.member.domain.vo.MemberVO;
 import com.multi.shop.member.dto.request.MemberJoinRequest;
 import com.multi.shop.member.domain.Password;
 import com.multi.shop.member.domain.Phone;
@@ -29,15 +30,9 @@ public class MemberService {
         Password password = Password.encode(request.getPassword(), passwordEncoder);
         Phone phone = Phone.of(request.getPhone());
 
-        MemberJoinDAO dao = MemberJoinDAO.builder()
-                .brith(request.getBirth())
-                .email(request.getEmail())
-                .name(request.getName())
-                .password(password.getValue())
-                .phone(phone.getValue())
-                .build();
+        MemberVO member = MemberVO.of(request, password, phone);
 
-        return memberRepository.save(dao);
+        return memberRepository.save(member);
     }
 
     private void validateMemberEmailIsNotDuplicated(String email) {

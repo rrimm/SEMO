@@ -13,8 +13,8 @@ import java.util.Optional;
 public class MemberRepository {
     private final MemberMapper memberMapper;
 
-    public Long save(MemberJoinDAO dao) {
-        return memberMapper.save(dao);
+    public Long save(MemberVO member) {
+        return memberMapper.save(member);
     }
 
     public Optional<MemberVO> findByMemberEmail(String email) {
