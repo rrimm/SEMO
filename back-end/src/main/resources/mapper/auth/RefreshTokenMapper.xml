@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.multi.shop.auth.mapper.RefreshTokenMapper">
-    <insert id="save" parameterType="RefreshTokenDAO">
+    <insert id="save" parameterType="RefreshTokenVO">
         insert into refresh_token(rt_key, rt_value) VALUE (#{key}, #{value})
     </insert>
 

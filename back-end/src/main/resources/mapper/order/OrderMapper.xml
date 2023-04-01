@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.multi.shop.order.mapper.OrderMapper">
-    <insert id="save" parameterType="OrderSaveDAO">
+    <insert id="save" parameterType="OrderSaveRequest">
         insert into orders(date, quantity, order_status, member_id, product_id)
             VALUE (#{date}, #{quantity}, #{status}, #{memberId}, #{productId})
     </insert>
@@ -16,7 +16,7 @@
         order by o.id desc;
     </select>
 
-    <update id="cancel" parameterType="OrderCancelDAO">
+    <update id="cancel" parameterType="OrderCancelRequest">
         update orders
         set order_status = #{status}
         where id = #{orderId}

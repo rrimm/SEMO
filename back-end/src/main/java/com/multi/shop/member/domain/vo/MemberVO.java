@@ -1,15 +1,18 @@
 package com.multi.shop.member.domain.vo;
 
+import com.multi.shop.member.domain.Password;
+import com.multi.shop.member.domain.Phone;
 import com.multi.shop.member.domain.Role;
+import com.multi.shop.member.dto.request.MemberJoinRequest;
 import lombok.AccessLevel;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Data
+@Getter
 public class MemberVO {
     private Long id;
     private LocalDate birth;
@@ -28,5 +31,16 @@ public class MemberVO {
         this.password = password;
         this.phone = phone;
         this.role = role;
+    }
+
+    public static MemberVO of(MemberJoinRequest request, Password password, Phone phone) {
+        return MemberVO.builder()
+                .birth(request.getBirth())
+                .email(request.getEmail())
+                .name(request.getName())
+                .password(password.getValue())
+                .phone(phone.getValue())
+                .role(request.getRole())
+                .build();
     }
 }
