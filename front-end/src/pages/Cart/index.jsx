@@ -57,17 +57,17 @@ function Cart() {
       <S.Wrapper>
         <S.BoldLine />
         <NavRow />
-        {data.length === 0 ? (
+        {data.size === 0 ? (
           <NotFound />
         ) : (
-          data.map((cart) => {
+          data.carts.map((cart) => {
             return <Row key={cart.cartId} cart={cart} />;
           })
         )}
-        {data.length !== 0 && (
+        {data.size !== 0 && (
           <>
             {/* TODO: 서버측에서 총 결제금액을 받아오고 배송비의 추가 유무를 확인하는 API 구현 */}
-            <Payment data={data} />
+            <Payment price={data.price} courierFee={data.courierFee} />
             <S.ButtonWrapper>
               <S.StyledButton variant={"contained"} color={"inherit"} onClick={goProduct}>
                 계속 쇼핑하기
