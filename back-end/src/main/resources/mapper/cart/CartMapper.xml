@@ -7,6 +7,21 @@
             VALUE (#{checked}, #{quantity}, #{memberId}, #{productId});
     </insert>
 
+    <select id="findByMemberId" parameterType="Long" resultType="CartVO">
+        SELECT c.id    cartId,
+               c.checked,
+               c.quantity,
+               p.id    productId,
+               p.image productImage,
+               p.name  productName,
+               p.price productPrice,
+               m.id    memberId
+        FROM cart c
+                 JOIN member m on m.id = c.member_id
+                 JOIN product p on p.id = c.product_id
+        WHERE c.member_id = #{memberId}
+    </select>
+
     <select id="findCartQuantityByMemberId" parameterType="Long" resultType="int">
         SELECT count(id)
         FROM cart
