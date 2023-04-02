@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useRecoilValue } from "recoil";
 import axios from "axios";
 
 import { Button } from "@mui/material";
 import { Checkbox } from "@mui/material";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faMinus } from "@fortawesome/free-solid-svg-icons";
 import * as S from "./index.styled";
 
 import { jwtToken } from "../../../stores/auth";
@@ -29,52 +32,52 @@ function NavRow() {
 
 function Row({ cart }) {
   const [checked, setChecked] = useState(cart.checked);
-  const [quantity, setQuantity] = useState(cart.quantity);
   const token = useRecoilValue(jwtToken);
 
   const formatPrice = Number(cart.productPrice).toLocaleString();
   const formatTotalPrice = Number(cart.productPrice * cart.quantity).toLocaleString();
 
   const plusQuantity = async () => {
-    if (quantity === MEMBER_RULE.CART.MAX_QUANTITY) {
+    if (cart.quantity === MEMBER_RULE.CART.MAX_QUANTITY) {
       alert(CLIENT_ERROR_MESSAGE.INVALID_CART.QUANTITY.MAX);
       return;
     }
-    setQuantity((quantity) => quantity + 1);
-    console.log(quantity);
+    updateQuantityRequest(cart.quantity + 1);
   };
 
   const minusQuantity = async () => {
-    if (quantity === MEMBER_RULE.CART.MIN_QUANTITY) {
+    if (cart.quantity === MEMBER_RULE.CART.MIN_QUANTITY) {
       alert(CLIENT_ERROR_MESSAGE.INVALID_CART.QUANTITY.MIN);
       return;
     }
-    setQuantity((quantity) => quantity + 1);
-    console.log(quantity);
+    updateQuantityRequest(cart.quantity - 1);
   };
 
   // TODO: useState 동기 처리 구현
-  const updateQuantityRequest = async (quantity) => {
-    await axios
-      .put(
-        `${API_PATH.CART.QUANTITY}`,
-        {
-          cartId: cart.cartId,
-          quantity: quantity,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token.accessToken}`,
+  const updateQuantityRequest = useCallback(
+    async (quantity) => {
+      await axios
+        .put(
+          `${API_PATH.CART.QUANTITY}`,
+          {
+            id: cart.cartId,
+            quantity: quantity,
           },
-        }
-      )
-      .then(() => {
-        window.location.reload();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+          {
+            headers: {
+              Authorization: `Bearer ${token.accessToken}`,
+            },
+          }
+        )
+        .then(() => {
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    [cart, token]
+  );
 
   const updateCheckedRequest = async () => {
     await axios
@@ -128,9 +131,13 @@ function Row({ cart }) {
           </S.StyledLink>
         </S.Wrapper>
         <S.Quantity>
-          <S.Button onClick={() => minusQuantity()}>-</S.Button>
-          {quantity}
-          <S.Button onClick={() => plusQuantity()}>+</S.Button>
+          <S.Button onClick={() => minusQuantity()}>
+            <FontAwesomeIcon icon={faMinus}></FontAwesomeIcon>
+          </S.Button>
+          {cart.quantity}
+          <S.Button onClick={() => plusQuantity()}>
+            <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
+          </S.Button>
         </S.Quantity>
         <S.Price>{formatPrice}</S.Price>
         <S.EachPrice>{formatTotalPrice}</S.EachPrice>
