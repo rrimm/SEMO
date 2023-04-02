@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.multi.shop.review.mapper.ReviewMapper">
+
+    <resultMap type="com.multi.shop.review.domain.vo.ReviewVO" id="reviewResultMap">
+        <id column="id" property="id"/>
+        <result column="content" property="content"/>
+        <result column="category" property="category"/>
+<!--        <result column="image" property="image" jdbcType="BLOB" typeHandler="org.apache.ibatis.type.BlobTypeHandler" />-->
+<!--    <result column="member_id" property="memberId"/>-->
+<!--    <result column="product_id" property="productId"/>-->
+        <association property="member" javaType="com.multi.shop.member.domain.vo.MemberVO">
+            <id column="member_id" property="id"/>
+            <result column="email" property="email"/>
+        </association>
+        <association property="product" javaType="com.multi.shop.product.domain.vo.ProductVO">
+            <id column="product_id" property="id"/>
+            <result column="name" property="name"/>
+            <result column="category" property="category"/>
+        </association>
+    </resultMap>
+
+    <select id="getReviewList" resultMap="reviewResultMap">
+        SELECT * FROM review;
+    </select>
+
+    <select id="getReviewListWithProductAndMember" resultMap="reviewResultMap">
+        SELECT r.id, p.name, r.content, m.email, r.image, r.category, r.member_id, r.product_id
+        FROM review r
+        JOIN member m ON r.member_id = m.id
+        JOIN product p ON r.product_id = p.id;
+    </select>
+
+    <update id="updateReview" parameterType="com.multi.shop.review.domain.vo.ReviewVO">
+        UPDATE review
+        SET content = #{content}
+        WHERE id = #{id}
+    </update>
+
+    <insert id="insertReview" parameterType="com.multi.shop.review.domain.dto.request.ReviewInsertDTO">
+        INSERT INTO review (member_id, product_id, content, image, category)
+        VALUES (#{memberId}, #{productId}, #{content}, #{image}, #{category})
+    </insert>
+
+    <delete id="deleteReviewById" parameterType="long">
+        DELETE FROM review
+        WHERE id = #{id}
+    </delete>
+
+    <select id="getReviewListByCategory" resultMap="reviewResultMap">
+        SELECT r.id, p.name, r.content, m.email, r.image, r.category, r.member_id, r.product_id
+        FROM review r
+        JOIN member m ON r.member_id = m.id
+        JOIN product p ON r.product_id = p.id
+        WHERE p.category = #{category}
+    </select>
+
+</mapper>
