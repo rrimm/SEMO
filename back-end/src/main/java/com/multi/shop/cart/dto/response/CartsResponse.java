@@ -23,8 +23,6 @@ public class CartsResponse {
         this.courierFee = courierFee;
     }
 
-
-
     public static CartsResponse from(List<CartResponse> carts, int price, boolean courierFee) {
         return CartsResponse.builder()
                 .carts(carts)
