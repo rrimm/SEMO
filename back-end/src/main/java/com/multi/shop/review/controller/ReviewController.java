@@ -1,10 +1,11 @@
 package com.multi.shop.review.controller;
 
+import com.multi.shop.review.dto.request.ReviewSaveRequest;
 import com.multi.shop.review.dto.response.ReviewFormResponse;
-import com.multi.shop.order.service.OrderService;
 import com.multi.shop.review.domain.dto.request.ReviewRequest;
 import com.multi.shop.review.domain.vo.ReviewVO;
 import com.multi.shop.review.service.ReviewService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Param;
@@ -45,6 +46,11 @@ public class ReviewController {
     }
 
     /* 검증 */
+    @PostMapping("/auth/review")
+    public ResponseEntity<Void> save(@RequestBody @Valid ReviewSaveRequest request) {
+        reviewService.save(request);
+        return ResponseEntity.ok().build();
+    }
     @GetMapping("/auth/review/form")
     public ResponseEntity<ReviewFormResponse> findProductInfo(@Param("orderId") Long orderId) {
         ReviewFormResponse response = reviewService.findProductInfoById(orderId);

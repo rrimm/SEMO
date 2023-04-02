@@ -3,6 +3,7 @@ package com.multi.shop.review.repository;
 
 import com.multi.shop.review.domain.dto.request.ReviewRequest;
 import com.multi.shop.review.domain.vo.ReviewVO;
+import com.multi.shop.review.dto.request.ReviewSaveRequest;
 import com.multi.shop.review.mapper.ReviewMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -41,4 +42,7 @@ public class ReviewRepository {
     }
 
 
+    public Long save(ReviewSaveRequest request) {
+        reviewMapper.save(request);
+    }
 }

@@ -2,6 +2,7 @@ package com.multi.shop.review.service;
 
 import com.multi.shop.order.domain.vo.OrderProductVO;
 import com.multi.shop.order.repository.OrderRepository;
+import com.multi.shop.review.dto.request.ReviewSaveRequest;
 import com.multi.shop.review.dto.response.ReviewFormResponse;
 import com.multi.shop.review.domain.dto.request.ReviewRequest;
 import com.multi.shop.review.domain.vo.ReviewVO;
@@ -57,5 +58,10 @@ public class ReviewService {
     public ReviewFormResponse findProductInfoById(Long orderId) {
         OrderProductVO findOrderProduct = orderRepository.findProductInfoById(orderId).orElseThrow(RuntimeException::new);
         return ReviewFormResponse.from(findOrderProduct);
+    }
+
+    public Long save(ReviewSaveRequest request) {
+        // TODO: 이미 작성된 리뷰가 있으면 예외 처리
+        return reviewRepository.save(request);
     }
 }

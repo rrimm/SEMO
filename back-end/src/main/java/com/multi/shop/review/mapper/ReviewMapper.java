@@ -2,6 +2,7 @@ package com.multi.shop.review.mapper;
 
 import com.multi.shop.review.domain.dto.request.ReviewRequest;
 import com.multi.shop.review.domain.vo.ReviewVO;
+import com.multi.shop.review.dto.request.ReviewSaveRequest;
 
 import java.util.List;
 
@@ -20,4 +21,5 @@ public interface ReviewMapper {
     List<ReviewVO> getReviewListByCategory(String category); // 카테고리별 리뷰 조회
 
 
+    Long save(ReviewSaveRequest request);
 }
