@@ -1,5 +1,7 @@
 package com.multi.shop;
 
+import com.multi.shop.cart.dto.request.CartSaveRequest;
+import com.multi.shop.cart.service.CartService;
 import com.multi.shop.member.dto.request.MemberJoinRequest;
 import com.multi.shop.member.service.MemberService;
 import jakarta.annotation.PostConstruct;
@@ -13,10 +15,12 @@ import java.time.LocalDate;
 public class InitDb {
 
     private final InitMemberService memberService;
+    private final InitCartService initCartService;
 
     @PostConstruct
     public void init() {
         memberService.init();
+        initCartService.init();
     }
 
     @RequiredArgsConstructor
@@ -49,6 +53,40 @@ public class InitDb {
             memberService.join(saveMember1);
             memberService.join(saveMember2);
             memberService.join(saveMember3);
+        }
+    }
+
+    @RequiredArgsConstructor
+    @Component
+    static class InitCartService {
+        private final CartService cartService;
+
+        public void init() {
+            CartSaveRequest request1 = CartSaveRequest.builder()
+                    .memberId(1L)
+                    .productId(1L)
+                    .build();
+            CartSaveRequest request2 = CartSaveRequest.builder()
+                    .memberId(1L)
+                    .productId(3L)
+                    .build();
+            CartSaveRequest request3 = CartSaveRequest.builder()
+                    .memberId(1L)
+                    .productId(7L)
+                    .build();
+            CartSaveRequest request4 = CartSaveRequest.builder()
+                    .memberId(2L)
+                    .productId(10L)
+                    .build();
+            CartSaveRequest request5 = CartSaveRequest.builder()
+                    .memberId(3L)
+                    .productId(15L)
+                    .build();
+            cartService.save(request1);
+            cartService.save(request2);
+            cartService.save(request3);
+            cartService.save(request4);
+            cartService.save(request5);
         }
     }
 }

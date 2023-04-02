@@ -2,6 +2,7 @@ package com.multi.shop.cart.dto.request;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,4 +18,10 @@ public class CartSaveRequest {
     private boolean checked = true;
 
     private int quantity = 1;
+
+    @Builder
+    public CartSaveRequest(Long productId, Long memberId) {
+        this.productId = productId;
+        this.memberId = memberId;
+    }
 }
