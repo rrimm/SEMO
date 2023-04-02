@@ -2,6 +2,7 @@ package com.multi.shop.order.repository;
 
 import com.multi.shop.order.domain.vo.OrderFindVO;
 import com.multi.shop.order.domain.vo.OrderProductVO;
+import com.multi.shop.order.domain.vo.OrderVO;
 import com.multi.shop.order.dto.request.OrderCancelRequest;
 import com.multi.shop.order.dto.request.OrderSaveRequest;
 import com.multi.shop.order.mapper.OrderMapper;
@@ -31,5 +32,9 @@ public class OrderRepository {
 
     public Optional<OrderProductVO> findProductInfoById(Long id) {
         return orderMapper.findProductInfoById(id);
+    }
+
+    public Optional<OrderVO> findById(Long orderId) {
+        return orderMapper.findById(orderId);
     }
 }
