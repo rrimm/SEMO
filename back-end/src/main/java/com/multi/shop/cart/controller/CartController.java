@@ -4,6 +4,7 @@ import com.multi.shop.cart.dto.request.CartSaveRequest;
 import com.multi.shop.cart.dto.request.CartChangeQuantityRequest;
 import com.multi.shop.cart.dto.response.CartQuantityResponse;
 import com.multi.shop.cart.dto.response.CartResponse;
+import com.multi.shop.cart.dto.response.CartsResponse;
 import com.multi.shop.cart.service.CartService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -27,9 +28,9 @@ public class CartController {
     }
 
     @GetMapping
-    public ResponseEntity<List<CartResponse>> findCart(@Param("memberId") Long memberId) {
-        List<CartResponse> responses = cartService.findByMemberId(memberId);
-        return ResponseEntity.ok(responses);
+    public ResponseEntity<CartsResponse> findCart(@Param("memberId") Long memberId) {
+        CartsResponse response = cartService.findByMemberId(memberId);
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/quantity")

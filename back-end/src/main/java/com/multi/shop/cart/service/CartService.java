@@ -5,6 +5,7 @@ import com.multi.shop.cart.dto.request.CartChangeQuantityRequest;
 import com.multi.shop.cart.dto.request.CartSaveRequest;
 import com.multi.shop.cart.dto.response.CartQuantityResponse;
 import com.multi.shop.cart.dto.response.CartResponse;
+import com.multi.shop.cart.dto.response.CartsResponse;
 import com.multi.shop.cart.exception.CartErrorCode;
 import com.multi.shop.cart.exception.CartException;
 import com.multi.shop.cart.repository.CartRepository;
@@ -34,11 +35,25 @@ public class CartService {
         }
     }
 
-    public List<CartResponse> findByMemberId(Long memberId) {
-        return cartRepository.findByMemberId(memberId)
+    public CartsResponse findByMemberId(Long memberId) {
+        List<CartResponse> carts = cartRepository.findByMemberId(memberId)
                 .stream()
                 .map(CartResponse::from)
                 .toList();
+        int price = sumPrice(carts);
+        boolean courierFee = isCourierFee(price);
+        return CartsResponse.from(carts, price, courierFee);
+    }
+
+    private int sumPrice(List<CartResponse> carts) {
+        return carts.stream()
+                .filter(CartResponse::isChecked)
+                .mapToInt(cart -> cart.getQuantity() * cart.getProductPrice())
+                .sum();
+    }
+
+    private boolean isCourierFee(int price) {
+        return 50_000 > price;
     }
 
     public CartQuantityResponse findCartQuantityByMemberId(Long memberId) {
