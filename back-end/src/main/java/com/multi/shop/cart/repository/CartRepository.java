@@ -24,6 +24,10 @@ public class CartRepository {
         return cartMapper.existByProductId(request);
     }
 
+    public void deleteById(Long id) {
+        cartMapper.deleteById(id);
+    }
+
     public List<CartVO> findByMemberId(Long memberId) {
         return cartMapper.findByMemberId(memberId);
     }

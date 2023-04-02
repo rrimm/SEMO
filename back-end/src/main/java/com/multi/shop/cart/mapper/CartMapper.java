@@ -12,5 +12,8 @@ public interface CartMapper {
 
     boolean existByProductId(CartSaveRequest request);
 
+
+    void deleteById(Long id);
+
     List<CartVO> findByMemberId(Long memberId);
 }

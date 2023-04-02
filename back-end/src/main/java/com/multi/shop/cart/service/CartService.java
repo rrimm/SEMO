@@ -45,4 +45,10 @@ public class CartService {
         int quantity = cartRepository.findCartQuantityByMemberId(memberId);
         return CartQuantityResponse.of(quantity);
     }
+
+    // 장바구니 상품 번호를 파라미터로 받아서 삭제
+    @Transactional
+    public void deleteCart(Long id){
+       cartRepository.deleteById(id);
+    }
 }
