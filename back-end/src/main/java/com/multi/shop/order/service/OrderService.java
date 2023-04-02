@@ -5,11 +5,13 @@ import com.multi.shop.order.dto.request.OrderSaveRequest;
 import com.multi.shop.order.dto.response.OrderResponse;
 import com.multi.shop.order.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Slf4j
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 @Service
@@ -33,4 +35,5 @@ public class OrderService {
     public void cancel(OrderCancelRequest request) {
         orderRepository.cancel(request);
     }
+
 }

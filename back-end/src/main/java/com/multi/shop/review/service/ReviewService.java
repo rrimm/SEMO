@@ -1,6 +1,9 @@
 package com.multi.shop.review.service;
 
-import com.multi.shop.product.repository.ProductRepository;
+import com.multi.shop.order.domain.vo.OrderProductVO;
+import com.multi.shop.order.repository.OrderRepository;
+import com.multi.shop.review.dto.request.ReviewSaveRequest;
+import com.multi.shop.review.dto.response.ReviewFormResponse;
 import com.multi.shop.review.domain.dto.request.ReviewRequest;
 import com.multi.shop.review.domain.vo.ReviewVO;
 import com.multi.shop.review.repository.ReviewRepository;
@@ -15,7 +18,7 @@ import java.util.List;
 @Transactional(readOnly = true)
 public class ReviewService {
     private final ReviewRepository reviewRepository;
-    private final ProductRepository productRepository;
+    private final OrderRepository orderRepository;
 
     public List<ReviewVO> getReviewList(){
         return reviewRepository.getReviewList();
@@ -52,4 +55,14 @@ public class ReviewService {
         return reviewRepository.deleteReviewById(id);
     }
 
+    public ReviewFormResponse findProductInfoById(Long orderId) {
+        OrderProductVO findOrderProduct = orderRepository.findProductInfoById(orderId).orElseThrow(RuntimeException::new);
+        return ReviewFormResponse.from(findOrderProduct);
+    }
+
+    @Transactional
+    public Long save(ReviewSaveRequest request) {
+        // TODO: 이미 작성된 리뷰가 있으면 예외 처리
+        return reviewRepository.save(request);
+    }
 }

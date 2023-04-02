@@ -13,21 +13,16 @@ import * as S from "./index.styled";
 function ReviewForm() {
   const token = useRecoilValue(jwtToken);
   const navigate = useNavigate();
-  const [params, setParams] = useSearchParams();
+  const [params] = useSearchParams();
   const [option, setOption] = useState("ADD");
   const [image, setImage] = useState("");
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
-  const [orderId, setOrderId] = useState("");
+  const orderId = params.get("orderId");
   const [data, setData] = useState({});
-
-  const getOrderIdParam = useCallback(async () => {
-    setOrderId(params.get("orderId"));
-  }, [params]);
 
   const orderInfoRequest = useCallback(async () => {
     setLoading(true);
-    getOrderIdParam();
     if (orderId !== "") {
       await axios
         .get(API_PATH.REVIEW.FORM, {
@@ -44,7 +39,7 @@ function ReviewForm() {
         })
         .catch(() => {});
     }
-  }, [getOrderIdParam, orderId, token]);
+  }, [orderId, token]);
 
   useEffect(() => {
     orderInfoRequest();
