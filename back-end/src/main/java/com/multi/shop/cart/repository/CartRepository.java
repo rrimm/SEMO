@@ -1,6 +1,7 @@
 package com.multi.shop.cart.repository;
 
 import com.multi.shop.cart.domain.vo.CartVO;
+import com.multi.shop.cart.dto.request.CartChangeCheckedRequest;
 import com.multi.shop.cart.dto.request.CartSaveRequest;
 import com.multi.shop.cart.dto.request.CartChangeQuantityRequest;
 import com.multi.shop.cart.mapper.CartMapper;
@@ -35,5 +36,9 @@ public class CartRepository {
 
     public void updateQuantity(CartChangeQuantityRequest request) {
         cartMapper.updateQuantity(request);
+    }
+
+    public void updateChecked(CartChangeCheckedRequest request) {
+        cartMapper.updateChecked(request);
     }
 }

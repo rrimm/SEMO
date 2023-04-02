@@ -1,6 +1,7 @@
 package com.multi.shop.cart.service;
 
 import com.multi.shop.cart.domain.Quantity;
+import com.multi.shop.cart.dto.request.CartChangeCheckedRequest;
 import com.multi.shop.cart.dto.request.CartChangeQuantityRequest;
 import com.multi.shop.cart.dto.request.CartSaveRequest;
 import com.multi.shop.cart.dto.response.CartQuantityResponse;
@@ -71,5 +72,11 @@ public class CartService {
     public void updateQuantity(CartChangeQuantityRequest request) {
         request.setQuantity(Quantity.of(request.getQuantity()).getValue());
         cartRepository.updateQuantity(request);
+    }
+
+    @Transactional
+    public void updateChecked(CartChangeCheckedRequest request) {
+        request.setChecked(!request.isChecked());
+        cartRepository.updateChecked(request);
     }
 }
