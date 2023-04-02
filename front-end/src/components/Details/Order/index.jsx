@@ -1,9 +1,7 @@
 import React from "react";
-import SizeButton from "./Button/SizeButton";
 import StockButton from "./Button/StockButton";
 import DeliveryButton from "./Button/DeliveryButton";
 import CartButton from "./Button/CartButton";
-import SizeCheck from "./SizeCheck";
 import * as S from "./index.styled";
 
 const OrderContainer = ({ name, price, id, info, stock }) => {
@@ -22,16 +20,12 @@ const OrderContainer = ({ name, price, id, info, stock }) => {
           </div>
         </S.List>
         <br />
-        <div>{info}</div>
+        <S.Info>{info}</S.Info>
         <br />
-        <S.BottomLine>사이즈 선택</S.BottomLine>
-        <S.Text>
-          <SizeCheck />
-        </S.Text>
+        <CartButton productId={id} />
+      <S.BottomLine/>
       </ul>
-      <CartButton productId={id} />
       <br />
-      <SizeButton />
       <StockButton stock={stock} />
       <DeliveryButton />
     </div>

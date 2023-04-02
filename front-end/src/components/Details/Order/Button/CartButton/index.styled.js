@@ -6,8 +6,8 @@ const Button = styled.button`
   color: white;
   font-size: 20px;
   padding: 10px 60px;
-  width: 90%;
-  margin: 10px 40px;
+  width: 100%;
+  margin: 20px 0px;
 `;
 
 const CloseButton = styled.button`
