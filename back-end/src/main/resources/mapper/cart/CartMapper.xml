@@ -20,6 +20,7 @@
                  JOIN member m on m.id = c.member_id
                  JOIN product p on p.id = c.product_id
         WHERE c.member_id = #{memberId}
+        ORDER BY c.id desc
     </select>
 
     <select id="findCartQuantityByMemberId" parameterType="Long" resultType="int">

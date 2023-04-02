@@ -16,10 +16,9 @@ public class CartResponse {
     private String productImage;
     private String productName;
     private int productPrice;
-    private Long memberId;
 
     @Builder
-    public CartResponse(Long cartId, boolean checked, int quantity, Long productId, String productImage, String productName, int productPrice, Long memberId) {
+    public CartResponse(Long cartId, boolean checked, int quantity, Long productId, String productImage, String productName, int productPrice) {
         this.cartId = cartId;
         this.checked = checked;
         this.quantity = quantity;
@@ -27,7 +26,6 @@ public class CartResponse {
         this.productImage = productImage;
         this.productName = productName;
         this.productPrice = productPrice;
-        this.memberId = memberId;
     }
 
     public static CartResponse from(CartVO cart) {
@@ -39,7 +37,6 @@ public class CartResponse {
                 .productImage(cart.getProductImage())
                 .productName(cart.getProductName())
                 .productPrice(cart.getProductPrice())
-                .memberId(cart.getMemberId())
                 .build();
     }
 }
