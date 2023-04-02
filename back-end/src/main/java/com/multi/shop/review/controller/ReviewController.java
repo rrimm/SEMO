@@ -24,26 +24,26 @@ public class ReviewController {
     public List<ReviewVO> getReviewList() {
         return reviewService.getReviewListWithProductAndMember();
     }
-
-    @GetMapping("/review/category")
-    public List<ReviewVO> getReviewListByCategory(@RequestParam String category) {
-        return reviewService.getReviewListByCategory(category);
-    }
-
-    @PostMapping("/review")
-    public int insertReview(@RequestBody ReviewRequest reviewRequest) {
-        return reviewService.insertReview(reviewRequest);
-    }
-
-    @PutMapping("/review/{id}")
-    public int updateReview(@PathVariable Long id, @RequestBody ReviewVO reviewVO) {
-        return reviewService.updateReview(id, reviewVO.getContent());
-    }
-
-    @DeleteMapping("/review/{id}")
-    public int deleteReviewById(@PathVariable Long id) {
-        return reviewService.deleteReviewById(id);
-    }
+//
+//    @GetMapping("/review/category")
+//    public List<ReviewVO> getReviewListByCategory(@RequestParam String category) {
+//        return reviewService.getReviewListByCategory(category);
+//    }
+//
+//    @PostMapping("/review")
+//    public int insertReview(@RequestBody ReviewRequest reviewRequest) {
+//        return reviewService.insertReview(reviewRequest);
+//    }
+//
+//    @PutMapping("/review/{id}")
+//    public int updateReview(@PathVariable Long id, @RequestBody ReviewVO reviewVO) {
+//        return reviewService.updateReview(id, reviewVO.getContent());
+//    }
+//
+//    @DeleteMapping("/review/{id}")
+//    public int deleteReviewById(@PathVariable Long id) {
+//        return reviewService.deleteReviewById(id);
+//    }
 
     /* 검증 */
     @PostMapping("/auth/review")

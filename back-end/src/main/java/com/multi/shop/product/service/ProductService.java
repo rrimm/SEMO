@@ -1,9 +1,11 @@
 package com.multi.shop.product.service;
 
+import com.multi.shop.order.dto.request.OrderSaveRequest;
 import com.multi.shop.product.domain.vo.FindRelatedProductVO;
 import com.multi.shop.product.domain.vo.ProductVO;
 import com.multi.shop.product.dto.response.ProductResponse;
 import com.multi.shop.product.dto.response.ProductsResponse;
+import com.multi.shop.product.dto.response.StockUpdateRequest;
 import com.multi.shop.product.exception.ProductErrorCode;
 import com.multi.shop.product.exception.ProductException;
 import com.multi.shop.product.repository.ProductRepository;
@@ -51,5 +53,15 @@ public class ProductService {
                 .stream()
                 .map(ProductsResponse::from)
                 .toList();
+    }
+
+    @Transactional
+    public void updateStock(OrderSaveRequest request) {
+        // TODO: 제품의 수량보다 quantity 가 크면 예외 처리
+        // TODO: 제품이 존재하지 않으면 예외 처리
+        ProductVO findProduct = productRepository.findByProductId(request.getProductId());
+        StockUpdateRequest stockUpdateRequest = StockUpdateRequest.from(request.getProductId(),
+                findProduct.getStock() - request.getQuantity());
+        productRepository.updateStock(stockUpdateRequest);
     }
 }

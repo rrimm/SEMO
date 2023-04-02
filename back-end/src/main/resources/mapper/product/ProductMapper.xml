@@ -39,4 +39,10 @@
         ORDER BY RAND()
         LIMIT 10
     </select>
+
+    <update id="updateStock" parameterType="StockUpdateRequest">
+        UPDATE product
+        SET stock = #{stock}
+        WHERE id = #{id}
+    </update>
 </mapper>

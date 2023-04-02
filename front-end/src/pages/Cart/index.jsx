@@ -39,6 +39,32 @@ function Cart() {
       });
   }, [token, navigate]);
 
+  const paymentRequest = async () => {
+    const filterCarts = await data.carts
+      .filter((cart) => cart.checked)
+      .map((cart) => ({
+        cartId: cart.cartId,
+        memberId: token.memberId,
+        productId: cart.productId,
+        quantity: cart.quantity,
+      }));
+    console.log(JSON.stringify(filterCarts));
+    await axios
+      .post(API_PATH.MY.ORDER, JSON.stringify(filterCarts), {
+        headers: {
+          Authorization: `Bearer ${token.accessToken}`,
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+      .then(() => {
+        navigate(BROWSER_PATH.MY);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   useEffect(() => {
     getData();
   }, [getData]);
@@ -72,7 +98,7 @@ function Cart() {
                 계속 쇼핑하기
               </S.StyledButton>
               {/* TODO: 선택된 제품만 결제하는 API 구현 */}
-              <S.StyledButton variant={"contained"} color={"success"}>
+              <S.StyledButton variant={"contained"} color={"success"} onClick={paymentRequest}>
                 구매하기
               </S.StyledButton>
             </S.ButtonWrapper>
