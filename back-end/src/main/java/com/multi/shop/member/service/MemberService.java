@@ -4,6 +4,7 @@ import com.multi.shop.member.domain.Password;
 import com.multi.shop.member.domain.Phone;
 import com.multi.shop.member.domain.vo.MemberVO;
 import com.multi.shop.member.dto.request.MemberJoinRequest;
+import com.multi.shop.member.dto.request.MemberModifyPWRequest;
 import com.multi.shop.member.dto.response.MemberResponse;
 import com.multi.shop.member.exception.MemberErrorCode;
 import com.multi.shop.member.exception.MemberException;
@@ -47,9 +48,31 @@ public class MemberService {
         }
     }
 
-    public MemberResponse findById(Long id) {
-        MemberVO findMember = memberRepository.findById(id)
-                .orElseThrow(RuntimeException::new);
+    public MemberVO findById(Long id) {
+        return memberRepository.findById(id)
+                .orElseThrow(() -> new MemberException(MemberErrorCode.MEMBER_NOT_EXIST));
+    }
+
+    public MemberResponse findInfoById(Long id) {
+        MemberVO findMember = findById(id);
         return MemberResponse.from(findMember);
+    }
+
+    @Transactional
+    public void updatePassword(MemberModifyPWRequest request) {
+        MemberVO findMember = findById(request.getMemberId());
+
+        String encryptedNowPassword = passwordEncoder.encode(request.getNowPassword());
+        confirmPassword(findMember, encryptedNowPassword);
+        Password password = Password.encode(request.getNewPassword(), passwordEncoder);
+        request.setNewPassword(password.getValue());
+
+        memberRepository.updatePassword(request);
+    }
+
+    private void confirmPassword(MemberVO member, String password) {
+        if (!passwordEncoder.matches(member.getPassword(), password)) {
+            throw new MemberException(MemberErrorCode.MEMBER_WRONG_PASSWORD);
+        }
     }
 }

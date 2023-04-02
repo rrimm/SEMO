@@ -1,6 +1,7 @@
 package com.multi.shop.member.repository;
 
 import com.multi.shop.member.domain.vo.MemberVO;
+import com.multi.shop.member.dto.request.MemberModifyPWRequest;
 import com.multi.shop.member.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,5 +33,9 @@ public class MemberRepository {
 
     public Optional<MemberVO> findById(Long id) {
         return memberMapper.findById(id);
+    }
+
+    public void updatePassword(MemberModifyPWRequest request) {
+        memberMapper.updatePassword(request);
     }
 }
