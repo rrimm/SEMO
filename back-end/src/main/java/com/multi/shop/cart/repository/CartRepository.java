@@ -21,7 +21,7 @@ public class CartRepository {
         return cartMapper.existByProductId(request);
     }
 
-    public void deleteById(long id) {
+    public void deleteById(Long id) {
         cartMapper.deleteById(id);
     }
 

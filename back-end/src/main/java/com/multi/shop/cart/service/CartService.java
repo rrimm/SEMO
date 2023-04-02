@@ -36,7 +36,7 @@ public class CartService {
 
     // 장바구니 상품 번호를 파라미터로 받아서 삭제
     @Transactional
-    public void deleteCart(long cartId){
-       cartRepository.deleteById(cartId);
+    public void deleteCart(Long id){
+       cartRepository.deleteById(id);
     }
 }

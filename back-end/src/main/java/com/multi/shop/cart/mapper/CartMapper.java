@@ -9,5 +9,5 @@ public interface CartMapper {
 
     boolean existByProductId(CartSaveRequest request);
 
-    void deleteById(long id);
+    void deleteById(Long id);
 }

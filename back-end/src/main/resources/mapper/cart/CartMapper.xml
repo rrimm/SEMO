@@ -24,7 +24,7 @@
     <delete id="deleteById">
         DELETE
         FROM cart
-        WHERE cart_id = #{id}
+        WHERE id = #{id}
     </delete>
 
 </mapper>
