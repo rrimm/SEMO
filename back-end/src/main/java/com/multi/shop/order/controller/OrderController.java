@@ -41,7 +41,7 @@ public class OrderController {
 
     @GetMapping("/auth/review/form")
     public ResponseEntity<ReviewFormResponse> findProductInfo(@Param("orderId") Long id) {
-        orderService.findProductInfoById(id);
-        return ResponseEntity.ok().build();
+        ReviewFormResponse response = orderService.findProductInfoById(id);
+        return ResponseEntity.ok(response);
     }
 }
