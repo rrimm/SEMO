@@ -1,6 +1,7 @@
 package com.multi.shop.cart.controller;
 
 import com.multi.shop.cart.dto.request.CartSaveRequest;
+import com.multi.shop.cart.dto.request.CartChangeQuantityRequest;
 import com.multi.shop.cart.dto.response.CartQuantityResponse;
 import com.multi.shop.cart.dto.response.CartResponse;
 import com.multi.shop.cart.service.CartService;
@@ -35,6 +36,12 @@ public class CartController {
     public ResponseEntity<CartQuantityResponse> findCartQuantity(@Param("memberId") Long memberId) {
         CartQuantityResponse response = cartService.findCartQuantityByMemberId(memberId);
         return ResponseEntity.ok(response);
+    }
+
+    @PutMapping("/quantity")
+    public ResponseEntity<Void> updateQuantity(@RequestBody @Valid CartChangeQuantityRequest request) {
+        cartService.updateQuantity(request);
+        return ResponseEntity.ok().build();
     }
 
     // 장바구니 상품 삭제 요청을 처리

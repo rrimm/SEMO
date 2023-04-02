@@ -1,6 +1,7 @@
 package com.multi.shop.cart.service;
 
-import com.multi.shop.cart.domain.vo.CartVO;
+import com.multi.shop.cart.domain.Quantity;
+import com.multi.shop.cart.dto.request.CartChangeQuantityRequest;
 import com.multi.shop.cart.dto.request.CartSaveRequest;
 import com.multi.shop.cart.dto.response.CartQuantityResponse;
 import com.multi.shop.cart.dto.response.CartResponse;
@@ -11,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -48,7 +48,13 @@ public class CartService {
 
     // 장바구니 상품 번호를 파라미터로 받아서 삭제
     @Transactional
-    public void deleteCart(Long id){
-       cartRepository.deleteById(id);
+    public void deleteCart(Long id) {
+        cartRepository.deleteById(id);
+    }
+
+    @Transactional
+    public void updateQuantity(CartChangeQuantityRequest request) {
+        request.setQuantity(Quantity.of(request.getQuantity()).getValue());
+        cartRepository.updateQuantity(request);
     }
 }

@@ -2,6 +2,7 @@ package com.multi.shop.cart.mapper;
 
 import com.multi.shop.cart.domain.vo.CartVO;
 import com.multi.shop.cart.dto.request.CartSaveRequest;
+import com.multi.shop.cart.dto.request.CartChangeQuantityRequest;
 
 import java.util.List;
 
@@ -16,4 +17,6 @@ public interface CartMapper {
     void deleteById(Long id);
 
     List<CartVO> findByMemberId(Long memberId);
+
+    void updateQuantity(CartChangeQuantityRequest request);
 }
