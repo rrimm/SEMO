@@ -15,6 +15,13 @@
         order by o.id desc;
     </select>
 
+    <select id="findProductInfoById" parameterType="Long" resultType="OrderProductVO">
+        select o.id, o.quantity, p.id productId, p.image productImage, p.name productName
+        from orders o
+                 join product p on p.id = o.product_id
+        where o.id = #{id}
+    </select>
+
     <update id="cancel" parameterType="OrderCancelRequest">
         update orders
         set order_status = #{status}
