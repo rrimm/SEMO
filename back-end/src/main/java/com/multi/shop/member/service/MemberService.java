@@ -4,6 +4,7 @@ import com.multi.shop.member.domain.Password;
 import com.multi.shop.member.domain.Phone;
 import com.multi.shop.member.domain.vo.MemberVO;
 import com.multi.shop.member.dto.request.MemberJoinRequest;
+import com.multi.shop.member.dto.response.MemberResponse;
 import com.multi.shop.member.exception.MemberErrorCode;
 import com.multi.shop.member.exception.MemberException;
 import com.multi.shop.member.repository.MemberRepository;
@@ -44,5 +45,10 @@ public class MemberService {
         if (memberRepository.existByMemberPhone(phone)) {
             throw new MemberException(MemberErrorCode.JOIN_INVALID_PHONE);
         }
+    }
+
+    public MemberResponse findById(Long id) {
+        // TODO: 존재하지 않으면 예외 처리
+        return null;
     }
 }
