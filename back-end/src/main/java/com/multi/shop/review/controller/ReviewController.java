@@ -16,12 +16,12 @@ public class ReviewController {
     private final ReviewService reviewService;
 
     @GetMapping("/review")
-    public List<ReviewVO> getReviewList(){
+    public List<ReviewVO> getReviewList() {
         return reviewService.getReviewListWithProductAndMember();
     }
 
     @GetMapping("/review/category")
-    public List<ReviewVO> getReviewListByCategory(@RequestParam String category){
+    public List<ReviewVO> getReviewListByCategory(@RequestParam String category) {
         return reviewService.getReviewListByCategory(category);
     }
 
