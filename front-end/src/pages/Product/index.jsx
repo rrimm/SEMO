@@ -21,7 +21,7 @@ const Product = () => {
   const [category, setCategory] = useState("ALL");
   const [target, setTarget] = useState("ALL");
 
-  const getProductRequest = useCallback(async () => {
+  const getProductRequest = useCallback(async (search) => {
     await axios
       .get(API_PATH.PRODUCT.BASE, {
         params: {
@@ -34,7 +34,7 @@ const Product = () => {
       .catch((error) => {
         console.error(error);
       });
-  }, [search]);
+  }, []);
 
   const getSearchParam = useCallback(async () => {
     const param = params.get("search");
@@ -62,9 +62,9 @@ const Product = () => {
     getSearchParam();
     getTargetParam();
     getCategoryParam();
-    getProductRequest();
+    getProductRequest(search);
     setLoading(false);
-  }, [getProductRequest, getSearchParam, getTargetParam, getCategoryParam]);
+  }, [getProductRequest, getSearchParam, getTargetParam, getCategoryParam, search]);
 
   const handleCategoryClick = useCallback((category) => {
     setCategory(category);
