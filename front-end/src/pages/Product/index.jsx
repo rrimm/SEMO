@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 
@@ -11,25 +11,13 @@ import "./index.styled.css";
 import { API_PATH } from "../../constants/path";
 import Loading from "../../components/Loading";
 
-// 제품의 고유 번호, 대표 이미지, 태그1, 태그2, 제품 이름, 가격
-
 const Product = () => {
   const [loading, setLoading] = useState(false);
   const [product, setProduct] = useState([]);
-  const [params, setParams] = useSearchParams();
-  const [search, setSearch] = useState(undefined);
+  const [params] = useSearchParams();
+  const search = params.get("search") ?? undefined;
   const [category, setCategory] = useState("ALL");
   const [target, setTarget] = useState("ALL");
-
-  const memo = useMemo(() => product, [product]);
-
-  const getSearchParam = useCallback(async () => {
-    const param = params.get("search");
-    if (param !== null) {
-      await setSearch(param);
-    }
-    console.log(search);
-  }, [params, search]);
 
   const getCategoryParam = useCallback(async () => {
     const param = params.get("category");
@@ -63,21 +51,26 @@ const Product = () => {
   }, [search]);
 
   useEffect(() => {
-    getSearchParam();
-    getTargetParam();
     getCategoryParam();
+  }, [getCategoryParam, params]);
+
+  useEffect(() => {
+    getTargetParam();
+  }, [getTargetParam, params]);
+
+  useEffect(() => {
     getProductRequest();
-  }, [getSearchParam, getTargetParam, getCategoryParam, getProductRequest]);
+  }, [getProductRequest]);
 
   const handleCategoryClick = useCallback(async (category) => {
-    await setCategory(category);
+    setCategory(category);
   }, []);
 
   const handleTargetClick = useCallback(async (target) => {
-    await setTarget(target);
+    setTarget(target);
   }, []);
 
-  const filteredData = category === "ALL" ? memo : memo.filter((product) => product.category === category);
+  const filteredData = category === "ALL" ? product : product.filter((product) => product.category === category);
 
   const CompleteFilteredData =
     target === "ALL" ? filteredData : filteredData.filter((product) => product.target === target);
