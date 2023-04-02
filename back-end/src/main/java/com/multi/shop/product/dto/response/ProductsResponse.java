@@ -1,7 +1,5 @@
 package com.multi.shop.product.dto.response;
 
-import com.multi.shop.product.domain.Category;
-import com.multi.shop.product.domain.Target;
 import com.multi.shop.product.domain.vo.ProductVO;
 import lombok.Builder;
 import lombok.Data;

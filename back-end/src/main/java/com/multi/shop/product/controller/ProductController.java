@@ -25,9 +25,8 @@ public class ProductController {
     }
 
     @GetMapping("/api/product/related/{id}")
-    public ResponseEntity<List<ProductsResponse>> findRelatedProductsByProductId(@PathVariable Long id) {
+    public ResponseEntity<List<ProductsResponse>> findRelatedProducts(@PathVariable Long id) {
         List<ProductsResponse> response = productService.findRelatedProductsByProductId(id);
         return ResponseEntity.ok(response);
     }
 }
-

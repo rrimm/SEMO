@@ -22,5 +22,4 @@ public enum Category {
         this.id = id;
         this.text = text;
     }
-
 }
