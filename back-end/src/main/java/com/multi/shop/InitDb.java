@@ -93,21 +93,6 @@ public class InitDb {
             cartService.save(request3);
             cartService.save(request4);
             cartService.save(request5);
-            CartSaveRequest delete1 = CartSaveRequest.builder()
-                    .memberId(1L)
-                    .productId(10L)
-                    .build();
-            CartSaveRequest delete2 = CartSaveRequest.builder()
-                    .memberId(1L)
-                    .productId(20L)
-                    .build();
-            CartSaveRequest delete3 = CartSaveRequest.builder()
-                    .memberId(1L)
-                    .productId(30L)
-                    .build();
-            cartService.save(delete1);
-            cartService.save(delete2);
-            cartService.save(delete3);
         }
     }
 
