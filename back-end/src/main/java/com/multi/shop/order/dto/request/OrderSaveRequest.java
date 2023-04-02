@@ -3,6 +3,7 @@ package com.multi.shop.order.dto.request;
 import com.multi.shop.order.domain.Status;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -22,4 +23,10 @@ public class OrderSaveRequest {
     private Status status = Status.PAYMENT;
 
     private int quantity = 1;
+
+    @Builder
+    public OrderSaveRequest(Long memberId, Long productId) {
+        this.memberId = memberId;
+        this.productId = productId;
+    }
 }
