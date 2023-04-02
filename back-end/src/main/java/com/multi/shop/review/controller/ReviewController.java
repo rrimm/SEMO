@@ -13,12 +13,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequiredArgsConstructor
 @Slf4j
+@RequiredArgsConstructor
+@RestController
 public class ReviewController {
     private final ReviewService reviewService;
-    private final OrderService orderService;
 
     @GetMapping("/review")
     public List<ReviewVO> getReviewList() {
@@ -45,6 +44,7 @@ public class ReviewController {
         return reviewService.deleteReviewById(id);
     }
 
+    /* 검증 */
     @GetMapping("/auth/review/form")
     public ResponseEntity<ReviewFormResponse> findProductInfo(@Param("orderId") Long orderId) {
         ReviewFormResponse response = reviewService.findProductInfoById(orderId);
