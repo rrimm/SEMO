@@ -45,4 +45,11 @@ public class ProductService {
                 .map(ProductsResponse::from)
                 .collect(Collectors.toUnmodifiableList());
     }
+
+    public List<ProductsResponse> find(String search) {
+        return productRepository.find(search)
+                .stream()
+                .map(ProductsResponse::from)
+                .toList();
+    }
 }

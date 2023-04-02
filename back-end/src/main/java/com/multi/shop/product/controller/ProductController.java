@@ -5,6 +5,7 @@ import com.multi.shop.product.dto.response.ProductsResponse;
 import com.multi.shop.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,12 @@ import java.util.List;
 @RestController
 public class ProductController {
     private final ProductService productService;
+
+    @GetMapping("/api/product")
+    public ResponseEntity<List<ProductsResponse>> find(@Param("search") String search) {
+        List<ProductsResponse> response = productService.find(search);
+        return ResponseEntity.ok(response);
+    }
 
     @GetMapping("/api/product/{id}")
     public ResponseEntity<ProductResponse> findByProductId(@PathVariable Long id) {
