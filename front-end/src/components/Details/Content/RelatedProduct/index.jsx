@@ -54,8 +54,8 @@ function RelatedProduct() {
       </S.Button>
       {data &&
         visibleData.map((product) => (
-          <S.ImageContainer key={product.productId}>
-            <S.StyledLink to={`${BROWSER_PATH.DETAILS}/${product.productId}`}>
+          <S.ImageContainer key={product.id}>
+            <S.StyledLink to={`${BROWSER_PATH.DETAILS}/${product.id}`}>
               <S.Image src={product.image} alt="carousel-thumbnail" />
               <S.Text>
                 {product.name}
