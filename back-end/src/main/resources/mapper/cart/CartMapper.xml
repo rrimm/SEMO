@@ -42,4 +42,9 @@
         WHERE id = #{id}
     </delete>
 
+    <update id="updateQuantity" parameterType="CartChangeQuantityRequest">
+        UPDATE cart
+        SET quantity = #{quantity}
+        WHERE id = #{id}
+    </update>
 </mapper>

@@ -1,7 +1,7 @@
 package com.multi.shop.cart.service;
 
-import com.multi.shop.cart.domain.vo.CartVO;
 import com.multi.shop.cart.dto.request.CartSaveRequest;
+import com.multi.shop.cart.dto.request.CartChangeQuantityRequest;
 import com.multi.shop.cart.dto.response.CartQuantityResponse;
 import com.multi.shop.cart.dto.response.CartResponse;
 import com.multi.shop.cart.exception.CartErrorCode;
@@ -11,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -50,5 +49,10 @@ public class CartService {
     @Transactional
     public void deleteCart(Long id){
        cartRepository.deleteById(id);
+    }
+
+    @Transactional
+    public void updateQuantity(CartChangeQuantityRequest request) {
+        cartRepository.updateQuantity(request);
     }
 }
