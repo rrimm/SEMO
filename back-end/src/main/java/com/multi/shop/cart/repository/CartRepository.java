@@ -20,4 +20,9 @@ public class CartRepository {
     public boolean existByProductId(CartSaveRequest request) {
         return cartMapper.existByProductId(request);
     }
+
+    public void deleteById(long id) {
+        cartMapper.deleteById(id);
+    }
+
 }

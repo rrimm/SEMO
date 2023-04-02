@@ -19,4 +19,12 @@
         WHERE member_id = #{memberId}
           AND product_id = #{productId}
     </select>
+
+    <!-- 장바구니 삭제 -->
+    <delete id="deleteById">
+        DELETE
+        FROM cart
+        WHERE cart_id = #{id}
+    </delete>
+
 </mapper>

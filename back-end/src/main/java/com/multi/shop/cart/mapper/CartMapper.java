@@ -8,4 +8,6 @@ public interface CartMapper {
     int findCartQuantityByMemberId(Long memberId);
 
     boolean existByProductId(CartSaveRequest request);
+
+    void deleteById(long id);
 }
