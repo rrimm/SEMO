@@ -1,6 +1,7 @@
 package com.multi.shop.member.mapper;
 
 import com.multi.shop.member.domain.vo.MemberVO;
+import com.multi.shop.member.dto.request.MemberModifyPWRequest;
 
 import java.util.Optional;
 
@@ -14,4 +15,6 @@ public interface MemberMapper {
     boolean existByMemberEmail(String email);
 
     boolean existByMemberPhone(String phone);
+
+    void modifyPassword(MemberModifyPWRequest request);
 }

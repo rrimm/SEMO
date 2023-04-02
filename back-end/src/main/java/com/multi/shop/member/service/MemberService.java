@@ -4,6 +4,7 @@ import com.multi.shop.member.domain.Password;
 import com.multi.shop.member.domain.Phone;
 import com.multi.shop.member.domain.vo.MemberVO;
 import com.multi.shop.member.dto.request.MemberJoinRequest;
+import com.multi.shop.member.dto.request.MemberModifyPWRequest;
 import com.multi.shop.member.dto.response.MemberResponse;
 import com.multi.shop.member.exception.MemberErrorCode;
 import com.multi.shop.member.exception.MemberException;
@@ -51,5 +52,26 @@ public class MemberService {
         MemberVO findMember = memberRepository.findById(id)
                 .orElseThrow(RuntimeException::new);
         return MemberResponse.from(findMember);
+    }
+
+    @Transactional
+    public void modifyPassword(MemberModifyPWRequest request) {
+        MemberVO findMember = memberRepository.findById(request.getMemberId())
+                .orElseThrow(RuntimeException::new);
+
+        String encode = passwordEncoder.encode(request.getNowPassword());
+        log.info("encode : " + encode);
+
+        Password password = Password.encode(request.getNewPassword(), passwordEncoder);
+        request.setNewPassword(password.getValue());
+        log.info("암호화 된 새로운 비밀번호 : " + request.getNewPassword());
+
+        memberRepository.modifyPassword(request);
+    }
+
+    private void confirmPassword(MemberVO member, String encode) {
+        if (!passwordEncoder.matches(member.getPassword(), encode)) {
+            throw new RuntimeException("현재 비밀번호가 일치하지 않습니다.");
+        }
     }
 }

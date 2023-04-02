@@ -30,4 +30,10 @@
         FROM member
         WHERE phone = #{phone}
     </select>
+
+    <update id="modifyPassword" parameterType="MemberModifyPWRequest">
+        UPDATE member
+        SET password = #{newPassword}
+        WHERE id = #{memberId}
+    </update>
 </mapper>
