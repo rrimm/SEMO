@@ -29,7 +29,7 @@ function Search() {
           label="제품명을 입력하세요."
           variant="standard"
           onChange={getValue}
-          onKeyDown={handleOnKeyPress}
+          onKeyUp={handleOnKeyPress}
         />
       </S.Wrapper>
     </S.Container>

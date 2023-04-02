@@ -3,6 +3,15 @@
 
 <mapper namespace="com.multi.shop.product.mapper.ProductMapper">
 
+    <select id="find" parameterType="String" resultType="ProductVO">
+        SELECT *
+        FROM product
+        <if test="search != null">
+            WHERE name LIKE concat('%',#{search},'%')
+        </if>
+        ORDER BY RAND()
+    </select>
+
     <select id="findByProductId" parameterType="Long" resultType="ProductVO">
         SELECT *
         FROM product
@@ -24,7 +33,9 @@
     <select id="findRelatedProductsByProductId" parameterType="FindRelatedProductVO" resultType="ProductVO">
         SELECT *
         FROM product
-        WHERE category= #{category} AND target= #{target} AND id != #{id}
+        WHERE category = #{category}
+          AND target = #{target}
+          AND id != #{id}
         ORDER BY RAND()
         LIMIT 10
     </select>

@@ -11,17 +11,30 @@ import "./index.styled.css";
 import { API_PATH } from "../../constants/path";
 import Loading from "../../components/Loading";
 
-// 제품의 고유 번호, 대표 이미지, 태그1, 태그2, 제품 이름, 가격
-
 const Product = () => {
   const [loading, setLoading] = useState(false);
   const [product, setProduct] = useState([]);
-  const [params, setParams] = useSearchParams();
-  const [search, setSearch] = useState(undefined);
+  const [params] = useSearchParams();
+  const search = params.get("search") ?? undefined;
   const [category, setCategory] = useState("ALL");
   const [target, setTarget] = useState("ALL");
 
+  const getCategoryParam = useCallback(async () => {
+    const param = params.get("category");
+    if (param !== null) {
+      await setCategory(param.toLocaleUpperCase());
+    }
+  }, [params]);
+
+  const getTargetParam = useCallback(async () => {
+    const param = params.get("target");
+    if (param !== null) {
+      await setTarget(param.toLocaleUpperCase());
+    }
+  }, [params]);
+
   const getProductRequest = useCallback(async () => {
+    setLoading(true);
     await axios
       .get(API_PATH.PRODUCT.BASE, {
         params: {
@@ -30,47 +43,30 @@ const Product = () => {
       })
       .then((response) => {
         setProduct(response.data);
+        setLoading(false);
       })
       .catch((error) => {
         console.error(error);
       });
   }, [search]);
 
-  const getSearchParam = useCallback(async () => {
-    const param = params.get("search");
-    if (param !== null) {
-      setSearch(param);
-    }
-  }, [params]);
-
-  const getCategoryParam = useCallback(async () => {
-    const param = params.get("category").toLocaleUpperCase();
-    if (param !== null) {
-      setCategory(param);
-    }
-  }, [params]);
-
-  const getTargetParam = useCallback(async () => {
-    const param = params.get("target").toLocaleUpperCase();
-    if (param !== null) {
-      setTarget(param);
-    }
-  }, [params]);
+  useEffect(() => {
+    getCategoryParam();
+  }, [getCategoryParam, params]);
 
   useEffect(() => {
-    setLoading(true);
-    getSearchParam();
     getTargetParam();
-    getCategoryParam();
-    getProductRequest();
-    setLoading(false);
-  }, [getProductRequest, getSearchParam, getTargetParam, getCategoryParam]);
+  }, [getTargetParam, params]);
 
-  const handleCategoryClick = useCallback((category) => {
+  useEffect(() => {
+    getProductRequest();
+  }, [getProductRequest]);
+
+  const handleCategoryClick = useCallback(async (category) => {
     setCategory(category);
   }, []);
 
-  const handleTargetClick = useCallback((target) => {
+  const handleTargetClick = useCallback(async (target) => {
     setTarget(target);
   }, []);
 
@@ -98,6 +94,7 @@ const Product = () => {
             <p className="Text">{CompleteFilteredData.length} 상품</p>
           </div>
         </div>
+        {search !== undefined && <p>"{search}" 검색한 결과입니다.</p>}
         <div className="Wrapper">
           {CompleteFilteredData.length === 0 ? (
             <NotFound />
@@ -108,7 +105,6 @@ const Product = () => {
           )}
         </div>
       </div>
-      <></>
     </>
   );
 };
