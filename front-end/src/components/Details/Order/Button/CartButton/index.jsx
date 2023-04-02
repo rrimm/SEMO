@@ -1,10 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
-
 import Modal from "react-bootstrap/Modal";
 import * as S from "./index.styled";
-
 import { API_PATH } from "../../../../../constants/path";
 import { jwtToken } from "../../../../../stores/auth";
 import { useNavigate } from "react-router-dom";

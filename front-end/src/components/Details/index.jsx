@@ -1,11 +1,9 @@
 import React, { useRef } from "react";
-
 import SimpleSlider from "./Carousel";
 import OrderContainer from "./Order";
 import MenuTabs from "./Content/MenuTabs";
 import LinkMenu from "./LinkMenu";
 import Content from "./Content";
-
 import * as S from "./index.styled";
 
 function Detail({ data }) {

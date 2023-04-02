@@ -18,9 +18,8 @@ const TopLine = styled.h5`
   paddingtop: 30px;
 `;
 
-const Text = styled.div`
-  display: flex;
-  justify-content: center;
+const Info = styled.div`
+  margin: 10px 0;
 `;
 
-export { List, BottomLine, TopLine, Text };
+export { List, BottomLine, TopLine, Info };
