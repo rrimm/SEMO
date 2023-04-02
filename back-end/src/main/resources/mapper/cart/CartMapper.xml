@@ -48,4 +48,10 @@
         SET quantity = #{quantity}
         WHERE id = #{id}
     </update>
+
+    <update id="updateChecked" parameterType="CartChangeCheckedRequest">
+        UPDATE cart
+        SET checked = #{checked}
+        WHERE id = #{id}
+    </update>
 </mapper>

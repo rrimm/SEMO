@@ -1,6 +1,7 @@
 package com.multi.shop.cart.mapper;
 
 import com.multi.shop.cart.domain.vo.CartVO;
+import com.multi.shop.cart.dto.request.CartChangeCheckedRequest;
 import com.multi.shop.cart.dto.request.CartSaveRequest;
 import com.multi.shop.cart.dto.request.CartChangeQuantityRequest;
 
@@ -19,4 +20,6 @@ public interface CartMapper {
     List<CartVO> findByMemberId(Long memberId);
 
     void updateQuantity(CartChangeQuantityRequest request);
+
+    void updateChecked(CartChangeCheckedRequest request);
 }

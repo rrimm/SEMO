@@ -1,5 +1,6 @@
 package com.multi.shop.cart.controller;
 
+import com.multi.shop.cart.dto.request.CartChangeCheckedRequest;
 import com.multi.shop.cart.dto.request.CartSaveRequest;
 import com.multi.shop.cart.dto.request.CartChangeQuantityRequest;
 import com.multi.shop.cart.dto.response.CartQuantityResponse;
@@ -42,6 +43,12 @@ public class CartController {
     @PutMapping("/quantity")
     public ResponseEntity<Void> updateQuantity(@RequestBody @Valid CartChangeQuantityRequest request) {
         cartService.updateQuantity(request);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/check")
+    public ResponseEntity<Void> updateChecked(@RequestBody @Valid CartChangeCheckedRequest request) {
+        cartService.updateChecked(request);
         return ResponseEntity.ok().build();
     }
 
