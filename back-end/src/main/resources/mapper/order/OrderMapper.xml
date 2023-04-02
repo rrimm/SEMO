@@ -7,6 +7,12 @@
             VALUE (#{date}, #{quantity}, #{status}, #{memberId}, #{productId})
     </insert>
 
+    <select id="findById" parameterType="Long" resultType="OrderVO">
+        select id, date, quantity, order_status status, member_id memberId, product_id productId
+        from orders
+        where id = #{id}
+    </select>
+
     <select id="findByMemberId" parameterType="Long" resultType="OrderFindVO">
         select o.id, o.date, o.quantity, o.order_status as status, p.id as productId, p.name as productName, p.price
         from orders o
