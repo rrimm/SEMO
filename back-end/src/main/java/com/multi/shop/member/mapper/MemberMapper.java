@@ -16,5 +16,5 @@ public interface MemberMapper {
 
     boolean existByMemberPhone(String phone);
 
-    void modifyPassword(MemberModifyPWRequest request);
+    void updatePassword(MemberModifyPWRequest request);
 }

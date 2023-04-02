@@ -31,7 +31,7 @@
         WHERE phone = #{phone}
     </select>
 
-    <update id="modifyPassword" parameterType="MemberModifyPWRequest">
+    <update id="updatePassword" parameterType="MemberModifyPWRequest">
         UPDATE member
         SET password = #{newPassword}
         WHERE id = #{memberId}

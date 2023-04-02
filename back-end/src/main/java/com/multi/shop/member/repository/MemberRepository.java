@@ -35,7 +35,7 @@ public class MemberRepository {
         return memberMapper.findById(id);
     }
 
-    public void modifyPassword(MemberModifyPWRequest request) {
-        memberMapper.modifyPassword(request);
+    public void updatePassword(MemberModifyPWRequest request) {
+        memberMapper.updatePassword(request);
     }
 }

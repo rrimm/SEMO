@@ -55,18 +55,16 @@ public class MemberService {
     }
 
     @Transactional
-    public void modifyPassword(MemberModifyPWRequest request) {
+    public void updatePassword(MemberModifyPWRequest request) {
         MemberVO findMember = memberRepository.findById(request.getMemberId())
                 .orElseThrow(RuntimeException::new);
 
         String encode = passwordEncoder.encode(request.getNowPassword());
-        log.info("encode : " + encode);
 
         Password password = Password.encode(request.getNewPassword(), passwordEncoder);
         request.setNewPassword(password.getValue());
-        log.info("암호화 된 새로운 비밀번호 : " + request.getNewPassword());
 
-        memberRepository.modifyPassword(request);
+        memberRepository.updatePassword(request);
     }
 
     private void confirmPassword(MemberVO member, String encode) {

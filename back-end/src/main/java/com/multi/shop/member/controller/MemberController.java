@@ -31,7 +31,7 @@ public class MemberController {
 
     @PutMapping("auth/member/password")
     public ResponseEntity<Void> updatePassword(@RequestBody @Valid MemberModifyPWRequest request) {
-        memberService.modifyPassword(request);
+        memberService.updatePassword(request);
         return ResponseEntity.ok().build();
     }
 }
