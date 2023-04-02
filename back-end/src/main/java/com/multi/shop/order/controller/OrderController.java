@@ -21,7 +21,7 @@ public class OrderController {
     private final OrderService orderService;
 
     @PostMapping
-    public ResponseEntity<Void> save(@RequestBody @Valid OrderSaveRequest request) {
+    public ResponseEntity<Void> save(@RequestBody @Valid List<OrderSaveRequest> request) {
         orderService.save(request);
         return ResponseEntity.ok().build();
     }

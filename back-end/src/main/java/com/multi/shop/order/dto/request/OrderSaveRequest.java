@@ -18,15 +18,21 @@ public class OrderSaveRequest {
     @NotNull
     private Long productId;
 
+    @NotNull
+    private Long cartId;
+
     private LocalDate date = LocalDate.now();
 
     private Status status = Status.PAYMENT;
 
-    private int quantity = 1;
+    @NotNull
+    private int quantity;
 
     @Builder
-    public OrderSaveRequest(Long memberId, Long productId) {
+    public OrderSaveRequest(Long memberId, Long productId, Long cartId, int quantity) {
         this.memberId = memberId;
         this.productId = productId;
+        this.cartId = cartId;
+        this.quantity = quantity;
     }
 }
