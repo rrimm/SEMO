@@ -112,9 +112,9 @@ public class InitDb {
                     .memberId(1L)
                     .productId(30L)
                     .build();
-            orderService.save(request1);
-            orderService.save(request2);
-            orderService.save(request3);
+//            orderService.save(request1);
+//            orderService.save(request2);
+//            orderService.save(request3);
         }
     }
     }

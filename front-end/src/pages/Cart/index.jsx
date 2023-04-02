@@ -40,17 +40,21 @@ function Cart() {
   }, [token, navigate]);
 
   const paymentRequest = async () => {
-    const filterCarts = data.carts
+    const filterCarts = await data.carts
       .filter((cart) => cart.checked)
       .map((cart) => ({
         cartId: cart.cartId,
+        memberId: token.memberId,
         productId: cart.productId,
         quantity: cart.quantity,
       }));
-    axios
-      .post(API_PATH.MY.ORDER, filterCarts, {
+    console.log(JSON.stringify(filterCarts));
+    await axios
+      .post(API_PATH.MY.ORDER, JSON.stringify(filterCarts), {
         headers: {
-          Authorization: `Bearer ${jwtToken.accessToken}`,
+          Authorization: `Bearer ${token.accessToken}`,
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
       })
       .then(() => {
