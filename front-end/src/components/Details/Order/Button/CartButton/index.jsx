@@ -33,7 +33,7 @@ function CartButton({ productId }) {
       .then(() => {
         handleShow();
       })
-      .catch(() => {
+      .catch((error) => {
         navigate("/login");
       });
   };
