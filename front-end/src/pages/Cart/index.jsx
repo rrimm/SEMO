@@ -66,8 +66,7 @@ function Cart() {
         )}
         {data.size !== 0 && (
           <>
-            {/* TODO: 서버측에서 총 결제금액을 받아오고 배송비의 추가 유무를 확인하는 API 구현 */}
-            <Payment price={data.price} courierFee={data.courierFee} />
+            <Payment price={data.price} courierFee={data.courierFee} empty={data.empty} />
             <S.ButtonWrapper>
               <S.StyledButton variant={"contained"} color={"inherit"} onClick={goProduct}>
                 계속 쇼핑하기
