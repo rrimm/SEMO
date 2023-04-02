@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 public class RelatedProductsRequest {
+    private Long id;
     private Category category;
     private Target target;
 }

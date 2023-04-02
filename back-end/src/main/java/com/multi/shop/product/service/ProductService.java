@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -33,6 +34,8 @@ public class ProductService {
 
     public List<ProductsResponse> findRelatedProductsByProductId(Long productId) {
         List<ProductVO> relatedProducts = productRepository.findRelatedProductsByProductId(productId);
-        return relatedProducts;
+        return relatedProducts.stream()
+                .map(ProductsResponse::from)
+                .collect(Collectors.toUnmodifiableList());
     }
 }

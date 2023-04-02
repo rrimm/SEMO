@@ -18,4 +18,5 @@ public enum Target {
         this.id = id;
         this.text = text;
     }
+
 }
