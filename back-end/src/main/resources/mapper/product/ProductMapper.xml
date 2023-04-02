@@ -2,16 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.multi.shop.product.mapper.ProductMapper">
-    <resultMap id="productResultMap" type="com.multi.shop.product.domain.vo.ProductVO">
-        <id column="id" property="id" />
-        <result column="name" property="name" />
-        <result column="image" property="image" />
-        <result column="price" property="price" />
-        <result column="info" property="info" />
-        <result column="stock" property="stock" />
-        <result column="category" property="category" typeHandler="com.multi.shop.product.domain.handler.CategoryTypeHandler" />
-        <result column="target" property="target" typeHandler="com.multi.shop.product.domain.handler.TargetTypeHandler" />
-    </resultMap>
 
     <select id="findByProductId" parameterType="Long" resultType="ProductVO">
         SELECT *
@@ -31,10 +21,10 @@
         WHERE product_id = #{productId}
     </select>
 
-    <select id="findRelatedProductsByProductId" parameterType="Long" resultType="ProductVO">
+    <select id="findRelatedProductsByProductId" parameterType="FindRelatedProductVO" resultType="ProductVO">
         SELECT *
         FROM product
-        WHERE category= #{category} AND target= #{target} AND id != #{productId}
+        WHERE category= #{category} AND target= #{target} AND id != #{id}
         ORDER BY RAND()
         LIMIT 10
     </select>

@@ -1,6 +1,7 @@
 package com.multi.shop.product.dto.response;
-//DAO (Data Access Object): 데이터베이스에 접근하여 데이터를 조작하는 객체
 
+import com.multi.shop.product.domain.Category;
+import com.multi.shop.product.domain.Target;
 import com.multi.shop.product.domain.vo.ProductVO;
 import lombok.Builder;
 import lombok.Data;

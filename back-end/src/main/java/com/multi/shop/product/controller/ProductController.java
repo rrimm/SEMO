@@ -24,7 +24,6 @@ public class ProductController {
         return ResponseEntity.ok(response);
     }
 
-    // TODO: 연관 상품 조회 구현
     @GetMapping("/api/product/related/{id}")
     public ResponseEntity<List<ProductsResponse>> findRelatedProductsByProductId(@PathVariable Long id) {
         List<ProductsResponse> response = productService.findRelatedProductsByProductId(id);

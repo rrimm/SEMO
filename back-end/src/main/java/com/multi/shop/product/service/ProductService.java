@@ -1,6 +1,8 @@
 package com.multi.shop.product.service;
 
+import com.multi.shop.product.domain.vo.FindRelatedProductVO;
 import com.multi.shop.product.domain.vo.ProductVO;
+import com.multi.shop.product.dto.request.RelatedProductsRequest;
 import com.multi.shop.product.dto.response.ProductResponse;
 import com.multi.shop.product.dto.response.ProductsResponse;
 import com.multi.shop.product.exception.ProductErrorCode;
@@ -33,7 +35,13 @@ public class ProductService {
     }
 
     public List<ProductsResponse> findRelatedProductsByProductId(Long productId) {
-        List<ProductVO> relatedProducts = productRepository.findRelatedProductsByProductId(productId);
+        ProductVO findProduct = productRepository.findByProductId(productId);
+        FindRelatedProductVO vo = FindRelatedProductVO.builder()
+                .id(findProduct.getId())
+                .category(findProduct.getCategory())
+                .target(findProduct.getTarget())
+                .build();
+        List<ProductVO> relatedProducts = productRepository.findRelatedProductsByProductId(vo);
         return relatedProducts.stream()
                 .map(ProductsResponse::from)
                 .collect(Collectors.toUnmodifiableList());

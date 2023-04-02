@@ -1,6 +1,8 @@
 package com.multi.shop.product.repository;
 
+import com.multi.shop.product.domain.vo.FindRelatedProductVO;
 import com.multi.shop.product.domain.vo.ProductVO;
+import com.multi.shop.product.dto.request.RelatedProductsRequest;
 import com.multi.shop.product.mapper.ProductMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -24,7 +26,7 @@ public class ProductRepository {
         return productMapper.findCarouselByProductId(productId);
     }
 
-    public List<ProductVO> findRelatedProductsByProductId(Long productId) {
-        return productMapper.findRelatedProductsByProductId(productId);
+    public List<ProductVO> findRelatedProductsByProductId(FindRelatedProductVO vo) {
+        return productMapper.findRelatedProductsByProductId(vo);
     }
 }
