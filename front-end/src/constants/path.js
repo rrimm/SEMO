@@ -32,7 +32,7 @@ const API_PATH = {
     ORDER: "/auth/order",
     UPDATE: {
       ADDRESS: "https://reqres.in/api/users", // POST API
-      PASSWORD: "/auth/member/password", // POST API
+      PASSWORD: "/auth/member/password", // Put API
     },
   },
   PRODUCT: {
