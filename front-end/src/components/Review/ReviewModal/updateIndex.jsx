@@ -17,7 +17,9 @@ function ReviewUpdateModal({ CloseModal, data, onUpdate, setReviews }) {
     try {
         const response = await axios.put(`/review/${data.id}`, { content });
         onUpdate(response.data);
-        
+
+        window.location.reload();
+
         CloseModal();
       } catch (error) {
         console.error(error);
@@ -34,7 +36,7 @@ function ReviewUpdateModal({ CloseModal, data, onUpdate, setReviews }) {
       <S.Review_Modal_CloseBtn onClick={CloseModal}>✖</S.Review_Modal_CloseBtn>
       <S.flexContainer>
         <S.Review_Modal_Body_section1>
-          <S.Review_Modal_ImagePrd src={data?.image}></S.Review_Modal_ImagePrd>
+          <S.Review_Modal_ImagePrd src={data?.image} alt=""></S.Review_Modal_ImagePrd>
         </S.Review_Modal_Body_section1>
         <S.Review_Modal_Body_section2>
           <S.Review_Modal_InfoStarSection>
@@ -47,7 +49,7 @@ function ReviewUpdateModal({ CloseModal, data, onUpdate, setReviews }) {
             />
           <S.Review_Modal_ContentSection>
             <S.Review_Modal_BuyItemBox>
-              <S.Review_Modal_BuyItemImage src={data?.image}></S.Review_Modal_BuyItemImage>
+              <S.Review_Modal_BuyItemImage src={data?.product.image} alt=""></S.Review_Modal_BuyItemImage>
               <S.Review_Modal_BuyItemName>&nbsp;&nbsp;{data?.product.name}</S.Review_Modal_BuyItemName>
             </S.Review_Modal_BuyItemBox>
             <S.Review_Modal_UpdateButton onClick={handleUpdateClick}>수정</S.Review_Modal_UpdateButton>

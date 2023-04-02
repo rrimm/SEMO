@@ -43,8 +43,7 @@ function ReviewList(props) {
       await axios.delete(`/review/${reviewId}`);
 
       // 리뷰 목록 다시 불러오기
-      const reviewListResponse = await axios.get("/review");
-      setReviews(reviewListResponse.data);
+      window.location.reload();
     } catch (error) {
       console.error(error);
     }
@@ -94,7 +93,7 @@ function ReviewList(props) {
       content={content.content}
       account={content.member.email}
       openModal={() => openModal(content)} // 모달 열기
-      onUpdate={onUpdate} //업데이트 상태
+      onUpdate={onUpdate} //업데이트 전달.
       onDelete = {onDelete} //삭제 전달.
     />
   ));

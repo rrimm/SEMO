@@ -1,6 +1,6 @@
 package com.multi.shop.review.controller;
 
-import com.multi.shop.review.domain.dto.request.ReviewInsertDTO;
+import com.multi.shop.review.domain.dto.request.ReviewRequest;
 import com.multi.shop.review.domain.vo.ReviewVO;
 import com.multi.shop.review.service.ReviewService;
 import lombok.RequiredArgsConstructor;
@@ -26,8 +26,8 @@ public class ReviewController {
     }
 
     @PostMapping("/review")
-    public int insertReview(@RequestBody ReviewInsertDTO reviewInsertDTO) {
-        return reviewService.insertReview(reviewInsertDTO);
+    public int insertReview(@RequestBody ReviewRequest reviewRequest) {
+        return reviewService.insertReview(reviewRequest);
     }
 
     @PutMapping("/review/{id}")

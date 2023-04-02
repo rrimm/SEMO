@@ -1,6 +1,6 @@
 package com.multi.shop.review.mapper;
 
-import com.multi.shop.review.domain.dto.request.ReviewInsertDTO;
+import com.multi.shop.review.domain.dto.request.ReviewRequest;
 import com.multi.shop.review.domain.vo.ReviewVO;
 
 import java.util.List;
@@ -13,7 +13,7 @@ public interface ReviewMapper {
 
     int updateReview(Long id, String content); //리뷰 수정
 
-    int insertReview(ReviewInsertDTO reviewInsertDTO); // 리뷰 작성
+    int insertReview(ReviewRequest reviewRequest); // 리뷰 작성
 
     int deleteReviewById(Long id); // 리뷰 삭제
 

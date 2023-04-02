@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as S from "./index.styled";
 import ReviewUpdateModal from "./updateIndex";
 
-function ReviewModal({ CloseModal, data, onDelete, onUpdate }) {
+function ReviewModal({ CloseModal, data, onDelete, onUpdate, setReviews }) {
   const [showUpdateModal, setShowUpdateModal] = useState(false)
   
   useEffect(() => {
@@ -48,7 +48,7 @@ function ReviewModal({ CloseModal, data, onDelete, onUpdate }) {
             <S.Review_Modal_ContentSection>
               <S.Review_Modal_Content>{data?.content}</S.Review_Modal_Content>
               <S.Review_Modal_BuyItemBox>
-                <S.Review_Modal_BuyItemImage src={data?.image}></S.Review_Modal_BuyItemImage>
+                <S.Review_Modal_BuyItemImage src={data?.product.image} alt=""></S.Review_Modal_BuyItemImage>
                 <S.Review_Modal_BuyItemName>&nbsp;&nbsp;{data?.product.name}</S.Review_Modal_BuyItemName>
               </S.Review_Modal_BuyItemBox>
               <S.Review_Modal_DeleteButton onClick={handleDelete}>삭제</S.Review_Modal_DeleteButton>
@@ -64,6 +64,7 @@ function ReviewModal({ CloseModal, data, onDelete, onUpdate }) {
         data={data}
         onUpdate={onUpdate}
         onDelete={onDelete}
+        setReviews={setReviews}
       />
     )}
   </>

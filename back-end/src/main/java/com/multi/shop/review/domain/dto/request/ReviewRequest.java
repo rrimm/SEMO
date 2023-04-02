@@ -2,13 +2,12 @@ package com.multi.shop.review.domain.dto.request;
 
 import com.multi.shop.member.domain.vo.MemberVO;
 import com.multi.shop.product.domain.vo.ProductVO;
-import com.multi.shop.product.repository.ProductRepository;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class ReviewInsertDTO {
+public class ReviewRequest {
     @NotNull
 
     private String category;
@@ -22,7 +21,7 @@ public class ReviewInsertDTO {
     private Long productId;
 
     @Builder
-    public ReviewInsertDTO(MemberVO member, ProductVO product, String category, String content, String image, Long memberId, Long productId){
+    public ReviewRequest(MemberVO member, ProductVO product, String category, String content, String image, Long memberId, Long productId){
         this.category = category;
         this.content = content;
         this.image = image;

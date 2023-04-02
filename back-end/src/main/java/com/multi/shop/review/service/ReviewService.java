@@ -1,8 +1,7 @@
 package com.multi.shop.review.service;
 
-import com.multi.shop.product.domain.vo.ProductVO;
 import com.multi.shop.product.repository.ProductRepository;
-import com.multi.shop.review.domain.dto.request.ReviewInsertDTO;
+import com.multi.shop.review.domain.dto.request.ReviewRequest;
 import com.multi.shop.review.domain.vo.ReviewVO;
 import com.multi.shop.review.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
@@ -36,16 +35,16 @@ public class ReviewService {
     }
 
     @Transactional
-    public int insertReview(ReviewInsertDTO reviewInsertDTO) {
-        return reviewRepository.insertReview(
-                ReviewInsertDTO.builder()
-                        .category(reviewInsertDTO.getCategory())
-                        .content(reviewInsertDTO.getContent())
-                        .image(reviewInsertDTO.getImage())
-                        .memberId(reviewInsertDTO.getMemberId())
-                        .productId(reviewInsertDTO.getProductId())
-                        .build());
-        //return reviewRepository.insertReview(newReviewInsertDTO);
+    public int insertReview(ReviewRequest reviewRequest) {
+        ReviewRequest request = ReviewRequest.builder()
+                .category(reviewRequest.getCategory())
+                .content(reviewRequest.getContent())
+                .image(reviewRequest.getImage())
+                .memberId(reviewRequest.getMemberId())
+                .productId(reviewRequest.getProductId())
+                .build();
+
+        return reviewRepository.insertReview(request);
     }
 
     @Transactional

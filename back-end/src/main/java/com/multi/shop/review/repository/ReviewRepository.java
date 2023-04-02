@@ -1,7 +1,7 @@
 package com.multi.shop.review.repository;
 
 
-import com.multi.shop.review.domain.dto.request.ReviewInsertDTO;
+import com.multi.shop.review.domain.dto.request.ReviewRequest;
 import com.multi.shop.review.domain.vo.ReviewVO;
 import com.multi.shop.review.mapper.ReviewMapper;
 import lombok.RequiredArgsConstructor;
@@ -28,13 +28,12 @@ public class ReviewRepository {
         return  reviewMapper.getReviewListByCategory(category);
     }
 
-    @Transactional
     public int updateReview(Long id, String content){
         return reviewMapper.updateReview(id, content);
     }
 
-    public int insertReview(ReviewInsertDTO reviewInsertDTO){
-        return  reviewMapper.insertReview(reviewInsertDTO);
+    public int insertReview(ReviewRequest reviewRequest){
+        return  reviewMapper.insertReview(reviewRequest);
     }
 
     public int deleteReviewById(Long id){
