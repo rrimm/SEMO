@@ -1,17 +1,17 @@
 package com.multi.shop.order.service;
 
-import com.multi.shop.order.domain.vo.OrderProductVO;
 import com.multi.shop.order.dto.request.OrderCancelRequest;
 import com.multi.shop.order.dto.request.OrderSaveRequest;
 import com.multi.shop.order.dto.response.OrderResponse;
-import com.multi.shop.order.dto.response.ReviewFormResponse;
 import com.multi.shop.order.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Slf4j
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 @Service
@@ -36,8 +36,4 @@ public class OrderService {
         orderRepository.cancel(request);
     }
 
-    public ReviewFormResponse findProductInfoById(Long id) {
-        OrderProductVO findOrderProduct = orderRepository.findProductInfoById(id).orElseThrow(RuntimeException::new);
-        return ReviewFormResponse.from(findOrderProduct);
-    }
 }

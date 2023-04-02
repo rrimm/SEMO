@@ -4,7 +4,6 @@ import com.multi.shop.order.dto.request.OrderCancelRequest;
 import com.multi.shop.order.dto.request.OrderSaveRequest;
 import com.multi.shop.order.dto.response.OrderResponse;
 import com.multi.shop.order.service.OrderService;
-import com.multi.shop.order.dto.response.ReviewFormResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -37,11 +36,5 @@ public class OrderController {
     public ResponseEntity<Void> cancel(@RequestBody @Valid OrderCancelRequest request) {
         orderService.cancel(request);
         return ResponseEntity.ok().build();
-    }
-
-    @GetMapping("/auth/review/form")
-    public ResponseEntity<ReviewFormResponse> findProductInfo(@Param("orderId") Long id) {
-        ReviewFormResponse response = orderService.findProductInfoById(id);
-        return ResponseEntity.ok(response);
     }
 }

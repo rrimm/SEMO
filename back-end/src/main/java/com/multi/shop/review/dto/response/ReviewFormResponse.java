@@ -1,4 +1,4 @@
-package com.multi.shop.order.dto.response;
+package com.multi.shop.review.dto.response;
 
 import com.multi.shop.order.domain.vo.OrderProductVO;
 import lombok.AccessLevel;
