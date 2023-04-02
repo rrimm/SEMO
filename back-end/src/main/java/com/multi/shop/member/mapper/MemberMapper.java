@@ -7,6 +7,8 @@ import java.util.Optional;
 public interface MemberMapper {
     Long save(MemberVO member);
 
+    Optional<MemberVO> findById(Long id);
+
     Optional<MemberVO> findByMemberEmail(String email);
 
     boolean existByMemberEmail(String email);

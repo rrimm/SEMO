@@ -48,7 +48,8 @@ public class MemberService {
     }
 
     public MemberResponse findById(Long id) {
-        // TODO: 존재하지 않으면 예외 처리
-        return null;
+        MemberVO findMember = memberRepository.findById(id)
+                .orElseThrow(RuntimeException::new);
+        return MemberResponse.from(findMember);
     }
 }

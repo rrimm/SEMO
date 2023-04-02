@@ -3,10 +3,12 @@ package com.multi.shop.member.repository;
 import com.multi.shop.member.domain.vo.MemberVO;
 import com.multi.shop.member.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+@Slf4j
 @RequiredArgsConstructor
 @Repository
 public class MemberRepository {
@@ -26,5 +28,9 @@ public class MemberRepository {
 
     public boolean existByMemberPhone(String phone) {
         return memberMapper.existByMemberPhone(phone);
+    }
+
+    public Optional<MemberVO> findById(Long id) {
+        return memberMapper.findById(id);
     }
 }
