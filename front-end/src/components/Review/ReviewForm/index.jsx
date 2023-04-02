@@ -23,7 +23,6 @@ function ReviewForm() {
 
   const orderInfoRequest = useCallback(async () => {
     setLoading(true);
-    console.log(orderId);
     if (orderId !== "") {
       await axios
         .get(API_PATH.REVIEW.FORM, {

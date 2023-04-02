@@ -60,6 +60,7 @@ public class ReviewService {
         return ReviewFormResponse.from(findOrderProduct);
     }
 
+    @Transactional
     public Long save(ReviewSaveRequest request) {
         // TODO: 이미 작성된 리뷰가 있으면 예외 처리
         return reviewRepository.save(request);

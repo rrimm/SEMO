@@ -101,7 +101,6 @@ create table review
 (
     id         bigint auto_increment
         primary key,
-    category   varchar(255) not null,
     content    varchar(255) null,
     image      mediumblob   not null,
     member_id  bigint       not null,

@@ -20,6 +20,5 @@ public interface ReviewMapper {
 
     List<ReviewVO> getReviewListByCategory(String category); // 카테고리별 리뷰 조회
 
-
     Long save(ReviewSaveRequest request);
 }
