@@ -7,6 +7,12 @@
             value (#{birth}, #{email}, #{name}, #{password}, #{phone}, #{role});
     </insert>
 
+    <select id="findById" parameterType="Long" resultType="MemberVO">
+        SELECT *
+        FROM member
+        WHERE id = #{id}
+    </select>
+
     <select id="findByMemberEmail" parameterType="String" resultType="MemberVO">
         SELECT *
         FROM member

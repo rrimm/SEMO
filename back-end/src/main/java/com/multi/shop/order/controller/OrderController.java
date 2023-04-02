@@ -29,7 +29,7 @@ public class OrderController {
     @GetMapping
     public ResponseEntity<List<OrderResponse>> find(@Param("memberId") Long memberId) {
         List<OrderResponse> responses = orderService.findByMemberId(memberId);
-        return ResponseEntity.ok().body(responses);
+        return ResponseEntity.ok(responses);
     }
 
     @PutMapping
