@@ -18,4 +18,10 @@ public class CartSaveRequest {
     private boolean checked = true;
 
     private int quantity = 1;
+
+    @Builder
+    public CartSaveRequest(Long productId, Long memberId) {
+        this.productId = productId;
+        this.memberId = memberId;
+    }
 }

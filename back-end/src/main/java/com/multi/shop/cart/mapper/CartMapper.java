@@ -1,6 +1,9 @@
 package com.multi.shop.cart.mapper;
 
+import com.multi.shop.cart.domain.vo.CartVO;
 import com.multi.shop.cart.dto.request.CartSaveRequest;
+
+import java.util.List;
 
 public interface CartMapper {
     Long save(CartSaveRequest request);
@@ -9,5 +12,8 @@ public interface CartMapper {
 
     boolean existByProductId(CartSaveRequest request);
 
+
     void deleteById(Long id);
+
+    List<CartVO> findByMemberId(Long memberId);
 }

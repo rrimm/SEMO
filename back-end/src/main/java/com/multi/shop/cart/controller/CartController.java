@@ -2,12 +2,15 @@ package com.multi.shop.cart.controller;
 
 import com.multi.shop.cart.dto.request.CartSaveRequest;
 import com.multi.shop.cart.dto.response.CartQuantityResponse;
+import com.multi.shop.cart.dto.response.CartResponse;
 import com.multi.shop.cart.service.CartService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequestMapping("/auth/cart")
 @RequiredArgsConstructor
@@ -21,8 +24,15 @@ public class CartController {
         cartService.save(request);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping
+    public ResponseEntity<List<CartResponse>> findCart(@Param("memberId") Long memberId) {
+        List<CartResponse> responses = cartService.findByMemberId(memberId);
+        return ResponseEntity.ok(responses);
+    }
+
     @GetMapping("/quantity")
-    public ResponseEntity<CartQuantityResponse> findCartQuantityByMemberId(@Param("memberId") Long memberId) {
+    public ResponseEntity<CartQuantityResponse> findCartQuantity(@Param("memberId") Long memberId) {
         CartQuantityResponse response = cartService.findCartQuantityByMemberId(memberId);
         return ResponseEntity.ok(response);
     }

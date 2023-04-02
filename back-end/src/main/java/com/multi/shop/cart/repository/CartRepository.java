@@ -1,9 +1,12 @@
 package com.multi.shop.cart.repository;
 
+import com.multi.shop.cart.domain.vo.CartVO;
 import com.multi.shop.cart.dto.request.CartSaveRequest;
 import com.multi.shop.cart.mapper.CartMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Repository
@@ -25,4 +28,7 @@ public class CartRepository {
         cartMapper.deleteById(id);
     }
 
+    public List<CartVO> findByMemberId(Long memberId) {
+        return cartMapper.findByMemberId(memberId);
+    }
 }
