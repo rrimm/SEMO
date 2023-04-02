@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 
@@ -21,7 +21,32 @@ const Product = () => {
   const [category, setCategory] = useState("ALL");
   const [target, setTarget] = useState("ALL");
 
-  const getProductRequest = useCallback(async (search) => {
+  const memo = useMemo(() => product, [product]);
+
+  const getSearchParam = useCallback(async () => {
+    const param = params.get("search");
+    if (param !== null) {
+      await setSearch(param);
+    }
+    console.log(search);
+  }, [params, search]);
+
+  const getCategoryParam = useCallback(async () => {
+    const param = params.get("category");
+    if (param !== null) {
+      await setCategory(param.toLocaleUpperCase());
+    }
+  }, [params]);
+
+  const getTargetParam = useCallback(async () => {
+    const param = params.get("target");
+    if (param !== null) {
+      await setTarget(param.toLocaleUpperCase());
+    }
+  }, [params]);
+
+  const getProductRequest = useCallback(async () => {
+    setLoading(true);
     await axios
       .get(API_PATH.PRODUCT.BASE, {
         params: {
@@ -30,51 +55,29 @@ const Product = () => {
       })
       .then((response) => {
         setProduct(response.data);
+        setLoading(false);
       })
       .catch((error) => {
         console.error(error);
       });
-  }, []);
-
-  const getSearchParam = useCallback(async () => {
-    const param = params.get("search");
-    if (param !== null) {
-      setSearch(param);
-    }
-  }, [params]);
-
-  const getCategoryParam = useCallback(async () => {
-    const param = params.get("category").toLocaleUpperCase();
-    if (param !== null) {
-      setCategory(param);
-    }
-  }, [params]);
-
-  const getTargetParam = useCallback(async () => {
-    const param = params.get("target").toLocaleUpperCase();
-    if (param !== null) {
-      setTarget(param);
-    }
-  }, [params]);
+  }, [search]);
 
   useEffect(() => {
-    setLoading(true);
     getSearchParam();
     getTargetParam();
     getCategoryParam();
-    getProductRequest(search);
-    setLoading(false);
-  }, [getProductRequest, getSearchParam, getTargetParam, getCategoryParam, search]);
+    getProductRequest();
+  }, [getSearchParam, getTargetParam, getCategoryParam, getProductRequest]);
 
-  const handleCategoryClick = useCallback((category) => {
-    setCategory(category);
+  const handleCategoryClick = useCallback(async (category) => {
+    await setCategory(category);
   }, []);
 
-  const handleTargetClick = useCallback((target) => {
-    setTarget(target);
+  const handleTargetClick = useCallback(async (target) => {
+    await setTarget(target);
   }, []);
 
-  const filteredData = category === "ALL" ? product : product.filter((product) => product.category === category);
+  const filteredData = category === "ALL" ? memo : memo.filter((product) => product.category === category);
 
   const CompleteFilteredData =
     target === "ALL" ? filteredData : filteredData.filter((product) => product.target === target);
@@ -98,6 +101,7 @@ const Product = () => {
             <p className="Text">{CompleteFilteredData.length} 상품</p>
           </div>
         </div>
+        {search !== undefined && <p>"{search}" 검색한 결과입니다.</p>}
         <div className="Wrapper">
           {CompleteFilteredData.length === 0 ? (
             <NotFound />
@@ -108,7 +112,6 @@ const Product = () => {
           )}
         </div>
       </div>
-      <></>
     </>
   );
 };
