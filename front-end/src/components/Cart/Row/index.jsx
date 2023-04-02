@@ -84,7 +84,7 @@ function Row({ cart }) {
       .put(
         `${API_PATH.CART.CHECK}`,
         {
-          cartId: cart.cartId,
+          id: cart.cartId,
           checked: checked,
         },
         {
