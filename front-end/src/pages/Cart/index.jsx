@@ -39,6 +39,28 @@ function Cart() {
       });
   }, [token, navigate]);
 
+  const paymentRequest = async () => {
+    const filterCarts = data.carts
+      .filter((cart) => cart.checked)
+      .map((cart) => ({
+        cartId: cart.cartId,
+        productId: cart.productId,
+        quantity: cart.quantity,
+      }));
+    axios
+      .post(API_PATH.MY.ORDER, filterCarts, {
+        headers: {
+          Authorization: `Bearer ${jwtToken.accessToken}`,
+        },
+      })
+      .then(() => {
+        navigate(BROWSER_PATH.MY);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   useEffect(() => {
     getData();
   }, [getData]);
@@ -72,7 +94,7 @@ function Cart() {
                 계속 쇼핑하기
               </S.StyledButton>
               {/* TODO: 선택된 제품만 결제하는 API 구현 */}
-              <S.StyledButton variant={"contained"} color={"success"}>
+              <S.StyledButton variant={"contained"} color={"success"} onClick={paymentRequest}>
                 구매하기
               </S.StyledButton>
             </S.ButtonWrapper>
