@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Component
@@ -91,6 +93,21 @@ public class InitDb {
             cartService.save(request3);
             cartService.save(request4);
             cartService.save(request5);
+            CartSaveRequest delete1 = CartSaveRequest.builder()
+                    .memberId(1L)
+                    .productId(10L)
+                    .build();
+            CartSaveRequest delete2 = CartSaveRequest.builder()
+                    .memberId(1L)
+                    .productId(20L)
+                    .build();
+            CartSaveRequest delete3 = CartSaveRequest.builder()
+                    .memberId(1L)
+                    .productId(30L)
+                    .build();
+            cartService.save(delete1);
+            cartService.save(delete2);
+            cartService.save(delete3);
         }
     }
 
@@ -103,18 +120,20 @@ public class InitDb {
             OrderSaveRequest request1 = OrderSaveRequest.builder()
                     .memberId(1L)
                     .productId(10L)
+                    .quantity(3)
                     .build();
             OrderSaveRequest request2 = OrderSaveRequest.builder()
                     .memberId(1L)
                     .productId(20L)
+                    .quantity(2)
                     .build();
             OrderSaveRequest request3 = OrderSaveRequest.builder()
                     .memberId(1L)
                     .productId(30L)
+                    .quantity(1)
                     .build();
-//            orderService.save(request1);
-//            orderService.save(request2);
-//            orderService.save(request3);
+            List<OrderSaveRequest> requests = new ArrayList<>(List.of(request1, request2, request3));
+            orderService.save(requests);
         }
     }
-    }
+}
