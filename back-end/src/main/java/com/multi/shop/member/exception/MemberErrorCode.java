@@ -4,9 +4,11 @@ import com.multi.shop.global.exception.exception.ErrorCode;
 
 public enum MemberErrorCode implements ErrorCode {
 
-    MEMBER_PASSWORD_PATTERN_MUST_BE_VALID(400, "MEMBER_01", "패스워드는 영어 대소문자와 숫자로 이루어져 있으며 8자 이상 16자 이하여야 합니다."),
-    MEMBER_PHONE_PATTERN_MUST_BE_VALID(400, "MEMBER_02", "올바르지 않은 전화번호 형식입니다. " +
+    MEMBER_NOT_EXIST(400, "MEMBER_01", "멤버가 존재하지 않습니다"),
+    MEMBER_PASSWORD_PATTERN_MUST_BE_VALID(400, "MEMBER_02", "패스워드는 영어 대소문자와 숫자로 이루어져 있으며 8자 이상 16자 이하여야 합니다."),
+    MEMBER_PHONE_PATTERN_MUST_BE_VALID(400, "MEMBER_03", "올바르지 않은 전화번호 형식입니다. " +
             "올바른 형식은 식별번호 3자리 - 중앙 번호 3, 4자리 - 마지막 번호 4자리 이여야 합니다."),
+    MEMBER_WRONG_PASSWORD(400, "MEMBER_04", "비밀번호가 일치하지 않습니다."),
     JOIN_INVALID_EMAIL(400, "JOIN_01", "이미 가입된 이메일입니다."),
     JOIN_INVALID_PHONE(400, "JOIN_02", "이미 가입된 전화번호입니다.");
     private final int statusCode;

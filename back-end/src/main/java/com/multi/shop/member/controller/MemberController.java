@@ -25,7 +25,7 @@ public class MemberController {
 
     @GetMapping("/auth/member")
     public ResponseEntity<MemberResponse> find(@Param("memberId") Long memberId) {
-        MemberResponse response = memberService.findById(memberId);
+        MemberResponse response = memberService.findInfoById(memberId);
         return ResponseEntity.ok(response);
     }
 

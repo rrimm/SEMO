@@ -48,28 +48,31 @@ public class MemberService {
         }
     }
 
-    public MemberResponse findById(Long id) {
-        MemberVO findMember = memberRepository.findById(id)
-                .orElseThrow(RuntimeException::new);
+    public MemberVO findById(Long id) {
+        return memberRepository.findById(id)
+                .orElseThrow(() -> new MemberException(MemberErrorCode.MEMBER_NOT_EXIST));
+    }
+
+    public MemberResponse findInfoById(Long id) {
+        MemberVO findMember = findById(id);
         return MemberResponse.from(findMember);
     }
 
     @Transactional
     public void updatePassword(MemberModifyPWRequest request) {
-        MemberVO findMember = memberRepository.findById(request.getMemberId())
-                .orElseThrow(RuntimeException::new);
+        MemberVO findMember = findById(request.getMemberId());
 
-        String encode = passwordEncoder.encode(request.getNowPassword());
-
+        String encryptedNowPassword = passwordEncoder.encode(request.getNowPassword());
+        confirmPassword(findMember, encryptedNowPassword);
         Password password = Password.encode(request.getNewPassword(), passwordEncoder);
         request.setNewPassword(password.getValue());
 
         memberRepository.updatePassword(request);
     }
 
-    private void confirmPassword(MemberVO member, String encode) {
-        if (!passwordEncoder.matches(member.getPassword(), encode)) {
-            throw new RuntimeException("현재 비밀번호가 일치하지 않습니다.");
+    private void confirmPassword(MemberVO member, String password) {
+        if (!passwordEncoder.matches(member.getPassword(), password)) {
+            throw new MemberException(MemberErrorCode.MEMBER_WRONG_PASSWORD);
         }
     }
 }
