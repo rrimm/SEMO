@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.multi.shop.product.mapper.ProductMapper">
+
+    <select id="findByProductId" parameterType="Long" resultType="ProductVO">
+        SELECT *
+        FROM product
+        WHERE id = #{productId}
+    </select>
+
+    <select id="existByProductId" parameterType="Long" resultType="boolean">
+        SELECT if(count(*) = 1, 1, 0)
+        FROM product
+        WHERE id = #{productId}
+    </select>
+
+    <select id="findCarouselByProductId" parameterType="Long" resultType="String">
+        SELECT img
+        FROM carousel
+        WHERE product_id = #{productId}
+    </select>
+
+    <select id="findRelatedProductsByProductId" parameterType="FindRelatedProductVO" resultType="ProductVO">
+        SELECT *
+        FROM product
+        WHERE category= #{category} AND target= #{target} AND id != #{id}
+        ORDER BY RAND()
+        LIMIT 10
+    </select>
+</mapper>
