@@ -1,8 +1,6 @@
 package com.multi.shop.member.domain.vo;
 
-import com.multi.shop.member.domain.Password;
-import com.multi.shop.member.domain.Phone;
-import com.multi.shop.member.domain.Role;
+import com.multi.shop.member.domain.*;
 import com.multi.shop.member.dto.request.MemberJoinRequest;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -33,11 +31,11 @@ public class MemberVO {
         this.role = role;
     }
 
-    public static MemberVO of(MemberJoinRequest request, Password password, Phone phone) {
+    public static MemberVO from(MemberJoinRequest request, Email email, Name name, Password password, Phone phone) {
         return MemberVO.builder()
                 .birth(request.getBirth())
-                .email(request.getEmail())
-                .name(request.getName())
+                .email(email.getValue())
+                .name(name.getValue())
                 .password(password.getValue())
                 .phone(phone.getValue())
                 .role(request.getRole())

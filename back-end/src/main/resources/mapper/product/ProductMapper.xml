@@ -3,34 +3,19 @@
 
 <mapper namespace="com.multi.shop.product.mapper.ProductMapper">
 
-    <select id="find" parameterType="String" resultType="ProductVO">
+    <select id="findById" parameterType="Long" resultType="Product">
         SELECT *
         FROM product
-        <if test="search != null">
-            WHERE name LIKE concat('%',#{search},'%')
-        </if>
-        ORDER BY RAND()
+        WHERE id = #{id}
     </select>
 
-    <select id="findByProductId" parameterType="Long" resultType="ProductVO">
-        SELECT *
-        FROM product
-        WHERE id = #{productId}
-    </select>
-
-    <select id="existByProductId" parameterType="Long" resultType="boolean">
-        SELECT if(count(*) = 1, 1, 0)
-        FROM product
-        WHERE id = #{productId}
-    </select>
-
-    <select id="findCarouselByProductId" parameterType="Long" resultType="String">
+    <select id="findCarouselById" parameterType="Long" resultType="String">
         SELECT img
         FROM carousel
         WHERE product_id = #{productId}
     </select>
 
-    <select id="findRelatedProductsByProductId" parameterType="FindRelatedProductVO" resultType="ProductVO">
+    <select id="findRelatedProductsById" parameterType="FindRelatedProductVO" resultType="Product">
         SELECT *
         FROM product
         WHERE category = #{category}
@@ -38,6 +23,15 @@
           AND id != #{id}
         ORDER BY RAND()
         LIMIT 10
+    </select>
+
+    <select id="findBySearch" parameterType="String" resultType="Product">
+        SELECT *
+        FROM product
+        <if test="search != null">
+            WHERE name LIKE concat('%',#{search},'%')
+        </if>
+        ORDER BY RAND()
     </select>
 
     <update id="updateStock" parameterType="StockUpdateRequest">

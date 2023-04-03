@@ -29,7 +29,7 @@ public class MemberController {
         return ResponseEntity.ok(response);
     }
 
-    @PutMapping("auth/member/password")
+    @PutMapping("/auth/member/password")
     public ResponseEntity<Void> updatePassword(@RequestBody @Valid MemberModifyPWRequest request) {
         memberService.updatePassword(request);
         return ResponseEntity.ok().build();

@@ -9,19 +9,21 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class Quantity {
+    private static final int MIN_QUANTITY = 1;
+    private static final int MAX_QUANTITY = 9;
     private int value;
 
     private Quantity(int value) {
         this.value = value;
     }
 
-    public static Quantity of(int value) {
+    public static Quantity from(int value) {
         validateOutOfRange(value);
         return new Quantity(value);
     }
 
     private static boolean isOutOfRange(int value) {
-        return value < 1 || 9 < value;
+        return value < MIN_QUANTITY || MAX_QUANTITY < value;
     }
 
     private static void validateOutOfRange(int value) {

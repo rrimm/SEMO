@@ -1,6 +1,5 @@
 package com.multi.shop.order.mapper;
 
-import com.multi.shop.order.domain.Status;
 import com.multi.shop.order.domain.vo.OrderConfirmationVO;
 import com.multi.shop.order.domain.vo.OrderFindVO;
 import com.multi.shop.order.domain.vo.OrderProductVO;
@@ -14,13 +13,13 @@ import java.util.Optional;
 public interface OrderMapper {
     Long save(OrderSaveRequest request);
 
-    List<OrderFindVO> findByMemberId(Long memberId);
-
-    void cancel(OrderCancelRequest request);
+    Optional<OrderVO> findById(Long id);
 
     Optional<OrderProductVO> findProductInfoById(Long id);
 
-    Optional<OrderVO> findById(Long id);
+    List<OrderFindVO> findAllByMemberId(Long memberId);
 
     void orderConfirmation(OrderConfirmationVO vo);
+
+    void cancel(OrderCancelRequest request);
 }

@@ -1,22 +1,21 @@
 package com.multi.shop.product.mapper;
 
+import com.multi.shop.product.domain.Product;
 import com.multi.shop.product.domain.vo.FindRelatedProductVO;
-import com.multi.shop.product.domain.vo.ProductVO;
-import com.multi.shop.product.dto.response.ProductsResponse;
 import com.multi.shop.product.dto.response.StockUpdateRequest;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProductMapper {
-    ProductVO findByProductId(Long productId);
+    Optional<Product> findById(Long id);
 
-    boolean existByProductId(Long productId);
+    List<String> findCarouselById(Long id);
 
-    List<String> findCarouselByProductId(Long productId);
+    List<Product> findRelatedProductsById(FindRelatedProductVO vo);
 
-    List<ProductVO> findRelatedProductsByProductId(FindRelatedProductVO vo);
-
-    List<ProductVO> find(String search);
+    List<Product> findBySearch(String search);
 
     void updateStock(StockUpdateRequest request);
+
 }

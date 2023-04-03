@@ -21,7 +21,7 @@ create table member
     birth    date         not null,
     email    varchar(30) not null,
     name     varchar(20) not null,
-    password varchar(16) not null,
+    password varchar(255) not null,
     phone    varchar(13) not null,
     role     varchar(20) not null
 );

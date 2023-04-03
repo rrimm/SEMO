@@ -52,11 +52,9 @@ public class CartController {
         return ResponseEntity.ok().build();
     }
 
-    // 장바구니 상품 삭제 요청을 처리
     @DeleteMapping
     public ResponseEntity<Void> deleteCart(@Param("memberId")Long memberId, @Param("cartId") Long cartId) {
         cartService.deleteCart(cartId);
         return ResponseEntity.ok().build();
     }
-
 }

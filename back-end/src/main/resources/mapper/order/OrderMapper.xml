@@ -13,14 +13,6 @@
         where id = #{id}
     </select>
 
-    <select id="findByMemberId" parameterType="Long" resultType="OrderFindVO">
-        select o.id, o.date, o.quantity, o.order_status as status, p.id as productId, p.name as productName, p.price
-        from orders o
-                 join product p on o.product_id = p.id
-        where o.member_id = #{memberId}
-        order by o.id desc;
-    </select>
-
     <select id="findProductInfoById" parameterType="Long" resultType="OrderProductVO">
         select o.id, o.quantity, p.id productId, p.image productImage, p.name productName
         from orders o
@@ -28,15 +20,23 @@
         where o.id = #{id}
     </select>
 
-    <update id="cancel" parameterType="OrderCancelRequest">
-        update orders
-        set order_status = #{status}
-        where id = #{orderId}
-    </update>
+    <select id="findAllByMemberId" parameterType="Long" resultType="OrderFindVO">
+        select o.id, o.date, o.quantity, o.order_status as status, p.id as productId, p.name as productName, p.price
+        from orders o
+                 join product p on o.product_id = p.id
+        where o.member_id = #{memberId}
+        order by o.id desc;
+    </select>
 
     <update id="orderConfirmation" parameterType="OrderConfirmationVO">
         update orders
         set order_status = #{status}
         where id = #{id}
+    </update>
+
+    <update id="cancel" parameterType="OrderCancelRequest">
+        update orders
+        set order_status = #{status}
+        where id = #{orderId}
     </update>
 </mapper>

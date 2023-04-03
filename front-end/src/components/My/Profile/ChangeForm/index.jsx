@@ -5,12 +5,14 @@ import { useRecoilValue } from "recoil";
 import { TextField, Button } from "@mui/material";
 import * as S from "./index.styled";
 
-import { API_PATH } from "../../../../constants/path";
+import { API_PATH, BROWSER_PATH } from "../../../../constants/path";
 import { CLIENT_ERROR_MESSAGE } from "../../../../constants/message";
 import { MEMBER_RULE } from "../../../../constants/rule";
 import { jwtToken } from "../../../../stores/auth";
+import { useNavigate } from "react-router-dom";
 
 function PasswordForm() {
+  const navigate = useNavigate();
   const token = useRecoilValue(jwtToken);
   const [nowPassword, setNowPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -62,8 +64,12 @@ function PasswordForm() {
       .then(() => {
         localStorage.clear();
         alert("비밀번호가 변경되었습니다. 다시 로그인해주세요!");
+        navigate(BROWSER_PATH.LOGIN);
       })
       .error((error) => {
+        if (error.response.status === 400) {
+          alert(error.response.data.message);
+        }
         console.error(error);
       });
   };

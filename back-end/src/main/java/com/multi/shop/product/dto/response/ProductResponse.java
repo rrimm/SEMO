@@ -1,6 +1,7 @@
 package com.multi.shop.product.dto.response;
 
 import com.multi.shop.product.domain.Category;
+import com.multi.shop.product.domain.Product;
 import com.multi.shop.product.domain.Target;
 import com.multi.shop.product.domain.vo.ProductVO;
 import lombok.Builder;
@@ -33,16 +34,16 @@ public class ProductResponse {
         this.target = target;
     }
 
-    public static ProductResponse of(ProductVO vo, List<String> carousel) {
+    public static ProductResponse of(Product product, List<String> carousel) {
         return ProductResponse.builder()
-                .id(vo.getId())
-                .name(vo.getName())
-                .image(vo.getImage())
-                .price(vo.getPrice())
-                .info(vo.getInfo())
-                .stock(vo.getStock())
-                .category(vo.getCategory())
-                .target(vo.getTarget())
+                .id(product.getId())
+                .name(product.getName())
+                .image(product.getImage())
+                .price(product.getPrice())
+                .info(product.getInfo())
+                .stock(product.getStock())
+                .category(product.getCategory())
+                .target(product.getTarget())
                 .carousel(carousel)
                 .build();
     }

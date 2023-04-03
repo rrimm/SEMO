@@ -55,7 +55,7 @@ public class OrderService {
     }
 
     public List<OrderResponse> findByMemberId(Long memberId) {
-        return orderRepository.findByMemberId(memberId)
+        return orderRepository.findAllByMemberId(memberId)
                 .stream()
                 .map(OrderResponse::from)
                 .toList();

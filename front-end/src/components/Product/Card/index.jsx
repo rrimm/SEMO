@@ -12,7 +12,7 @@ function Card({ product }) {
   const formatPrice = Number(product.price).toLocaleString();
   return (
     <div className="img-container">
-      <Link to={`${BROWSER_PATH}/${product.id}`}>
+      <Link to={`${BROWSER_PATH.DETAILS}/${product.id}`}>
         <img className="image" src={product.image} alt=""></img>
       </Link>
       <div>

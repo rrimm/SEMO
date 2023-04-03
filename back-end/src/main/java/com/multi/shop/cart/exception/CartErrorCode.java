@@ -1,7 +1,9 @@
 package com.multi.shop.cart.exception;
 
 import com.multi.shop.global.exception.exception.ErrorCode;
+import lombok.Getter;
 
+@Getter
 public enum CartErrorCode implements ErrorCode {
 
     PRODUCT_ALREADY_EXIST_CART(400, "CART_01", "해당 제품은 이미 장바구니에 있습니다."),
@@ -16,20 +18,5 @@ public enum CartErrorCode implements ErrorCode {
         this.statusCode = statusCode;
         this.errorCode = errorCode;
         this.message = message;
-    }
-
-    @Override
-    public int getStatusCode() {
-        return statusCode;
-    }
-
-    @Override
-    public String getErrorCode() {
-        return errorCode;
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
     }
 }

@@ -1,5 +1,6 @@
 package com.multi.shop.member.repository;
 
+import com.multi.shop.member.domain.Member;
 import com.multi.shop.member.domain.vo.MemberVO;
 import com.multi.shop.member.dto.request.MemberModifyPWRequest;
 import com.multi.shop.member.mapper.MemberMapper;
@@ -19,8 +20,16 @@ public class MemberRepository {
         return memberMapper.save(member);
     }
 
+    public Optional<Member> findById(Long id) {
+        return memberMapper.findById(id);
+    }
+
     public Optional<MemberVO> findByMemberEmail(String email) {
         return memberMapper.findByMemberEmail(email);
+    }
+
+    public void updatePassword(MemberModifyPWRequest request) {
+        memberMapper.updatePassword(request);
     }
 
     public boolean existByMemberEmail(String email) {
@@ -29,13 +38,5 @@ public class MemberRepository {
 
     public boolean existByMemberPhone(String phone) {
         return memberMapper.existByMemberPhone(phone);
-    }
-
-    public Optional<MemberVO> findById(Long id) {
-        return memberMapper.findById(id);
-    }
-
-    public void updatePassword(MemberModifyPWRequest request) {
-        memberMapper.updatePassword(request);
     }
 }

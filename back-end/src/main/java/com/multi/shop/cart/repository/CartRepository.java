@@ -16,24 +16,20 @@ import java.util.Optional;
 @Repository
 public class CartRepository {
     private final CartMapper cartMapper;
-    public int findCartQuantityByMemberId(Long memberId) {
-        return cartMapper.findCartQuantityByMemberId(memberId);
-    }
-
     public Long save(CartSaveRequest request) {
         return cartMapper.save(request);
     }
 
-    public boolean existByProductId(CartSaveRequest request) {
-        return cartMapper.existByProductId(request);
-    }
-
-    public void deleteById(Long id) {
-        cartMapper.deleteById(id);
+    public Optional<Cart> findById(Long id) {
+        return cartMapper.findById(id);
     }
 
     public List<CartVO> findByMemberId(Long memberId) {
         return cartMapper.findByMemberId(memberId);
+    }
+
+    public int findCartQuantityByMemberId(Long memberId) {
+        return cartMapper.findCartQuantityByMemberId(memberId);
     }
 
     public void updateQuantity(CartChangeQuantityRequest request) {
@@ -44,7 +40,15 @@ public class CartRepository {
         cartMapper.updateChecked(request);
     }
 
-    public Optional<Cart> findById(Long id) {
-        return cartMapper.findById(id);
+    public void deleteById(Long id) {
+        cartMapper.deleteById(id);
+    }
+
+    public boolean existById(Long id) {
+        return cartMapper.existById(id);
+    }
+
+    public boolean existByProductId(CartSaveRequest request) {
+        return cartMapper.existByProductId(request);
     }
 }

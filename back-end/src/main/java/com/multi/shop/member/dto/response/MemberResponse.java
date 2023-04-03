@@ -1,5 +1,6 @@
 package com.multi.shop.member.dto.response;
 
+import com.multi.shop.member.domain.Member;
 import com.multi.shop.member.domain.vo.MemberVO;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -20,7 +21,7 @@ public class MemberResponse {
         this.phoneNumber = phoneNumber;
     }
 
-    public static MemberResponse from(MemberVO member) {
+    public static MemberResponse from(Member member) {
         return MemberResponse.builder()
                 .name(member.getName())
                 .email(member.getEmail())

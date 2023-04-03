@@ -1,7 +1,6 @@
 package com.multi.shop.member.service;
 
-import com.multi.shop.member.domain.Password;
-import com.multi.shop.member.domain.Phone;
+import com.multi.shop.member.domain.*;
 import com.multi.shop.member.domain.vo.MemberVO;
 import com.multi.shop.member.dto.request.MemberJoinRequest;
 import com.multi.shop.member.dto.request.MemberModifyPWRequest;
@@ -28,12 +27,14 @@ public class MemberService {
         validateMemberEmailIsNotDuplicated(request.getEmail());
         validateMemberPhoneIsNotDuplicated(request.getPhone());
 
+        Email email = Email.from(request.getEmail());
+        Name name = Name.from(request.getName());
         Password password = Password.encode(request.getPassword(), passwordEncoder);
-        Phone phone = Phone.of(request.getPhone());
+        Phone phone = Phone.from(request.getPhone());
 
-        MemberVO member = MemberVO.of(request, password, phone);
+        MemberVO saveMemberVO = MemberVO.from(request, email, name,password, phone);
 
-        return memberRepository.save(member);
+        return memberRepository.save(saveMemberVO);
     }
 
     private void validateMemberEmailIsNotDuplicated(String email) {
@@ -48,30 +49,28 @@ public class MemberService {
         }
     }
 
-    public MemberVO findById(Long id) {
+    public Member findById(Long id) {
         return memberRepository.findById(id)
                 .orElseThrow(() -> new MemberException(MemberErrorCode.MEMBER_NOT_EXIST));
     }
 
     public MemberResponse findInfoById(Long id) {
-        MemberVO findMember = findById(id);
+        Member findMember = findById(id);
         return MemberResponse.from(findMember);
     }
 
     @Transactional
     public void updatePassword(MemberModifyPWRequest request) {
-        MemberVO findMember = findById(request.getMemberId());
-
-        String encryptedNowPassword = passwordEncoder.encode(request.getNowPassword());
-        confirmPassword(findMember, encryptedNowPassword);
+        Member findMember = findById(request.getMemberId());
+        confirmPassword(findMember, request.getNowPassword());
         Password password = Password.encode(request.getNewPassword(), passwordEncoder);
-        request.setNewPassword(password.getValue());
 
+        request.setNewPassword(password.getValue());
         memberRepository.updatePassword(request);
     }
 
-    private void confirmPassword(MemberVO member, String password) {
-        if (!passwordEncoder.matches(member.getPassword(), password)) {
+    private void confirmPassword(Member member, String password) {
+        if (!passwordEncoder.matches(password, member.getPassword())) {
             throw new MemberException(MemberErrorCode.MEMBER_WRONG_PASSWORD);
         }
     }

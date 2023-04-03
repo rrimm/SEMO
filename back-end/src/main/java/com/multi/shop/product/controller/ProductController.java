@@ -20,20 +20,20 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("/api/product")
-    public ResponseEntity<List<ProductsResponse>> find(@Param("search") String search) {
-        List<ProductsResponse> response = productService.find(search);
+    public ResponseEntity<List<ProductsResponse>> findAll(@Param("search") String search) {
+        List<ProductsResponse> response = productService.findBySearch(search);
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/api/product/{id}")
     public ResponseEntity<ProductResponse> findByProductId(@PathVariable Long id) {
-        ProductResponse response = productService.findById(id);
+        ProductResponse response = productService.findDetailById(id);
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/api/product/related/{id}")
     public ResponseEntity<List<ProductsResponse>> findRelatedProducts(@PathVariable Long id) {
-        List<ProductsResponse> response = productService.findRelatedProductsByProductId(id);
+        List<ProductsResponse> response = productService.findRelatedProductsById(id);
         return ResponseEntity.ok(response);
     }
 }

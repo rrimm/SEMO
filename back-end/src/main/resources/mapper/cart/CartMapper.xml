@@ -35,20 +35,6 @@
         WHERE member_id = #{memberId}
     </select>
 
-    <select id="existByProductId" parameterType="CartSaveRequest" resultType="boolean">
-        SELECT if(count(*) = 1, 1, 0)
-        FROM cart
-        WHERE member_id = #{memberId}
-          AND product_id = #{productId}
-    </select>
-
-    <!-- 장바구니 삭제 -->
-    <delete id="deleteById">
-        DELETE
-        FROM cart
-        WHERE id = #{id}
-    </delete>
-
     <update id="updateQuantity" parameterType="CartChangeQuantityRequest">
         UPDATE cart
         SET quantity = #{quantity}
@@ -60,4 +46,23 @@
         SET checked = #{checked}
         WHERE id = #{id}
     </update>
+
+    <delete id="deleteById">
+        DELETE
+        FROM cart
+        WHERE id = #{id}
+    </delete>
+
+    <select id="existById" parameterType="Long" resultType="boolean">
+        SELECT if(count(*) = 1, 1, 0)
+        FROM cart
+        WHERE id = #{id}
+    </select>
+
+    <select id="existByProductId" parameterType="CartSaveRequest" resultType="boolean">
+        SELECT if(count(*) = 1, 1, 0)
+        FROM cart
+        WHERE member_id = #{memberId}
+          AND product_id = #{productId}
+    </select>
 </mapper>
