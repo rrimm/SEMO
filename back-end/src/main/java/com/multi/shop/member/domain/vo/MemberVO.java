@@ -33,7 +33,7 @@ public class MemberVO {
         this.role = role;
     }
 
-    public static MemberVO of(MemberJoinRequest request, Password password, Phone phone) {
+    public static MemberVO from(MemberJoinRequest request, Password password, Phone phone) {
         return MemberVO.builder()
                 .birth(request.getBirth())
                 .email(request.getEmail())

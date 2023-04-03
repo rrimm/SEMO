@@ -7,7 +7,7 @@
             value (#{birth}, #{email}, #{name}, #{password}, #{phone}, #{role});
     </insert>
 
-    <select id="findById" parameterType="Long" resultType="MemberVO">
+    <select id="findById" parameterType="Long" resultType="Member">
         SELECT *
         FROM member
         WHERE id = #{id}
@@ -18,6 +18,12 @@
         FROM member
         WHERE email = #{email}
     </select>
+
+    <update id="updatePassword" parameterType="MemberModifyPWRequest">
+        UPDATE member
+        SET password = #{newPassword}
+        WHERE id = #{memberId}
+    </update>
 
     <select id="existByMemberEmail" parameterType="String" resultType="boolean">
         SELECT if(count(*) = 1, 1, 0)
@@ -30,10 +36,4 @@
         FROM member
         WHERE phone = #{phone}
     </select>
-
-    <update id="updatePassword" parameterType="MemberModifyPWRequest">
-        UPDATE member
-        SET password = #{newPassword}
-        WHERE id = #{memberId}
-    </update>
 </mapper>
