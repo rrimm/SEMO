@@ -7,6 +7,12 @@
             VALUE (#{checked}, #{quantity}, #{memberId}, #{productId});
     </insert>
 
+    <select id="findById" parameterType="Long" resultType="Cart">
+        SELECT *
+        FROM cart
+        WHERE id = #{id}
+    </select>
+
     <select id="findByMemberId" parameterType="Long" resultType="CartVO">
         SELECT c.id    cartId,
                c.checked,

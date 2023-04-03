@@ -1,5 +1,6 @@
 package com.multi.shop.cart.repository;
 
+import com.multi.shop.cart.domain.Cart;
 import com.multi.shop.cart.domain.vo.CartVO;
 import com.multi.shop.cart.dto.request.CartChangeCheckedRequest;
 import com.multi.shop.cart.dto.request.CartSaveRequest;
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Repository
@@ -40,5 +42,9 @@ public class CartRepository {
 
     public void updateChecked(CartChangeCheckedRequest request) {
         cartMapper.updateChecked(request);
+    }
+
+    public Optional<Cart> findById(Long id) {
+        return cartMapper.findById(id);
     }
 }
