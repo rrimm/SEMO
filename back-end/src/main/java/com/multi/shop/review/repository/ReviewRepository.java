@@ -24,8 +24,8 @@ public class ReviewRepository {
         return reviewMapper.save(request);
     }
 
-    public Long updateReview(ReviewUpdateRequest request) {
-        return reviewMapper.updateReview(request);
+    public void updateReview(ReviewUpdateRequest request) {
+        reviewMapper.updateReview(request);
     }
 
     public void deleteById(Long id) {

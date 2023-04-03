@@ -41,15 +41,14 @@ public class ReviewController {
     }
 
     @PutMapping("/auth/review")
-    public ResponseEntity<Void> update(@RequestBody ReviewUpdateRequest request){
-        log.info("Controller");
+    public ResponseEntity<Void> update(@RequestBody @Valid ReviewUpdateRequest request){
         reviewService.updateReview(request);
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/auth/review")
-    public ResponseEntity<Void> delete(@Param("reviewId") Long id) {
-        reviewService.deleteById(id);
+    public ResponseEntity<Void> delete(@Param("reviewId") Long reviewId) {
+        reviewService.deleteById(reviewId);
         return ResponseEntity.ok().build();
     }
 }
