@@ -20,7 +20,7 @@ import java.util.List;
 public class ReviewController {
     private final ReviewService reviewService;
 
-    @GetMapping("/review")
+    @GetMapping("/api/review")
     public List<ReviewVO> getReviewList() {
         return reviewService.getReviewListWithProductAndMember();
     }
@@ -30,10 +30,6 @@ public class ReviewController {
 //        return reviewService.getReviewListByCategory(category);
 //    }
 //
-//    @PostMapping("/review")
-//    public int insertReview(@RequestBody ReviewRequest reviewRequest) {
-//        return reviewService.insertReview(reviewRequest);
-//    }
 //
 //    @PutMapping("/review/{id}")
 //    public int updateReview(@PathVariable Long id, @RequestBody ReviewVO reviewVO) {
