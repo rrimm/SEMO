@@ -29,7 +29,6 @@ public class ReviewService {
 
     @Transactional
     public Long save(ReviewSaveRequest request) {
-        // TODO: 이미 작성된 리뷰가 있으면 예외 처리
         orderRepository.orderConfirmation(OrderConfirmationVO.from(request.getOrderId(), Status.ORDER_CONFIRMATION));
         return reviewRepository.save(request);
     }
@@ -39,17 +38,17 @@ public class ReviewService {
                 .orElseThrow(() -> new ReviewException(ReviewErrorCode.REVIEW_NOT_EXIST));
     }
 
+    public ReviewFormResponse findProductInfoById(Long orderId) {
+        OrderProductVO findOrderProduct = orderRepository.findProductInfoById(orderId)
+                .orElseThrow(() -> new ReviewException(ReviewErrorCode.REVIEW_NOT_EXIST));
+        return ReviewFormResponse.from(findOrderProduct);
+    }
+
     public List<ReviewsResponse> findAll() {
         return reviewRepository.findAll()
                 .stream()
                 .map(ReviewsResponse::from)
                 .toList();
-    }
-
-    public ReviewFormResponse findProductInfoById(Long orderId) {
-        OrderProductVO findOrderProduct = orderRepository.findProductInfoById(orderId)
-                .orElseThrow(RuntimeException::new);
-        return ReviewFormResponse.from(findOrderProduct);
     }
 
     @Transactional
