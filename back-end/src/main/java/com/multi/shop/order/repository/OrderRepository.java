@@ -1,5 +1,6 @@
 package com.multi.shop.order.repository;
 
+import com.multi.shop.order.domain.Status;
 import com.multi.shop.order.domain.vo.OrderFindVO;
 import com.multi.shop.order.domain.vo.OrderProductVO;
 import com.multi.shop.order.domain.vo.OrderVO;
@@ -36,5 +37,9 @@ public class OrderRepository {
 
     public Optional<OrderVO> findById(Long orderId) {
         return orderMapper.findById(orderId);
+    }
+
+    public void updateStatus(Long orderId, Status status) {
+        orderMapper.updateStatus(orderId, status);
     }
 }

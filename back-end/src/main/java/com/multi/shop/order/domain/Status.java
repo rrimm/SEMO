@@ -8,7 +8,8 @@ import lombok.NoArgsConstructor;
 @Getter
 public enum Status {
     PAYMENT(1, "결제"),
-    CANCEL(2, "취소");
+    CANCEL(2, "취소"),
+    ORDER_CONFIRMATION(3, "주문확정");
 
     private int id;
 

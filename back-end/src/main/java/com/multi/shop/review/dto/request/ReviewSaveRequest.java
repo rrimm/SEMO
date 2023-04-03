@@ -15,6 +15,9 @@ public class ReviewSaveRequest {
     private Long productId;
 
     @NotNull
+    private Long orderId;
+
+    @NotNull
     private String reviewContent;
 
     private String reviewImage;
