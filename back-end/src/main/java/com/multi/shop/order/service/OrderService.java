@@ -49,16 +49,16 @@ public class OrderService {
         }
     }
 
+    public OrderVO findById(Long orderId) {
+        return orderRepository.findById(orderId)
+                .orElseThrow(() -> new OrderException(OrderErrorCode.ORDER_IS_NOT_EXIST));
+    }
+
     public List<OrderResponse> findByMemberId(Long memberId) {
         return orderRepository.findByMemberId(memberId)
                 .stream()
                 .map(OrderResponse::from)
                 .toList();
-    }
-
-    public OrderVO findById(Long orderId) {
-        return orderRepository.findById(orderId)
-                .orElseThrow(RuntimeException::new);
     }
 
     @Transactional
