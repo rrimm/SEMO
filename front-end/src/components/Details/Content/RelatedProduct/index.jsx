@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-
 import { BsChevronLeft } from "react-icons/bs";
 import { BsChevronRight } from "react-icons/bs";
 import * as S from "./index.styled";
