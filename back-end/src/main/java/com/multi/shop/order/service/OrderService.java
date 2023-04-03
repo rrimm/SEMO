@@ -1,6 +1,7 @@
 package com.multi.shop.order.service;
 
 import com.multi.shop.cart.repository.CartRepository;
+import com.multi.shop.order.domain.Status;
 import com.multi.shop.order.domain.vo.OrderVO;
 import com.multi.shop.order.dto.request.OrderCancelRequest;
 import com.multi.shop.order.dto.request.OrderSaveRequest;
@@ -43,7 +44,7 @@ public class OrderService {
     }
 
     private void validateOrdersQuantityIsNotEmpty(List<OrderSaveRequest> requests) {
-        if(requests.isEmpty()) {
+        if (requests.isEmpty()) {
             throw new OrderException(OrderErrorCode.ORDERS_REQUEST_EMPTY);
         }
     }
@@ -62,7 +63,7 @@ public class OrderService {
 
     @Transactional
     public void cancel(OrderCancelRequest request) {
-        // TODO: 이미 취소한 주문 정보이면 예외 처리
+        validateOrderIsAlreadyCancel(request.getOrderId());
 
         OrderVO findOrder = findById(request.getOrderId());
         OrderSaveRequest updateRequest = OrderSaveRequest.builder()
@@ -72,5 +73,16 @@ public class OrderService {
         productService.updateStock(updateRequest);
 
         orderRepository.cancel(request);
+    }
+
+    private void validateOrderIsAlreadyCancel(Long id) {
+        if (isCancel(id)) {
+            throw new OrderException(OrderErrorCode.ORDER_IS_ALREADY_CANCEL);
+        }
+    }
+
+    private boolean isCancel(Long id) {
+        OrderVO findOrder = findById(id);
+        return findOrder.getStatus().equals(Status.CANCEL);
     }
 }
