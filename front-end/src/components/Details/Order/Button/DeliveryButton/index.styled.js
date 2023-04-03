@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import Popover from "react-bootstrap/Popover";
 
 const Button = styled.button`
   background-color: white;
@@ -13,7 +12,6 @@ const Button = styled.button`
 
 const Text = styled.div`
   font-size: 12px;
-  // padding: 10px 10px;
 `;
 
 const StyledPopover = styled.div`
