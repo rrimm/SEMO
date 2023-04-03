@@ -1,42 +1,38 @@
 package com.multi.shop.product.repository;
 
-import com.multi.shop.order.dto.request.OrderSaveRequest;
+import com.multi.shop.product.domain.Product;
 import com.multi.shop.product.domain.vo.FindRelatedProductVO;
 import com.multi.shop.product.domain.vo.ProductVO;
-import com.multi.shop.product.dto.response.ProductsResponse;
 import com.multi.shop.product.dto.response.StockUpdateRequest;
 import com.multi.shop.product.mapper.ProductMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Repository
 public class ProductRepository {
     private final ProductMapper productMapper;
 
-    public ProductVO findByProductId(Long productId) {
-        return productMapper.findByProductId(productId);
+    public List<String> findCarouselById(Long id) {
+        return productMapper.findCarouselById(id);
     }
 
-    public boolean existByProductId(Long productId) {
-        return productMapper.existByProductId(productId);
+    public List<Product> findRelatedProductsById(FindRelatedProductVO vo) {
+        return productMapper.findRelatedProductsById(vo);
     }
 
-    public List<String> findCarouselByProductId(Long productId) {
-        return productMapper.findCarouselByProductId(productId);
-    }
-
-    public List<ProductVO> findRelatedProductsByProductId(FindRelatedProductVO vo) {
-        return productMapper.findRelatedProductsByProductId(vo);
-    }
-
-    public List<ProductVO> find(String search) {
-        return productMapper.find(search);
+    public List<Product> findBySearch(String search) {
+        return productMapper.findBySearch(search);
     }
 
     public void updateStock(StockUpdateRequest request) {
         productMapper.updateStock(request);
+    }
+
+    public Optional<Product> findById(Long id) {
+        return productMapper.findById(id);
     }
 }
