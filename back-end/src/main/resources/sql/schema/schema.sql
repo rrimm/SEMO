@@ -19,11 +19,11 @@ create table member
     id       bigint auto_increment
         primary key,
     birth    date         not null,
-    email    varchar(255) not null,
-    name     varchar(255) not null,
-    password varchar(255) not null,
-    phone    varchar(255) not null,
-    role     varchar(255) not null
+    email    varchar(30) not null,
+    name     varchar(20) not null,
+    password varchar(16) not null,
+    phone    varchar(13) not null,
+    role     varchar(20) not null
 );
 
 # create table address
@@ -45,7 +45,7 @@ create table product
     category varchar(10) not null,
     image    mediumblob   not null,
     info     varchar(255) not null,
-    name     varchar(50) not null,
+    name     varchar(100) not null,
     price    int          not null,
     stock    int          not null,
     target   varchar(10) not null
@@ -81,7 +81,7 @@ create table orders
         primary key,
     date         date         not null,
     quantity     int          not null,
-    order_status varchar(255) not null,
+    order_status varchar(20) not null,
     member_id    bigint       not null,
     product_id   bigint       not null,
     constraint FK787ibr3guwp6xobrpbofnv7le
@@ -101,7 +101,7 @@ create table review
 (
     id         bigint auto_increment
         primary key,
-    content    varchar(255) null,
+    content    varchar(250) null,
     image      mediumblob   not null,
     member_id  bigint       not null,
     product_id bigint       not null,
