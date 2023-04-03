@@ -1,6 +1,5 @@
 package com.multi.shop.order.repository;
 
-import com.multi.shop.order.domain.Status;
 import com.multi.shop.order.domain.vo.OrderConfirmationVO;
 import com.multi.shop.order.domain.vo.OrderFindVO;
 import com.multi.shop.order.domain.vo.OrderProductVO;
@@ -24,23 +23,23 @@ public class OrderRepository {
         return orderMapper.save(request);
     }
 
-    public List<OrderFindVO> findByMemberId(Long memberId) {
-        return orderMapper.findByMemberId(memberId);
-    }
-
-    public void cancel(OrderCancelRequest request) {
-        orderMapper.cancel(request);
+    public Optional<OrderVO> findById(Long orderId) {
+        return orderMapper.findById(orderId);
     }
 
     public Optional<OrderProductVO> findProductInfoById(Long id) {
         return orderMapper.findProductInfoById(id);
     }
 
-    public Optional<OrderVO> findById(Long orderId) {
-        return orderMapper.findById(orderId);
+    public List<OrderFindVO> findAllByMemberId(Long memberId) {
+        return orderMapper.findAllByMemberId(memberId);
     }
 
     public void orderConfirmation(OrderConfirmationVO vo) {
         orderMapper.orderConfirmation(vo);
+    }
+
+    public void cancel(OrderCancelRequest request) {
+        orderMapper.cancel(request);
     }
 }
