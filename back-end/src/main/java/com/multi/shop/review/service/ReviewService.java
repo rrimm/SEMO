@@ -1,6 +1,7 @@
 package com.multi.shop.review.service;
 
 import com.multi.shop.order.domain.Status;
+import com.multi.shop.order.domain.vo.OrderConfirmationVO;
 import com.multi.shop.order.domain.vo.OrderProductVO;
 import com.multi.shop.order.repository.OrderRepository;
 import com.multi.shop.review.domain.dto.request.ReviewRequest;
@@ -64,7 +65,7 @@ public class ReviewService {
     @Transactional
     public Long save(ReviewSaveRequest request) {
         // TODO: 이미 작성된 리뷰가 있으면 예외 처리
-        orderRepository.updateStatus(request.getOrderId(), Status.ORDER_CONFIRMATION);
+        orderRepository.orderConfirmation(OrderConfirmationVO.from(request.getOrderId(), Status.ORDER_CONFIRMATION));
         return reviewRepository.save(request);
     }
 }
