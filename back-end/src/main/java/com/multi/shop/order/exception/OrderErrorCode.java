@@ -1,7 +1,9 @@
 package com.multi.shop.order.exception;
 
 import com.multi.shop.global.exception.exception.ErrorCode;
+import lombok.Getter;
 
+@Getter
 public enum OrderErrorCode implements ErrorCode {
     ORDER_IS_NOT_EXIST(400, "ORDER_01", "해당 주문 요청이 존재하지 않습니다"),
 
@@ -16,20 +18,5 @@ public enum OrderErrorCode implements ErrorCode {
         this.statusCode = statusCode;
         this.errorCode = errorCode;
         this.message = message;
-    }
-
-    @Override
-    public int getStatusCode() {
-        return statusCode;
-    }
-
-    @Override
-    public String getErrorCode() {
-        return errorCode;
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
     }
 }

@@ -1,7 +1,9 @@
 package com.multi.shop.member.exception;
 
 import com.multi.shop.global.exception.exception.ErrorCode;
+import lombok.Getter;
 
+@Getter
 public enum MemberErrorCode implements ErrorCode {
 
     MEMBER_NOT_EXIST(400, "MEMBER_01", "멤버가 존재하지 않습니다"),
@@ -22,20 +24,5 @@ public enum MemberErrorCode implements ErrorCode {
         this.statusCode = statusCode;
         this.errorCode = errorCode;
         this.message = message;
-    }
-
-    @Override
-    public int getStatusCode() {
-        return statusCode;
-    }
-
-    @Override
-    public String getErrorCode() {
-        return errorCode;
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
     }
 }
