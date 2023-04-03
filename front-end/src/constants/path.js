@@ -18,6 +18,7 @@ const API_PATH = {
     JOIN: "/api/join",
     LOGIN: "/api/login",
     LOGOUT: "/api/logout",
+    RE: "/api/reissue",
   },
   MAIN: {
     HEADER: "http:localhost:4000/my", // GET API

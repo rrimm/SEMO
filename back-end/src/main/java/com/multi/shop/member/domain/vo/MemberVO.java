@@ -41,4 +41,10 @@ public class MemberVO {
                 .role(request.getRole())
                 .build();
     }
+
+    public static MemberVO from(Member member) {
+        return MemberVO.builder()
+                .id(member.getId())
+                .build();
+    }
 }
