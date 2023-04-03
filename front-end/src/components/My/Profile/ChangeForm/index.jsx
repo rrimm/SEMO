@@ -5,14 +5,12 @@ import { useRecoilValue } from "recoil";
 import { TextField, Button } from "@mui/material";
 import * as S from "./index.styled";
 
-import { API_PATH, BROWSER_PATH } from "../../../../constants/path";
+import { API_PATH } from "../../../../constants/path";
 import { CLIENT_ERROR_MESSAGE } from "../../../../constants/message";
 import { MEMBER_RULE } from "../../../../constants/rule";
 import { jwtToken } from "../../../../stores/auth";
-import { useNavigate } from "react-router-dom";
 
 function PasswordForm() {
-  const navigate = useNavigate();
   const token = useRecoilValue(jwtToken);
   const [nowPassword, setNowPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");

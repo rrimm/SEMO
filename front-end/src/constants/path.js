@@ -9,6 +9,7 @@ const BROWSER_PATH = {
   PRODUCT: "/product",
   REVIEW: "/review",
   REVIEW_FORM: "/review-form",
+  NOT_FOUND: "/notfound",
 };
 
 // TODO: 추후 스프링과 연동하기
