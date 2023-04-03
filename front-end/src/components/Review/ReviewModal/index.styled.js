@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
 const Review_Modal = styled.div`
   position: fixed;
@@ -105,8 +106,8 @@ const Review_Modal_InfoStar_Star = styled.div`
   align-items: center;
   width: 100%;
   height: 50%;
-  // border : 1px solid Blue;
 `;
+
 const Review_Modal_InfoStar_userID = styled.div`
   display: flex;
   justify-content: left;
@@ -114,6 +115,7 @@ const Review_Modal_InfoStar_userID = styled.div`
   color: 8CAC6A;
   font-size: 15px;
 `;
+
 const Review_Modal_ContentSection = styled.div`
   background-color: #f8f8f8;
   display: flex;
@@ -121,7 +123,6 @@ const Review_Modal_ContentSection = styled.div`
   align-items: center;
   width: 90%;
   height: 85%;
-  // border : 2px solid Red;
   flex-direction: column;
 `;
 
@@ -133,13 +134,14 @@ const Review_Modal_Content = styled.div`
   width: 100%;
   height: 80%;
 `;
-const Review_Modal_BuyItemBox = styled.div`
+const Review_Modal_BuyItemBox = styled(Link)`
   background-color: #f8f8f8;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 60%;
+  text-decoration-line: none;
 `;
 
 const Review_Modal_BuyItemImage = styled.img`
@@ -163,20 +165,17 @@ const Review_Modal_BuyItemName = styled.div`
   border: 1px solid #d3d3d3;
   color: #807675;
   cursor: pointer;
+  text-decoration-line: none;
 `;
 
-const Review_Modal_DeleteButton = styled.button`
+const Review_Modal_DeleteButton = styled.button``;
 
-`;
+const Review_Modal_UpdateButton = styled.button``;
 
-const Review_Modal_UpdateButton = styled.button`
-`;
-
-const Review_Modal_CancelButton = styled.button`
-`;
+const Review_Modal_CancelButton = styled.button``;
 
 const Review_Modal_ContentTextarea = styled.textarea`
-display: flex;
+  display: flex;
   text-align: left;
   align-items: top;
   margin-top: 40px;
