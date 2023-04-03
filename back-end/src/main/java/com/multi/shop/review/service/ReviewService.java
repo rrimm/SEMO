@@ -9,11 +9,12 @@ import com.multi.shop.review.dto.response.ReviewFormResponse;
 import com.multi.shop.review.dto.response.ReviewsResponse;
 import com.multi.shop.review.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
+@Slf4j
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 @Service
@@ -39,5 +40,11 @@ public class ReviewService {
         // TODO: 이미 작성된 리뷰가 있으면 예외 처리
         orderRepository.orderConfirmation(OrderConfirmationVO.from(request.getOrderId(), Status.ORDER_CONFIRMATION));
         return reviewRepository.save(request);
+    }
+
+    @Transactional
+    public Long updateReview(Long id, String content){
+        log.info("Service");
+        return reviewRepository.updateReview(id, content);
     }
 }

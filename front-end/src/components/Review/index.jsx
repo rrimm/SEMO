@@ -70,7 +70,7 @@ function ReviewList(props) {
   };
 
   const filteredContents =
-    selectedCategory === "ALL" ? reviews : reviews.filter((content) => content.category === selectedCategory);
+    selectedCategory === "ALL" ? reviews : reviews.filter((content) => content.productCategory === selectedCategory);
 
   const contentsPerPage = 10; // 페이지당 보여줄 컨텐츠 개수
 
