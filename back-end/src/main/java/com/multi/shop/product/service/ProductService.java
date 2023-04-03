@@ -3,7 +3,6 @@ package com.multi.shop.product.service;
 import com.multi.shop.order.dto.request.OrderSaveRequest;
 import com.multi.shop.product.domain.Product;
 import com.multi.shop.product.domain.vo.FindRelatedProductVO;
-import com.multi.shop.product.domain.vo.ProductVO;
 import com.multi.shop.product.dto.response.ProductResponse;
 import com.multi.shop.product.dto.response.ProductsResponse;
 import com.multi.shop.product.dto.response.StockUpdateRequest;
@@ -55,11 +54,17 @@ public class ProductService {
 
     @Transactional
     public void updateStock(OrderSaveRequest request) {
-        // TODO: 제품의 수량보다 quantity 가 크면 예외 처리
-        // TODO: 제품이 존재하지 않으면 예외 처리
         Product findProduct = findById(request.getProductId());
+        validateQuantityIsGreaterThanStock(request.getQuantity(), findProduct.getStock());
+
         StockUpdateRequest stockUpdateRequest = StockUpdateRequest.from(request.getProductId(),
                 findProduct.getStock() - request.getQuantity());
         productRepository.updateStock(stockUpdateRequest);
+    }
+
+    private void validateQuantityIsGreaterThanStock(int quantity, int stock) {
+        if (quantity > stock) {
+            throw new ProductException(ProductErrorCode.ORDER_QUANTITY_GREATER_THEN_PRODUCT_STOCK);
+        }
     }
 }
