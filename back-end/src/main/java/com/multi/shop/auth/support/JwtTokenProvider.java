@@ -1,6 +1,8 @@
 package com.multi.shop.auth.support;
 
 import com.multi.shop.auth.dto.TokenDto;
+import com.multi.shop.auth.exception.AuthErrorCode;
+import com.multi.shop.auth.exception.AuthException;
 import com.multi.shop.member.domain.vo.MemberVO;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
@@ -73,7 +75,7 @@ public class JwtTokenProvider {
         Claims claims = parseClaims(accessToken);
 
         if (claims.get(AUTHORITIES_KEY) == null) {
-            throw new RuntimeException("권한 정보가 없는 토큰입니다.");
+            throw new AuthException(AuthErrorCode.AUTH_JWT_WITHOUT_AUTHORIZATION_INFO);
         }
 
         // 클레임에서 권한 정보 얻기
@@ -98,15 +100,14 @@ public class JwtTokenProvider {
                     .parseClaimsJws(token);
             return true;
         } catch (io.jsonwebtoken.security.SecurityException | MalformedJwtException e) {
-            log.info("잘못된 JWT 서명입니다.");
+            throw new AuthException(AuthErrorCode.AUTH_INVALID_JWT_SIGNATURE);
         } catch (ExpiredJwtException e) {
-            log.info("만료된 JWT 토큰입니다.");
+            throw new AuthException(AuthErrorCode.AUTH_EXPIRED_JWT);
         } catch (UnsupportedJwtException e) {
-            log.info("지원되지 않는 JWT 토큰입니다.");
+            throw new AuthException(AuthErrorCode.AUTH_JWT_TOKEN_NOT_SUPPORT);
         } catch (IllegalArgumentException e) {
-            log.info("JWT 토큰이 잘못되었습니다.");
+            throw new AuthException(AuthErrorCode.AUTH_WRONG_JWT);
         }
-        return false;
     }
 
     private Claims parseClaims(String accessToken) {
