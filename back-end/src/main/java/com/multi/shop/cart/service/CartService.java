@@ -11,7 +11,6 @@ import com.multi.shop.cart.dto.response.CartsResponse;
 import com.multi.shop.cart.exception.CartErrorCode;
 import com.multi.shop.cart.exception.CartException;
 import com.multi.shop.cart.repository.CartRepository;
-import com.multi.shop.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,7 +23,6 @@ import java.util.List;
 public class CartService {
 
     private final CartRepository cartRepository;
-    private final ProductService productService;
 
     @Transactional
     public Long save(CartSaveRequest request) {
@@ -71,7 +69,7 @@ public class CartService {
 
     @Transactional
     public void updateQuantity(CartChangeQuantityRequest request) {
-        request.setQuantity(Quantity.of(request.getQuantity()).getValue());
+        request.setQuantity(Quantity.from(request.getQuantity()).getValue());
         cartRepository.updateQuantity(request);
     }
 
@@ -86,5 +84,4 @@ public class CartService {
     public void deleteCart(Long id) {
         cartRepository.deleteById(id);
     }
-
 }

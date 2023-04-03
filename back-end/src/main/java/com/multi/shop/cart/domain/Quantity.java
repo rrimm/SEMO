@@ -15,7 +15,7 @@ public class Quantity {
         this.value = value;
     }
 
-    public static Quantity of(int value) {
+    public static Quantity from(int value) {
         validateOutOfRange(value);
         return new Quantity(value);
     }
