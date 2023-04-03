@@ -24,12 +24,14 @@ function DeliveryButton() {
         container={ref}
         containerPadding={20}
       >
+        <S.StyledPopover>
         <Popover id="popover-contained">
-                 <S.Text>
-                   <strong>택배배송</strong><br/> 무료배송 / 18시 이전 주문 시 오늘 출고 예정<br/>
+                 <S.PopoverText>
+                   <strong>택배배송</strong><br/> 50000원 이상 구매 시 무료배송 / 18시 이전 주문 시 오늘 출고 예정<br/>
                   <strong>매장픽업</strong><br/> 온라인 구매 후 지정 매장에서 수령
-                </S.Text>
+                </S.PopoverText>
         </Popover>
+        </S.StyledPopover>
       </Overlay>
     </div>
   );
