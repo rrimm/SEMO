@@ -5,6 +5,8 @@ import com.multi.shop.order.domain.vo.OrderVO;
 import com.multi.shop.order.dto.request.OrderCancelRequest;
 import com.multi.shop.order.dto.request.OrderSaveRequest;
 import com.multi.shop.order.dto.response.OrderResponse;
+import com.multi.shop.order.exception.OrderErrorCode;
+import com.multi.shop.order.exception.OrderException;
 import com.multi.shop.order.repository.OrderRepository;
 import com.multi.shop.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -27,15 +29,23 @@ public class OrderService {
 
     @Transactional
     public List<Long> save(List<OrderSaveRequest> request) {
+        validateOrdersQuantityIsNotEmpty(request);
+
         List<Long> orderIds = new ArrayList<>();
-        // TODO: request 의 사이즈가 0이면 예외 처리
         for (OrderSaveRequest saveRequest : request) {
             productService.updateStock(saveRequest);
             cartRepository.deleteById(saveRequest.getCartId());
             Long orderId = orderRepository.save(saveRequest);
             orderIds.add(orderId);
         }
+
         return orderIds;
+    }
+
+    private void validateOrdersQuantityIsNotEmpty(List<OrderSaveRequest> requests) {
+        if(requests.isEmpty()) {
+            throw new OrderException(OrderErrorCode.ORDERS_REQUEST_EMPTY);
+        }
     }
 
     public List<OrderResponse> findByMemberId(Long memberId) {
