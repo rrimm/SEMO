@@ -27,4 +27,8 @@ public class ReviewRepository {
     public Long updateReview(ReviewUpdateRequest request) {
         return reviewMapper.updateReview(request);
     }
+
+    public void deleteById(Long id) {
+        reviewMapper.deleteById(id);
+    }
 }

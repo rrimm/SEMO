@@ -48,4 +48,8 @@ public class ReviewService {
         log.info("Service");
         return reviewRepository.updateReview(request);
     }
+
+    public void deleteById(Long id) {
+        reviewRepository.deleteById(id);
+    }
 }
