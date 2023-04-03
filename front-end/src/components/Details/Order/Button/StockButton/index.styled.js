@@ -5,12 +5,14 @@ const Container = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: white;
-  color: black;
-  font-size: 15px;
   padding: 10px;
   margin: 0 20px;
-  cursor: pointer;
+  &:hover {
+    border: none;
+  }
+`;
+const Text = styled.div`
+  color: black;
 `;
 
 const MessageBox = styled.div`
@@ -19,4 +21,4 @@ const MessageBox = styled.div`
   border-radius: 5px;
 `;
 
-export { Container, Button, MessageBox };
+export { Container, Button, MessageBox, Text };
