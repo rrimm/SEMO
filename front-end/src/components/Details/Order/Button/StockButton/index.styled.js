@@ -13,20 +13,10 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const CloseButton = styled.button`
-  background-color: #e5cdce;
-  color: white;
-  font-size: 20px;
-  padding: 10px 60px;
-  border-style: none;
-  margin: 10px 40px;
-  cursor: pointer;
-`;
-
 const MessageBox = styled.div`
   background-color: #ede3d7;
   padding: 7px 10px;
   border-radius: 5px;
 `;
 
-export { Container, Button, CloseButton, MessageBox };
+export { Container, Button, MessageBox };
