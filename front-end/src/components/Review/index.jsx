@@ -56,7 +56,8 @@ function ReviewList(props) {
     setCurrentPage(page);
     setSelectedCategory(category);
 
-    axios.get(`/review?page=${page}&category=${category}`).then((response) => {
+    
+    axios.get(`/api/review?page=${page}&category=${category}`).then((response) => {
       setReviews(response.data);
     });
 
@@ -88,7 +89,7 @@ function ReviewList(props) {
     <ReviewListItem
       key={content.id}
       image={content.image}
-      category={content.category}
+      category={content.product.category}
       product={content.product.name}
       content={content.content}
       account={content.member.email}
