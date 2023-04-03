@@ -1,8 +1,6 @@
 package com.multi.shop.member.service;
 
-import com.multi.shop.member.domain.Member;
-import com.multi.shop.member.domain.Password;
-import com.multi.shop.member.domain.Phone;
+import com.multi.shop.member.domain.*;
 import com.multi.shop.member.domain.vo.MemberVO;
 import com.multi.shop.member.dto.request.MemberJoinRequest;
 import com.multi.shop.member.dto.request.MemberModifyPWRequest;
@@ -29,10 +27,12 @@ public class MemberService {
         validateMemberEmailIsNotDuplicated(request.getEmail());
         validateMemberPhoneIsNotDuplicated(request.getPhone());
 
+        Email email = Email.from(request.getEmail());
+        Name name = Name.from(request.getName());
         Password password = Password.encode(request.getPassword(), passwordEncoder);
         Phone phone = Phone.from(request.getPhone());
 
-        MemberVO saveMemberVO = MemberVO.from(request, password, phone);
+        MemberVO saveMemberVO = MemberVO.from(request, email, name,password, phone);
 
         return memberRepository.save(saveMemberVO);
     }

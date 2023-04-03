@@ -25,7 +25,7 @@ public class Name {
 
     private static void validateLengthInRange(String value) {
         int length = value.length();
-        if (length < MAX_LENGTH || MAX_LENGTH < length) {
+        if (length < MIN_LENGTH || MAX_LENGTH < length) {
             throw new MemberException(MemberErrorCode.MEMBER_NAME_CANNOT_BE_OUT_OF_RANGE);
         }
     }
