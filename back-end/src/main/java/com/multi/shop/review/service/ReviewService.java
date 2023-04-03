@@ -44,8 +44,12 @@ public class ReviewService {
     }
 
     @Transactional
-    public Long updateReview(ReviewUpdateRequest request){
-        log.info("Service");
-        return reviewRepository.updateReview(request);
+    public void updateReview(ReviewUpdateRequest request){
+        reviewRepository.updateReview(request);
+    }
+
+    @Transactional
+    public void deleteById(Long id) {
+        reviewRepository.deleteById(id);
     }
 }

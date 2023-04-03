@@ -12,6 +12,7 @@ public interface ReviewMapper {
 
     Long save(ReviewSaveRequest request);
 
-    Long updateReview(ReviewUpdateRequest request);
+    void updateReview(ReviewUpdateRequest request);
 
+    void deleteById(Long id);
 }
