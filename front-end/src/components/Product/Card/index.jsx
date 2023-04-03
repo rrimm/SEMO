@@ -2,6 +2,7 @@ import React from "react";
 
 import "./index.styled.css";
 import { Link } from "react-router-dom";
+import { BROWSER_PATH } from "../../../constants/path";
 
 // id : 제품의 고유 번호
 // img : 제품의 대표 이미지
@@ -11,7 +12,7 @@ function Card({ product }) {
   const formatPrice = Number(product.price).toLocaleString();
   return (
     <div className="img-container">
-      <Link to={`/details/${product.id}`}>
+      <Link to={`${BROWSER_PATH}/${product.id}`}>
         <img className="image" src={product.image} alt=""></img>
       </Link>
       <div>
