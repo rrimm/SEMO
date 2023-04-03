@@ -42,4 +42,19 @@ const ButtonArea = styled.li`
   width: 10%;
 `;
 
-export { Container, Line, ProductList, OrderInfo, OrderSummary, ProdLink, OrderPrice, OrderStatus, ButtonArea };
+const StatusArea = styled.li`
+  width: 20%;
+`;
+
+export {
+  Container,
+  Line,
+  ProductList,
+  OrderInfo,
+  OrderSummary,
+  ProdLink,
+  OrderPrice,
+  OrderStatus,
+  ButtonArea,
+  StatusArea,
+};

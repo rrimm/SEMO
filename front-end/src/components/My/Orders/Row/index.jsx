@@ -69,6 +69,11 @@ function Row({ order }) {
             </S.ButtonArea>
           </>
         )}
+        {order.status === "주문확정" && (
+          <S.StatusArea>
+            <p>리뷰 작성 완료</p>
+          </S.StatusArea>
+        )}
       </S.ProductList>
       <S.Line />
     </>
