@@ -1,11 +1,13 @@
 package com.multi.shop.review.service;
 
+import com.multi.shop.order.domain.Status;
+import com.multi.shop.order.domain.vo.OrderConfirmationVO;
 import com.multi.shop.order.domain.vo.OrderProductVO;
 import com.multi.shop.order.repository.OrderRepository;
-import com.multi.shop.review.dto.request.ReviewSaveRequest;
-import com.multi.shop.review.dto.response.ReviewFormResponse;
 import com.multi.shop.review.domain.dto.request.ReviewRequest;
 import com.multi.shop.review.domain.vo.ReviewVO;
+import com.multi.shop.review.dto.request.ReviewSaveRequest;
+import com.multi.shop.review.dto.response.ReviewFormResponse;
 import com.multi.shop.review.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,15 +22,15 @@ public class ReviewService {
     private final ReviewRepository reviewRepository;
     private final OrderRepository orderRepository;
 
-    public List<ReviewVO> getReviewList(){
+    public List<ReviewVO> getReviewList() {
         return reviewRepository.getReviewList();
     }
 
-    public List<ReviewVO> getReviewListWithProductAndMember(){
-        return  reviewRepository.getReviewListWithProductAndMember();
+    public List<ReviewVO> getReviewListWithProductAndMember() {
+        return reviewRepository.getReviewListWithProductAndMember();
     }
 
-    public List<ReviewVO> getReviewListByCategory(String category){
+    public List<ReviewVO> getReviewListByCategory(String category) {
         return reviewRepository.getReviewListByCategory(category);
     }
 
@@ -63,6 +65,7 @@ public class ReviewService {
     @Transactional
     public Long save(ReviewSaveRequest request) {
         // TODO: 이미 작성된 리뷰가 있으면 예외 처리
+        orderRepository.orderConfirmation(OrderConfirmationVO.from(request.getOrderId(), Status.ORDER_CONFIRMATION));
         return reviewRepository.save(request);
     }
 }

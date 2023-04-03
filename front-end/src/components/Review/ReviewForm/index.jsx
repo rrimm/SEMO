@@ -76,6 +76,7 @@ function ReviewForm() {
         {
           memberId: token.memberId,
           productId: data.productId,
+          orderId: orderId,
           reviewImage: image,
           reviewContent: content,
         },

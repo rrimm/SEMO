@@ -1,5 +1,7 @@
 package com.multi.shop.order.mapper;
 
+import com.multi.shop.order.domain.Status;
+import com.multi.shop.order.domain.vo.OrderConfirmationVO;
 import com.multi.shop.order.domain.vo.OrderFindVO;
 import com.multi.shop.order.domain.vo.OrderProductVO;
 import com.multi.shop.order.domain.vo.OrderVO;
@@ -19,4 +21,6 @@ public interface OrderMapper {
     Optional<OrderProductVO> findProductInfoById(Long id);
 
     Optional<OrderVO> findById(Long id);
+
+    void orderConfirmation(OrderConfirmationVO vo);
 }
