@@ -2,6 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.multi.shop.review.mapper.ReviewMapper">
+    <insert id="save" parameterType="ReviewSaveRequest">
+        insert into review(content, image, member_id, product_id)
+            VALUE (#{reviewContent}, #{reviewImage}, #{memberId}, #{productId});
+    </insert>
+
+    <select id="findById" parameterType="Long" resultType="Review">
+        SELECT id, content, image, member_id memberId, product_id productId
+        FROM review
+        WHERE id = #{id}
+    </select>
+
     <select id="findAll" resultType="ReviewVO">
         SELECT r.id,
                r.content,
@@ -17,10 +28,6 @@
                  JOIN product p ON r.product_id = p.id;
     </select>
 
-    <insert id="save" parameterType="ReviewSaveRequest">
-        insert into review(content, image, member_id, product_id)
-            VALUE (#{reviewContent}, #{reviewImage}, #{memberId}, #{productId});
-    </insert>
 
     <update id="updateReview" parameterType="ReviewUpdateRequest">
         UPDATE review
