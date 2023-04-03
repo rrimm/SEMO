@@ -10,4 +10,7 @@ public interface ReviewMapper {
     List<ReviewVO> findAll();
 
     Long save(ReviewSaveRequest request);
+
+    Long updateReview(Long id, String content);
+
 }

@@ -48,8 +48,11 @@ function ReviewModal({ CloseModal, data, onDelete, onUpdate, setReviews }) {
                   <S.Review_Modal_BuyItemImage src={data?.productImage} alt=""></S.Review_Modal_BuyItemImage>
                   <S.Review_Modal_BuyItemName>&nbsp;&nbsp;{data?.productName}</S.Review_Modal_BuyItemName>
                 </S.Review_Modal_BuyItemBox>
-                <S.Review_Modal_DeleteButton onClick={handleDelete}>삭제</S.Review_Modal_DeleteButton>
-                <S.Review_Modal_UpdateButton onClick={handleUpdateClick}>수정</S.Review_Modal_UpdateButton>
+                <S.Review_Modal_ButtonSection>
+                <S.Review_Modal_Button onClick={handleDelete}>삭제</S.Review_Modal_Button>
+                &nbsp;&nbsp;
+                <S.Review_Modal_Button onClick={handleUpdateClick}>수정</S.Review_Modal_Button>
+                </S.Review_Modal_ButtonSection>
               </S.Review_Modal_ContentSection>
             </S.Review_Modal_Body_section2>
           </S.flexContainer>

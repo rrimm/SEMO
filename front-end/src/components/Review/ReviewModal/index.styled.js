@@ -168,11 +168,11 @@ const Review_Modal_BuyItemName = styled.div`
   text-decoration-line: none;
 `;
 
-const Review_Modal_DeleteButton = styled.button``;
+const Review_Modal_Button = styled.button`
+border : 1px solid #d3d3d3;
+  font-size: 14px;
+  `;
 
-const Review_Modal_UpdateButton = styled.button``;
-
-const Review_Modal_CancelButton = styled.button``;
 
 const Review_Modal_ContentTextarea = styled.textarea`
   display: flex;
@@ -182,6 +182,14 @@ const Review_Modal_ContentTextarea = styled.textarea`
   width: 90%;
   height: 400px;
   border: 1px solid #d3d3d3;
+`;
+
+const Review_Modal_ButtonSection = styled.div`
+  display: inline;
+  text-align: right;
+  width: 100%;
+  height: 10%;
+  margin-bottom : 20px;
 `;
 
 export {
@@ -201,8 +209,7 @@ export {
   Review_Modal_BuyItemBox,
   Review_Modal_BuyItemImage,
   Review_Modal_BuyItemName,
-  Review_Modal_DeleteButton,
-  Review_Modal_UpdateButton,
-  Review_Modal_CancelButton,
+  Review_Modal_Button,
   Review_Modal_ContentTextarea,
+  Review_Modal_ButtonSection,
 };

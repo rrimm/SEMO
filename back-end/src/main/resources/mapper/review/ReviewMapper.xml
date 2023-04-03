@@ -20,4 +20,11 @@
         insert into review(content, image, member_id, product_id)
             VALUE (#{reviewContent}, #{reviewImage}, #{memberId}, #{productId});
     </insert>
+
+    <update id="updateReview" parameterType="ReviewUpdateRequest">
+        UPDATE review
+        SET content = #{content}
+        WHERE id = #{id}
+    </update>
+
 </mapper>

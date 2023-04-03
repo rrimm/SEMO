@@ -15,7 +15,7 @@ function ReviewUpdateModal({ CloseModal, data, onUpdate, setReviews }) {
 
   const handleUpdateClick = async () => { //수정 로직
     try {
-        const response = await axios.put(`/review/${data.id}`, { content });
+        const response = await axios.put(`/auth/review/${data.id}`, { content });
         onUpdate(response.data);
 
         window.location.reload();
@@ -36,11 +36,15 @@ function ReviewUpdateModal({ CloseModal, data, onUpdate, setReviews }) {
       <S.Review_Modal_CloseBtn onClick={CloseModal}>✖</S.Review_Modal_CloseBtn>
       <S.flexContainer>
         <S.Review_Modal_Body_section1>
-          <S.Review_Modal_ImagePrd src={data?.image} alt=""></S.Review_Modal_ImagePrd>
+        {data.reviewImage ? (
+                <S.Review_Modal_ImagePrd src={data?.reviewImage}></S.Review_Modal_ImagePrd>
+              ) : (
+                <S.Review_Modal_ImagePrd src={data?.productImage}></S.Review_Modal_ImagePrd>
+              )}
         </S.Review_Modal_Body_section1>
         <S.Review_Modal_Body_section2>
           <S.Review_Modal_InfoStarSection>
-            <S.Review_Modal_InfoStar_userID>작성자 : {data?.member.email}</S.Review_Modal_InfoStar_userID>
+            <S.Review_Modal_InfoStar_userID>작성자 : {data?.memberEmail}</S.Review_Modal_InfoStar_userID>
           </S.Review_Modal_InfoStarSection>
           <S.Review_Modal_ContentTextarea
               value={content}
@@ -49,10 +53,12 @@ function ReviewUpdateModal({ CloseModal, data, onUpdate, setReviews }) {
             />
           <S.Review_Modal_ContentSection>
             <S.Review_Modal_BuyItemBox>
-              <S.Review_Modal_BuyItemImage src={data?.product.image} alt=""></S.Review_Modal_BuyItemImage>
-              <S.Review_Modal_BuyItemName>&nbsp;&nbsp;{data?.product.name}</S.Review_Modal_BuyItemName>
+              <S.Review_Modal_BuyItemImage src={data?.productImage} alt=""></S.Review_Modal_BuyItemImage>
+              <S.Review_Modal_BuyItemName>&nbsp;&nbsp;{data?.productName}</S.Review_Modal_BuyItemName>
             </S.Review_Modal_BuyItemBox>
-            <S.Review_Modal_UpdateButton onClick={handleUpdateClick}>수정</S.Review_Modal_UpdateButton>
+            <S.Review_Modal_ButtonSection>
+            <S.Review_Modal_Button onClick={handleUpdateClick}>수정</S.Review_Modal_Button>
+            </S.Review_Modal_ButtonSection>
           </S.Review_Modal_ContentSection>
         </S.Review_Modal_Body_section2>
       </S.flexContainer>

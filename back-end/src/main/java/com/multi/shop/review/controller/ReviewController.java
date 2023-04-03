@@ -1,6 +1,8 @@
 package com.multi.shop.review.controller;
 
+import com.multi.shop.review.domain.dto.request.ReviewRequest;
 import com.multi.shop.review.dto.request.ReviewSaveRequest;
+import com.multi.shop.review.dto.request.ReviewUpdateRequest;
 import com.multi.shop.review.dto.response.ReviewFormResponse;
 import com.multi.shop.review.dto.response.ReviewsResponse;
 import com.multi.shop.review.service.ReviewService;
@@ -9,10 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -38,5 +37,17 @@ public class ReviewController {
     public ResponseEntity<ReviewFormResponse> findProductInfo(@Param("orderId") Long orderId) {
         ReviewFormResponse response = reviewService.findProductInfoById(orderId);
         return ResponseEntity.ok(response);
+    }
+
+//    @PutMapping("/auth/review/{id}")
+//    public long updateReview(@PathVariable Long id, @RequestBody ReviewUpdateRequest request){
+//        return reviewService.updateReview(id, request.getContent());
+//    }
+
+    @PutMapping("/auth/review/{id}")
+    public ResponseEntity<Long> updateReview(@PathVariable Long id, @RequestBody ReviewUpdateRequest request){
+        log.info("Controller");
+        long updatedReviewId = reviewService.updateReview(id, request.getContent());
+        return ResponseEntity.ok(updatedReviewId);
     }
 }

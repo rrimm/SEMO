@@ -22,4 +22,8 @@ public class ReviewRepository {
     public Long save(ReviewSaveRequest request) {
         return reviewMapper.save(request);
     }
+
+    public Long updateReview(Long id, String content) {
+        return reviewMapper.updateReview(id, content);
+    }
 }
