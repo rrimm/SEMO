@@ -27,7 +27,7 @@ function RelatedProduct() {
   }, [relatedProductsRequest]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [numVisible] = useState(4);
+  const [numVisible] = useState(3);
 
   const handlePrevClick = () => {
     if (currentIndex > 0) {
