@@ -27,23 +27,6 @@ public class ReviewController {
         List<ReviewsResponse> responses = reviewService.findAll();
         return ResponseEntity.ok(responses);
     }
-
-//    @GetMapping("/review/category")
-//    public List<ReviewVO> getReviewListByCategory(@RequestParam String category) {
-//        return reviewService.getReviewListByCategory(category);
-//    }
-//
-//
-//    @PutMapping("/review/{id}")
-//    public int updateReview(@PathVariable Long id, @RequestBody ReviewVO reviewVO) {
-//        return reviewService.updateReview(id, reviewVO.getContent());
-//    }
-//
-//    @DeleteMapping("/review/{id}")
-//    public int deleteReviewById(@PathVariable Long id) {
-//        return reviewService.deleteReviewById(id);
-//    }
-
     /* 검증 */
     @PostMapping("/auth/review")
     public ResponseEntity<Void> save(@RequestBody @Valid ReviewSaveRequest request) {
