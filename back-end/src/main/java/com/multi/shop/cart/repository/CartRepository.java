@@ -1,5 +1,6 @@
 package com.multi.shop.cart.repository;
 
+import com.multi.shop.cart.domain.Cart;
 import com.multi.shop.cart.domain.vo.CartVO;
 import com.multi.shop.cart.dto.request.CartChangeCheckedRequest;
 import com.multi.shop.cart.dto.request.CartSaveRequest;
@@ -40,5 +41,9 @@ public class CartRepository {
 
     public void updateChecked(CartChangeCheckedRequest request) {
         cartMapper.updateChecked(request);
+    }
+
+    public Cart findById(Long id) {
+        return cartMapper.findById(id);
     }
 }

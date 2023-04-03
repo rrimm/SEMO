@@ -1,5 +1,6 @@
 package com.multi.shop.cart.mapper;
 
+import com.multi.shop.cart.domain.Cart;
 import com.multi.shop.cart.domain.vo.CartVO;
 import com.multi.shop.cart.dto.request.CartChangeCheckedRequest;
 import com.multi.shop.cart.dto.request.CartSaveRequest;
@@ -22,4 +23,6 @@ public interface CartMapper {
     void updateQuantity(CartChangeQuantityRequest request);
 
     void updateChecked(CartChangeCheckedRequest request);
+
+    Cart findById(Long id);
 }

@@ -1,6 +1,8 @@
 package com.multi.shop.cart.service;
 
+import com.multi.shop.cart.domain.Cart;
 import com.multi.shop.cart.domain.Quantity;
+import com.multi.shop.cart.domain.vo.CartVO;
 import com.multi.shop.cart.dto.request.CartChangeCheckedRequest;
 import com.multi.shop.cart.dto.request.CartChangeQuantityRequest;
 import com.multi.shop.cart.dto.request.CartSaveRequest;
@@ -33,6 +35,10 @@ public class CartService {
         if (cartRepository.existByProductId(request)) {
             throw new CartException(CartErrorCode.PRODUCT_ALREADY_EXIST_CART);
         }
+    }
+
+    public Cart findById(Long id) {
+        return cartRepository.findById(id);
     }
 
     public CartsResponse findByMemberId(Long memberId) {
