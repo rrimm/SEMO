@@ -30,12 +30,14 @@ function ReviewList(props) {
   const location = useLocation();
 
   const onUpdate = (updatedReview) => {
-    setReviews(reviews.map(review => {
-      if (review.id === updatedReview.id) {
-        return updatedReview;
-      }
-      return review;
-    }));
+    setReviews(
+      reviews.map((review) => {
+        if (review.id === updatedReview.id) {
+          return updatedReview;
+        }
+        return review;
+      })
+    );
   };
 
   const onDelete = async (reviewId) => {
@@ -52,27 +54,23 @@ function ReviewList(props) {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const page = Number(params.get("page")) || 1;
-    const category = params.get("category") || "ALL"
+    const category = params.get("category") || "ALL";
     setCurrentPage(page);
     setSelectedCategory(category);
 
-    
     axios.get(`/api/review?page=${page}&category=${category}`).then((response) => {
       setReviews(response.data);
     });
-
   }, [location.search, selectedCategory]);
 
-  const handleCategoryButtonClick =(category) => {
+  const handleCategoryButtonClick = (category) => {
     setSelectedCategory(category);
     setCurrentPage(1);
     navigate(`/review?page=1&category=${category}`);
   };
 
   const filteredContents =
-    selectedCategory === "ALL"
-      ? reviews
-      : reviews.filter((content) => content.category === selectedCategory);
+    selectedCategory === "ALL" ? reviews : reviews.filter((content) => content.category === selectedCategory);
 
   const contentsPerPage = 10; // 페이지당 보여줄 컨텐츠 개수
 
@@ -85,17 +83,19 @@ function ReviewList(props) {
     setModal(true);
   };
 
-  const reviewItems = currentContents.map((content) => (
+  console.log(currentContents);
+
+  const reviewItems = currentContents.map((review) => (
     <ReviewListItem
-      key={content.id}
-      image={content.image}
-      category={content.product.category}
-      product={content.product.name}
-      content={content.content}
-      account={content.member.email}
-      openModal={() => openModal(content)} // 모달 열기
+      key={review.id}
+      image={review.productImage}
+      category={review.productCategory}
+      productName={review.productName}
+      content={review.content}
+      account={review.memberEmail}
+      openModal={() => openModal(review)} // 모달 열기
       onUpdate={onUpdate} //업데이트 전달.
-      onDelete = {onDelete} //삭제 전달.
+      onDelete={onDelete} //삭제 전달.
     />
   ));
 
@@ -115,7 +115,15 @@ function ReviewList(props) {
           ))}
           {/* <ReviewSearch/> */}
         </S.CategoryButtonContainer>
-        {modal && modalContent && <ReviewModal CloseModal={() => setModal(false)} data={modalContent} onDelete = {onDelete} onUpdate={onUpdate} setReviews={setReviews}/>}
+        {modal && modalContent && (
+          <ReviewModal
+            CloseModal={() => setModal(false)}
+            data={modalContent}
+            onDelete={onDelete}
+            onUpdate={onUpdate}
+            setReviews={setReviews}
+          />
+        )}
         {reviewItems.length > 0 ? (
           reviewItems
         ) : (

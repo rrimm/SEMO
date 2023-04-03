@@ -1,12 +1,12 @@
 import React from "react";
 import * as S from "./index.styled";
 
-const ReviewListItem = ({ product, content, account, image, openModal }) => {
+const ReviewListItem = ({ productName, content, account, image, openModal }) => {
   const MAX_CONTENT_LENGTH = 100; // 최대 글자수
 
   const onClick = () => {
     // 클릭시 모달창 열기
-    openModal({ product, content, account, image });
+    openModal({ productName, content, account, image });
   };
 
   const truncatedContent =
@@ -17,7 +17,7 @@ const ReviewListItem = ({ product, content, account, image, openModal }) => {
         <S.Review_list_item_image src={image}></S.Review_list_item_image>
       </S.Review_list_item_detail1>
       <S.Review_list_item_detail2>
-        <S.Review_list_item_BuyItem>{product}</S.Review_list_item_BuyItem>
+        <S.Review_list_item_BuyItem>{productName}</S.Review_list_item_BuyItem>
         {/* <S.Review_list_item_ContentTitle>리뷰 제목</S.Review_list_item_ContentTitle> 제목 Data는 필요할거 같아서 냅둠*/}
         <S.Review_list_item_ContentWrite>{truncatedContent}</S.Review_list_item_ContentWrite>
         <S.Review_list_item_ContentID>{account}</S.Review_list_item_ContentID>

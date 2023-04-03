@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import * as S from "./index.styled";
 import ReviewUpdateModal from "./updateIndex";
+import { BROWSER_PATH } from "../../../constants/path";
 
 function ReviewModal({ CloseModal, data, onDelete, onUpdate, setReviews }) {
-  const [showUpdateModal, setShowUpdateModal] = useState(false)
-  
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
+
   useEffect(() => {
     //랜더링 될 때, (modal이 켜질 때) 스크롤 방지
     document.body.style.overflow = "hidden"; //body 부분 hidden
@@ -13,62 +14,58 @@ function ReviewModal({ CloseModal, data, onDelete, onUpdate, setReviews }) {
     };
   }, []);
 
-
-  // 이미지
-  // 유저의 이름
-  // 내용
-  // 제품의 사진
-  // 제품의 이름
-  // 제품의 고유 번호
-
-  const handleDelete = () => { //데이터 삭제 기능
+  const handleDelete = () => {
+    //데이터 삭제 기능
     onDelete(data.id);
     CloseModal();
-  }
+  };
 
-  const handleUpdateClick = () => { // 데이터 수정 폼 모달 열기
+  const handleUpdateClick = () => {
+    // 데이터 수정 폼 모달 열기
     setShowUpdateModal(true);
-  }
+  };
 
   return (
     <>
-    <S.Review_Modal onClick={CloseModal}>
-      <S.Review_Modal_Body onClick={(e) => e.stopPropagation()}>
-        <S.Review_Modal_CloseBtn onClick={CloseModal}>✖</S.Review_Modal_CloseBtn>
-        <S.flexContainer>
-          <S.Review_Modal_Body_section1>
-            <S.Review_Modal_ImagePrd src={data?.image}></S.Review_Modal_ImagePrd>
-          </S.Review_Modal_Body_section1>
-          <S.Review_Modal_Body_section2>
-            <S.Review_Modal_InfoStarSection>
-              <S.Review_Modal_InfoStar_userID>
-                작성자 : {data?.member.email}
-              </S.Review_Modal_InfoStar_userID>
-            </S.Review_Modal_InfoStarSection>
-            <S.Review_Modal_ContentSection>
-              <S.Review_Modal_Content>{data?.content}</S.Review_Modal_Content>
-              <S.Review_Modal_BuyItemBox>
-                <S.Review_Modal_BuyItemImage src={data?.product.image} alt=""></S.Review_Modal_BuyItemImage>
-                <S.Review_Modal_BuyItemName>&nbsp;&nbsp;{data?.product.name}</S.Review_Modal_BuyItemName>
-              </S.Review_Modal_BuyItemBox>
-              <S.Review_Modal_DeleteButton onClick={handleDelete}>삭제</S.Review_Modal_DeleteButton>
-              <S.Review_Modal_UpdateButton onClick={handleUpdateClick}>수정</S.Review_Modal_UpdateButton>
-            </S.Review_Modal_ContentSection>
-          </S.Review_Modal_Body_section2>
-        </S.flexContainer>
-      </S.Review_Modal_Body>
-    </S.Review_Modal>
-    {showUpdateModal && (
-      <ReviewUpdateModal
-        CloseModal={() => setShowUpdateModal(false)}
-        data={data}
-        onUpdate={onUpdate}
-        onDelete={onDelete}
-        setReviews={setReviews}
-      />
-    )}
-  </>
-);
+      <S.Review_Modal onClick={CloseModal}>
+        <S.Review_Modal_Body onClick={(e) => e.stopPropagation()}>
+          <S.Review_Modal_CloseBtn onClick={CloseModal}>✖</S.Review_Modal_CloseBtn>
+          <S.flexContainer>
+            <S.Review_Modal_Body_section1>
+              {data.reviewImage ? (
+                <S.Review_Modal_ImagePrd src={data?.reviewImage}></S.Review_Modal_ImagePrd>
+              ) : (
+                <S.Review_Modal_ImagePrd src={data?.productImage}></S.Review_Modal_ImagePrd>
+              )}
+            </S.Review_Modal_Body_section1>
+            <S.Review_Modal_Body_section2>
+              <S.Review_Modal_InfoStarSection>
+                <S.Review_Modal_InfoStar_userID>작성자 : {data?.memberEmail}</S.Review_Modal_InfoStar_userID>
+              </S.Review_Modal_InfoStarSection>
+              <S.Review_Modal_ContentSection>
+                <S.Review_Modal_Content>{data?.content}</S.Review_Modal_Content>
+                <S.Review_Modal_BuyItemBox to={`${BROWSER_PATH.DETAILS}/${data.productId}`}>
+                  <S.Review_Modal_BuyItemImage src={data?.productImage} alt=""></S.Review_Modal_BuyItemImage>
+                  <S.Review_Modal_BuyItemName>&nbsp;&nbsp;{data?.productName}</S.Review_Modal_BuyItemName>
+                </S.Review_Modal_BuyItemBox>
+                <S.Review_Modal_DeleteButton onClick={handleDelete}>삭제</S.Review_Modal_DeleteButton>
+                <S.Review_Modal_UpdateButton onClick={handleUpdateClick}>수정</S.Review_Modal_UpdateButton>
+              </S.Review_Modal_ContentSection>
+            </S.Review_Modal_Body_section2>
+          </S.flexContainer>
+        </S.Review_Modal_Body>
+      </S.Review_Modal>
+      {showUpdateModal && (
+        <ReviewUpdateModal
+          CloseModal={() => setShowUpdateModal(false)}
+          data={data}
+          onUpdate={onUpdate}
+          onDelete={onDelete}
+          setReviews={setReviews}
+        />
+      )}
+    </>
+  );
 }
 
 export default ReviewModal;
