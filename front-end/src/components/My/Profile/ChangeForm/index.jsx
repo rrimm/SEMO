@@ -46,6 +46,20 @@ function PasswordForm() {
     return pw1 === pw2;
   };
 
+  const logoutRequest = async () => {
+    await axios
+      .post(API_PATH.AUTH.LOGOUT, {
+        token: token.refreshToken,
+      })
+      .then(() => {
+        localStorage.clear();
+        window.location.reload();
+      })
+      .error((error) => {
+        console.error(error);
+      });
+  };
+
   const updatePasswordRequest = async () => {
     await axios
       .put(
@@ -62,9 +76,8 @@ function PasswordForm() {
         }
       )
       .then(() => {
-        localStorage.clear();
+        logoutRequest();
         alert("비밀번호가 변경되었습니다. 다시 로그인해주세요!");
-        navigate(BROWSER_PATH.LOGIN);
       })
       .error((error) => {
         if (error.response.status === 400) {

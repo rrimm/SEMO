@@ -56,12 +56,12 @@ function Category() {
       <S.Section>
         {MAIN_CATEGORIES.map((category) => {
           return (
-            <div key={category.text}>
+            <>
               <S.StyledLink to={`${BROWSER_PATH.PRODUCT}${category.path}`}>
                 <S.Text>{category.text}</S.Text>
                 <S.Pic src={category.img}></S.Pic>
               </S.StyledLink>
-            </div>
+            </>
           );
         })}
       </S.Section>

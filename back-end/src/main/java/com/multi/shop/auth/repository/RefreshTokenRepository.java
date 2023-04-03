@@ -10,8 +10,8 @@ import org.springframework.stereotype.Repository;
 public class RefreshTokenRepository {
     private final RefreshTokenMapper refreshTokenMapper;
 
-    public void save(RefreshTokenVO dao) {
-        refreshTokenMapper.save(dao);
+    public void save(RefreshTokenVO vo) {
+        refreshTokenMapper.save(vo);
     }
 
     public void remove(String token) {
