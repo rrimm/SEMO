@@ -11,7 +11,10 @@ function CartButton({ productId }) {
   const token = useRecoilValue(jwtToken);
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    window.location.reload();
+  };
   const handleShow = () => setShow(true);
 
   const addCartRequest = async () => {
@@ -44,6 +47,7 @@ function CartButton({ productId }) {
 
   const goCart = () => {
     navigate("/cart");
+    window.location.reload();
   };
 
   return (
