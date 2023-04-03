@@ -25,7 +25,6 @@ public class CartService {
 
     @Transactional
     public Long save(CartSaveRequest request) {
-        // TODO: 카트에 이미 존재하는 상품인지 조회
         validateProductIdIsNotDuplicated(request);
         return cartRepository.save(request);
     }

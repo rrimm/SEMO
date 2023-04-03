@@ -15,6 +15,9 @@ function CartButton({ productId }) {
   const handleShow = () => setShow(true);
 
   const addCartRequest = async () => {
+    if (token === null) {
+      navigate("/login");
+    }
     await axios
       .post(
         `${API_PATH.CART.BASE}`,
@@ -32,7 +35,10 @@ function CartButton({ productId }) {
         handleShow();
       })
       .catch((error) => {
-        navigate("/login");
+        if (error.response.status === 400) {
+          alert(error.response.data.message);
+          return;
+        }
       });
   };
 
