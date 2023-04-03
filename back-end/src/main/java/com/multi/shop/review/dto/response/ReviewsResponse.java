@@ -13,19 +13,20 @@ public class ReviewsResponse {
     private Long id;
     private String content;
     private String reviewImage;
-    private String memberEmail;
+    private Long memberId;
+    private String memberName;
     private Long productId;
     private String productName;
     private Category productCategory;
     private String productImage;
 
     @Builder
-    public ReviewsResponse(Long id, String content, String reviewImage, String memberEmail, Long productId,
-                           String productName, Category productCategory, String productImage) {
+    public ReviewsResponse(Long id, String content, String reviewImage, Long memberId, String memberName, Long productId, String productName, Category productCategory, String productImage) {
         this.id = id;
         this.content = content;
         this.reviewImage = reviewImage;
-        this.memberEmail = memberEmail;
+        this.memberId = memberId;
+        this.memberName = memberName;
         this.productId = productId;
         this.productName = productName;
         this.productCategory = productCategory;
@@ -37,7 +38,8 @@ public class ReviewsResponse {
                 .id(vo.getId())
                 .content(vo.getContent())
                 .reviewImage(vo.getReviewImage())
-                .memberEmail(vo.getMemberEmail())
+                .memberId(vo.getMemberId())
+                .memberName(vo.getMemberName())
                 .productId(vo.getProductId())
                 .productName(vo.getProductName())
                 .productCategory(vo.getProductCategory())
