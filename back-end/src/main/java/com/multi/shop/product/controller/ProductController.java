@@ -27,7 +27,7 @@ public class ProductController {
 
     @GetMapping("/api/product/{id}")
     public ResponseEntity<ProductResponse> findByProductId(@PathVariable Long id) {
-        ProductResponse response = productService.findByProductId(id);
+        ProductResponse response = productService.findById(id);
         return ResponseEntity.ok(response);
     }
 

@@ -22,7 +22,8 @@ import java.util.stream.Collectors;
 public class ProductService {
     private final ProductRepository productRepository;
 
-    public ProductResponse findByProductId(Long productId) {
+    // TODO: findDetailsById 로 수정하고 findById 를 하나 생성
+    public ProductResponse findById(Long productId) {
         validateProductIsExistById(productId);
         ProductVO product = productRepository.findByProductId(productId);
         List<String> carousel = productRepository.findCarouselByProductId(productId);

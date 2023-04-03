@@ -12,7 +12,7 @@ public class CartChangeCheckedRequest {
     @NotNull
     private Long id;
 
-    @NotNull
+
     private boolean checked;
 
     @Builder

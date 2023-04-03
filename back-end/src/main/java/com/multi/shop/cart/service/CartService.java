@@ -2,7 +2,6 @@ package com.multi.shop.cart.service;
 
 import com.multi.shop.cart.domain.Cart;
 import com.multi.shop.cart.domain.Quantity;
-import com.multi.shop.cart.domain.vo.CartVO;
 import com.multi.shop.cart.dto.request.CartChangeCheckedRequest;
 import com.multi.shop.cart.dto.request.CartChangeQuantityRequest;
 import com.multi.shop.cart.dto.request.CartSaveRequest;
@@ -12,6 +11,7 @@ import com.multi.shop.cart.dto.response.CartsResponse;
 import com.multi.shop.cart.exception.CartErrorCode;
 import com.multi.shop.cart.exception.CartException;
 import com.multi.shop.cart.repository.CartRepository;
+import com.multi.shop.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +24,7 @@ import java.util.List;
 public class CartService {
 
     private final CartRepository cartRepository;
+    private final ProductService productService;
 
     @Transactional
     public Long save(CartSaveRequest request) {
@@ -69,11 +70,6 @@ public class CartService {
     }
 
     @Transactional
-    public void deleteCart(Long id) {
-        cartRepository.deleteById(id);
-    }
-
-    @Transactional
     public void updateQuantity(CartChangeQuantityRequest request) {
         request.setQuantity(Quantity.of(request.getQuantity()).getValue());
         cartRepository.updateQuantity(request);
@@ -81,7 +77,14 @@ public class CartService {
 
     @Transactional
     public void updateChecked(CartChangeCheckedRequest request) {
-        request.setChecked(!request.isChecked());
+        Cart findCart = findById(request.getId());
+        request.setChecked(!findCart.isChecked());
         cartRepository.updateChecked(request);
     }
+
+    @Transactional
+    public void deleteCart(Long id) {
+        cartRepository.deleteById(id);
+    }
+
 }
