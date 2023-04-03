@@ -9,9 +9,9 @@ const Pw = ({ handleChange }) => {
         id="pw"
         name="pw"
         onChange={handleChange}
-        placeholder="숫자와 알파벳만 사용, 8~12자리"
+        placeholder="숫자와 알파벳만 사용, 8~16자리"
         minlength="8"
-        maxlength="12"
+        maxlength="16"
         required
       />
     </div>
