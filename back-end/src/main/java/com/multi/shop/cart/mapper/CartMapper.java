@@ -7,6 +7,7 @@ import com.multi.shop.cart.dto.request.CartSaveRequest;
 import com.multi.shop.cart.dto.request.CartChangeQuantityRequest;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CartMapper {
     Long save(CartSaveRequest request);
@@ -24,5 +25,5 @@ public interface CartMapper {
 
     void updateChecked(CartChangeCheckedRequest request);
 
-    Cart findById(Long id);
+    Optional<Cart> findById(Long id);
 }

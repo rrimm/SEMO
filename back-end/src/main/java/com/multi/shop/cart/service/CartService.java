@@ -38,7 +38,8 @@ public class CartService {
     }
 
     public Cart findById(Long id) {
-        return cartRepository.findById(id);
+        return cartRepository.findById(id)
+                .orElseThrow(() -> new CartException(CartErrorCode.CART_NOT_EXIST));
     }
 
     public CartsResponse findByMemberId(Long memberId) {
