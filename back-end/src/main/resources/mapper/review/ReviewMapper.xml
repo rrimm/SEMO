@@ -28,4 +28,10 @@
         WHERE id = #{id}
     </update>
 
+    <delete id="deleteById" parameterType="Long">
+        delete
+        FROM review
+        WHERE id = #{id}
+    </delete>
+
 </mapper>
