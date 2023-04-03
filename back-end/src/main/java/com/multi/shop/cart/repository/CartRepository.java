@@ -44,6 +44,10 @@ public class CartRepository {
         cartMapper.deleteById(id);
     }
 
+    public boolean existById(Long id) {
+        return cartMapper.existById(id);
+    }
+
     public boolean existByProductId(CartSaveRequest request) {
         return cartMapper.existByProductId(request);
     }

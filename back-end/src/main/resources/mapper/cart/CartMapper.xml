@@ -53,6 +53,12 @@
         WHERE id = #{id}
     </delete>
 
+    <select id="existById" parameterType="Long" resultType="boolean">
+        SELECT if(count(*) = 1, 1, 0)
+        FROM cart
+        WHERE id = #{id}
+    </select>
+
     <select id="existByProductId" parameterType="CartSaveRequest" resultType="boolean">
         SELECT if(count(*) = 1, 1, 0)
         FROM cart

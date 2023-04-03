@@ -24,5 +24,6 @@ public interface CartMapper {
 
     void deleteById(Long id);
 
+    boolean existById(Long id);
     boolean existByProductId(CartSaveRequest request);
 }

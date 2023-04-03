@@ -69,6 +69,7 @@ public class CartService {
 
     @Transactional
     public void updateQuantity(CartChangeQuantityRequest request) {
+        validateCartIsNotExist(request.getId());
         request.setQuantity(Quantity.from(request.getQuantity()).getValue());
         cartRepository.updateQuantity(request);
     }
@@ -82,6 +83,13 @@ public class CartService {
 
     @Transactional
     public void deleteCart(Long id) {
+        validateCartIsNotExist(id);
         cartRepository.deleteById(id);
+    }
+
+    private void validateCartIsNotExist(Long id) {
+        if (!cartRepository.existById(id)) {
+            throw new CartException(CartErrorCode.CART_NOT_EXIST);
+        }
     }
 }
