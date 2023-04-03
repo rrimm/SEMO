@@ -83,8 +83,6 @@ function ReviewList(props) {
     setModal(true);
   };
 
-  console.log(currentContents);
-
   const reviewItems = currentContents.map((review) => (
     <ReviewListItem
       key={review.id}
@@ -92,7 +90,7 @@ function ReviewList(props) {
       category={review.productCategory}
       productName={review.productName}
       content={review.content}
-      account={review.memberEmail}
+      account={review.memberName}
       openModal={() => openModal(review)} // 모달 열기
       onUpdate={onUpdate} //업데이트 전달.
       onDelete={onDelete} //삭제 전달.
