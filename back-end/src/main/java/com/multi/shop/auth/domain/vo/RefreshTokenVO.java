@@ -7,12 +7,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class RefreshTokenVO {
-    private String key;
-    private String value;
+    private String rtKey;
+    private String rtValue;
 
     @Builder
     public RefreshTokenVO(String key, String value) {
-        this.key = key;
-        this.value = value;
+        this.rtKey = key;
+        this.rtValue = value;
+    }
+
+    public RefreshTokenVO update(String token) {
+        this.rtValue = token;
+        return this;
     }
 }

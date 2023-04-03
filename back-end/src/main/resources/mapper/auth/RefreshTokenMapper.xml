@@ -3,8 +3,14 @@
 
 <mapper namespace="com.multi.shop.auth.mapper.RefreshTokenMapper">
     <insert id="save" parameterType="RefreshTokenVO">
-        insert into refresh_token(rt_key, rt_value) VALUE (#{key}, #{value})
+        insert into refresh_token(rt_key, rt_value) VALUE (#{rtKey}, #{rtValue})
     </insert>
+
+    <select id="findTokenByKey" parameterType="String" resultType="RefreshTokenVO">
+        select rt_key rtKey, rt_value rtValue
+        from refresh_token
+        where rt_key = #{key}
+    </select>
 
     <delete id="remove" parameterType="String">
         delete
