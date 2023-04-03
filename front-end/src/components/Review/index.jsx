@@ -6,6 +6,8 @@ import ReviewModal from "./ReviewModal";
 import BoardPage from "./ReviewPagenation";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
+import { useRecoilValue } from "recoil";
+import { jwtToken } from "../../stores/auth";
 
 const categories = ["ALL", "HAT", "TOP", "OUTER", "BAG", "PANT", "SHOES", "BASIC"];
 const categoryLabels = {
@@ -20,6 +22,7 @@ const categoryLabels = {
 };
 
 function ReviewList(props) {
+  const token = useRecoilValue(jwtToken);
   const [modal, setModal] = useState(false);
   const [modalContent, setModalContent] = useState(null); //json 데이터 가져오기 위한 useState
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
@@ -42,7 +45,14 @@ function ReviewList(props) {
 
   const onDelete = async (reviewId) => {
     try {
-      await axios.delete(`/review/${reviewId}`);
+      await axios.delete(`/auth/review`, {
+        params: {
+          reviewId: reviewId,
+        },
+        headers: {
+          Authorization: `Bearer ${token.accessToken}`,
+        },
+      });
 
       // 리뷰 목록 다시 불러오기
       window.location.reload();
