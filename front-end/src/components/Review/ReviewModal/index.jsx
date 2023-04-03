@@ -58,8 +58,8 @@ function ReviewModal({ CloseModal, data, onDelete, onUpdate, setReviews }) {
                 </S.Review_Modal_BuyItemBox>
                 {token && data.memberId === token.memberId && (
                   <>
-                    <S.Review_Modal_DeleteButton onClick={handleDelete}>삭제</S.Review_Modal_DeleteButton>
-                    <S.Review_Modal_UpdateButton onClick={handleUpdateClick}>수정</S.Review_Modal_UpdateButton>
+                    <S.Review_Modal_Button onClick={handleDelete}>삭제</S.Review_Modal_Button>
+                    <S.Review_Modal_Button onClick={handleUpdateClick}>수정</S.Review_Modal_Button>
                   </>
                 )}
               </S.Review_Modal_ContentSection>
