@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-import { API_PATH } from "../../constants/path";
+import { API_PATH, BROWSER_PATH } from "../../constants/path";
 
 import Loading from "../../components/Loading";
 import Detail from "../../components/Details";
 
 function Details() {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const param = useParams();
@@ -21,9 +22,12 @@ function Details() {
         setLoading(false);
       })
       .catch((error) => {
+        if (error.response.status === 400) {
+          return navigate(BROWSER_PATH.NOT_FOUND, { replace: true });
+        }
         console.error(error);
       });
-  }, [param]);
+  }, [param, navigate]);
 
   useEffect(() => {
     getDataRequest();
