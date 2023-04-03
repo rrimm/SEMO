@@ -4,6 +4,7 @@ import com.multi.shop.order.domain.Status;
 import com.multi.shop.order.domain.vo.OrderConfirmationVO;
 import com.multi.shop.order.domain.vo.OrderProductVO;
 import com.multi.shop.order.repository.OrderRepository;
+import com.multi.shop.review.domain.Content;
 import com.multi.shop.review.domain.Review;
 import com.multi.shop.review.dto.request.ReviewSaveRequest;
 import com.multi.shop.review.dto.request.ReviewUpdateRequest;
@@ -29,7 +30,11 @@ public class ReviewService {
 
     @Transactional
     public Long save(ReviewSaveRequest request) {
+        Content content = Content.from(request.getReviewContent());
+
+        request.setReviewContent(content.getValue());
         orderRepository.orderConfirmation(OrderConfirmationVO.from(request.getOrderId(), Status.ORDER_CONFIRMATION));
+
         return reviewRepository.save(request);
     }
 
