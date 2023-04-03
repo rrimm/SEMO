@@ -9,6 +9,11 @@ function ReviewModal({ CloseModal, data, onDelete, onUpdate, setReviews }) {
   const token = useRecoilValue(jwtToken);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
 
+  const maskedName =
+    data.memberName.substring(0, 1) +
+    "*".repeat(data.memberName.length - 2) +
+    data.memberName.substring(data.memberName.length - 1);
+
   useEffect(() => {
     //랜더링 될 때, (modal이 켜질 때) 스크롤 방지
     document.body.style.overflow = "hidden"; //body 부분 hidden
@@ -43,7 +48,7 @@ function ReviewModal({ CloseModal, data, onDelete, onUpdate, setReviews }) {
             </S.Review_Modal_Body_section1>
             <S.Review_Modal_Body_section2>
               <S.Review_Modal_InfoStarSection>
-                <S.Review_Modal_InfoStar_userID>작성자 : {data?.memberName}</S.Review_Modal_InfoStar_userID>
+                <S.Review_Modal_InfoStar_userID>작성자 : {maskedName}</S.Review_Modal_InfoStar_userID>
               </S.Review_Modal_InfoStarSection>
               <S.Review_Modal_ContentSection>
                 <S.Review_Modal_Content>{data?.content}</S.Review_Modal_Content>

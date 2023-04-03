@@ -83,19 +83,25 @@ function ReviewList(props) {
     setModal(true);
   };
 
-  const reviewItems = currentContents.map((review) => (
-    <ReviewListItem
-      key={review.id}
-      image={review.productImage}
-      category={review.productCategory}
-      productName={review.productName}
-      content={review.content}
-      account={review.memberName}
-      openModal={() => openModal(review)} // 모달 열기
-      onUpdate={onUpdate} //업데이트 전달.
-      onDelete={onDelete} //삭제 전달.
-    />
-  ));
+  const reviewItems = currentContents.map((review) => {
+    const maskedName =
+      review.memberName.substring(0, 1) +
+      "*".repeat(review.memberName.length - 2) +
+      review.memberName.substring(review.memberName.length - 1);
+    return (
+      <ReviewListItem
+        key={review.id}
+        image={review.productImage}
+        category={review.productCategory}
+        productName={review.productName}
+        content={review.content}
+        account={maskedName}
+        openModal={() => openModal(review)} // 모달 열기
+        onUpdate={onUpdate} //업데이트 전달.
+        onDelete={onDelete} //삭제 전달.
+      />
+    );
+  });
 
   return (
     <S.Container>
