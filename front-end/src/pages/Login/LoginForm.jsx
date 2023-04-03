@@ -38,7 +38,7 @@ function LoginForm() {
         setToken(response.data);
         setLogin(true);
         console.log(response);
-        navigate(-1);
+        navigate(-1, { replace: true });
       })
       .catch((error) => {
         console.log(error);
@@ -48,12 +48,12 @@ function LoginForm() {
 
   //회원가입 버튼 누르면 Join페이지로 이동
   const goJoin = () => {
-    navigate(BROWSER_PATH.JOIN);
+    navigate(BROWSER_PATH.JOIN, { replace: true });
   };
 
   useEffect(() => {
     if (login || token) {
-      navigate(BROWSER_PATH.BASE);
+      navigate(BROWSER_PATH.BASE, { replace: true });
     }
   });
 

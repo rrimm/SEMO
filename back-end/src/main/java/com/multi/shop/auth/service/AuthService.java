@@ -7,6 +7,8 @@ import com.multi.shop.auth.dto.request.MemberLogoutRequest;
 import com.multi.shop.auth.repository.RefreshTokenRepository;
 import com.multi.shop.auth.support.JwtTokenProvider;
 import com.multi.shop.member.domain.vo.MemberVO;
+import com.multi.shop.member.exception.MemberErrorCode;
+import com.multi.shop.member.exception.MemberException;
 import com.multi.shop.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -35,15 +37,15 @@ public class AuthService {
                 .authenticate(authenticationToken);
 
         MemberVO findMember = memberRepository.findByMemberEmail(request.getEmail())
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(() -> new MemberException(MemberErrorCode.MEMBER_NOT_EXIST));
 
         TokenDto tokenDto = jwtTokenProvider.generateTokenDto(authentication, findMember);
         RefreshTokenVO token = RefreshTokenVO.builder()
                 .key(authentication.getName())
                 .value(tokenDto.getRefreshToken())
                 .build();
-        refreshTokenRepository.save(token);
 
+        refreshTokenRepository.save(token);
         return tokenDto;
     }
 
