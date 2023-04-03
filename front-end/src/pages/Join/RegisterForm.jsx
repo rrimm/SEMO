@@ -10,7 +10,12 @@ import Birth from "./Birth";
 import Phone from "./Phone";
 
 import { API_PATH, BROWSER_PATH } from "../../constants/path";
-import { EMAIL_REGEX, PHONE_NUMBER_REGEX, BIRTHDAY_REGEX, PW_REGEX } from "../../utils/validate";
+import {
+  EMAIL_REGEX,
+  PHONE_NUMBER_REGEX,
+  BIRTHDAY_REGEX,
+  PW_REGEX,
+} from "../../utils/validate";
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
@@ -37,7 +42,9 @@ const RegisterForm = () => {
     e.preventDefault();
 
     if (!PW_REGEX.test(formData.pw)) {
-      setPwError("비밀번호를 숫자 + 영문자 조합으로 8자리~12자리 입력해주세요!");
+      setPwError(
+        "비밀번호를 숫자 + 영문자 조합으로 8자리~16자리 입력해주세요!"
+      );
       return;
     }
 

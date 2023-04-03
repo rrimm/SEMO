@@ -11,7 +11,7 @@ const PwCheck = ({ handleChange }) => {
         onChange={handleChange}
         placeholder="비밀번호를 한 번 더 입력하세요"
         minlength="8"
-        maxlength="12"
+        maxlength="16"
         required
       />
     </div>
