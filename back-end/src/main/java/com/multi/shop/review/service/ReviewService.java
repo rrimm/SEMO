@@ -5,6 +5,7 @@ import com.multi.shop.order.domain.vo.OrderConfirmationVO;
 import com.multi.shop.order.domain.vo.OrderProductVO;
 import com.multi.shop.order.repository.OrderRepository;
 import com.multi.shop.review.dto.request.ReviewSaveRequest;
+import com.multi.shop.review.dto.request.ReviewUpdateRequest;
 import com.multi.shop.review.dto.response.ReviewFormResponse;
 import com.multi.shop.review.dto.response.ReviewsResponse;
 import com.multi.shop.review.repository.ReviewRepository;
@@ -43,8 +44,8 @@ public class ReviewService {
     }
 
     @Transactional
-    public Long updateReview(Long id, String content){
+    public Long updateReview(ReviewUpdateRequest request){
         log.info("Service");
-        return reviewRepository.updateReview(id, content);
+        return reviewRepository.updateReview(request);
     }
 }

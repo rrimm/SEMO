@@ -3,6 +3,7 @@ package com.multi.shop.review.repository;
 
 import com.multi.shop.review.domain.vo.ReviewVO;
 import com.multi.shop.review.dto.request.ReviewSaveRequest;
+import com.multi.shop.review.dto.request.ReviewUpdateRequest;
 import com.multi.shop.review.mapper.ReviewMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -23,7 +24,7 @@ public class ReviewRepository {
         return reviewMapper.save(request);
     }
 
-    public Long updateReview(Long id, String content) {
-        return reviewMapper.updateReview(id, content);
+    public Long updateReview(ReviewUpdateRequest request) {
+        return reviewMapper.updateReview(request);
     }
 }

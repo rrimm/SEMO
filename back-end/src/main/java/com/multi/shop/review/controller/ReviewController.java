@@ -44,10 +44,10 @@ public class ReviewController {
 //        return reviewService.updateReview(id, request.getContent());
 //    }
 
-    @PutMapping("/auth/review/{id}")
-    public ResponseEntity<Long> updateReview(@PathVariable Long id, @RequestBody ReviewUpdateRequest request){
+    @PutMapping("/auth/review")
+    public ResponseEntity<Long> update(@RequestBody ReviewUpdateRequest request){
         log.info("Controller");
-        long updatedReviewId = reviewService.updateReview(id, request.getContent());
+        long updatedReviewId = reviewService.updateReview(request);
         return ResponseEntity.ok(updatedReviewId);
     }
 }

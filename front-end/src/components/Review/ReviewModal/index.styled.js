@@ -169,10 +169,9 @@ const Review_Modal_BuyItemName = styled.div`
 `;
 
 const Review_Modal_Button = styled.button`
-border : 1px solid #d3d3d3;
+  border: 1px solid #d3d3d3;
   font-size: 14px;
-  `;
-
+`;
 
 const Review_Modal_ContentTextarea = styled.textarea`
   display: flex;
@@ -189,7 +188,7 @@ const Review_Modal_ButtonSection = styled.div`
   text-align: right;
   width: 100%;
   height: 10%;
-  margin-bottom : 20px;
+  margin-bottom: 20px;
 `;
 
 export {
