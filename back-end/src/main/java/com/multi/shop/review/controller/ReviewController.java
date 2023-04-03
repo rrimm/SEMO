@@ -2,15 +2,17 @@ package com.multi.shop.review.controller;
 
 import com.multi.shop.review.dto.request.ReviewSaveRequest;
 import com.multi.shop.review.dto.response.ReviewFormResponse;
-import com.multi.shop.review.domain.dto.request.ReviewRequest;
-import com.multi.shop.review.domain.vo.ReviewVO;
+import com.multi.shop.review.dto.response.ReviewsResponse;
 import com.multi.shop.review.service.ReviewService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -21,10 +23,11 @@ public class ReviewController {
     private final ReviewService reviewService;
 
     @GetMapping("/api/review")
-    public List<ReviewVO> getReviewList() {
-        return reviewService.getReviewListWithProductAndMember();
+    public ResponseEntity<List<ReviewsResponse>> findAll() {
+        List<ReviewsResponse> responses = reviewService.findAll();
+        return ResponseEntity.ok(responses);
     }
-//
+
 //    @GetMapping("/review/category")
 //    public List<ReviewVO> getReviewListByCategory(@RequestParam String category) {
 //        return reviewService.getReviewListByCategory(category);
@@ -47,6 +50,7 @@ public class ReviewController {
         reviewService.save(request);
         return ResponseEntity.ok().build();
     }
+
     @GetMapping("/auth/review/form")
     public ResponseEntity<ReviewFormResponse> findProductInfo(@Param("orderId") Long orderId) {
         ReviewFormResponse response = reviewService.findProductInfoById(orderId);

@@ -20,8 +20,9 @@ public class ReviewRepository {
         return reviewMapper.getReviewList();
     }
 
-    public List<ReviewVO> getReviewListWithProductAndMember() {
-        return reviewMapper.getReviewListWithProductAndMember();
+    public List<ReviewVO> findAll() {
+        // TODO: VO 데이터 변경
+        return reviewMapper.findAll();
     }
 
     public List<ReviewVO> getReviewListByCategory(String category) {

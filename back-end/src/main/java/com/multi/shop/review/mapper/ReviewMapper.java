@@ -10,7 +10,7 @@ public interface ReviewMapper {
 
     List<ReviewVO> getReviewList(); //리뷰 전체 조회
 
-    List<ReviewVO> getReviewListWithProductAndMember(); //리뷰 조회(조인)
+    List<ReviewVO> findAll(); //리뷰 조회(조인)
 
     int updateReview(Long id, String content); //리뷰 수정
 

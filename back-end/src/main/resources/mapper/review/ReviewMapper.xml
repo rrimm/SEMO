@@ -6,7 +6,7 @@
     <resultMap type="com.multi.shop.review.domain.vo.ReviewVO" id="reviewResultMap">
         <id column="id" property="id"/>
         <result column="content" property="content"/>
-<!--        <result column="category" property="category"/>-->
+        <!--        <result column="category" property="category"/>-->
         <result column="image" property="image"/>
         <!--    <result column="member_id" property="memberId"/>-->
         <!--    <result column="product_id" property="productId"/>-->
@@ -27,15 +27,15 @@
         FROM review;
     </select>
 
-    <select id="getReviewListWithProductAndMember" resultMap="reviewResultMap">
+    <select id="findAll" resultMap="ReviewVO">
         SELECT r.id,
-               p.name,
                r.content,
-               m.email,
-               r.image,
-               p.category,
-               r.member_id,
-               r.product_id
+               r.image    reviewImage,
+               m.email    memberEmail,
+               p.id       productId,
+               p.name     productName,
+               p.category productCategory,
+               p.image    productImage
         FROM review r
                  JOIN member m ON r.member_id = m.id
                  JOIN product p ON r.product_id = p.id;

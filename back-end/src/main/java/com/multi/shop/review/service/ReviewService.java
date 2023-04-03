@@ -8,6 +8,7 @@ import com.multi.shop.review.domain.dto.request.ReviewRequest;
 import com.multi.shop.review.domain.vo.ReviewVO;
 import com.multi.shop.review.dto.request.ReviewSaveRequest;
 import com.multi.shop.review.dto.response.ReviewFormResponse;
+import com.multi.shop.review.dto.response.ReviewsResponse;
 import com.multi.shop.review.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,12 +23,10 @@ public class ReviewService {
     private final ReviewRepository reviewRepository;
     private final OrderRepository orderRepository;
 
-    public List<ReviewVO> getReviewList() {
-        return reviewRepository.getReviewList();
-    }
-
-    public List<ReviewVO> getReviewListWithProductAndMember() {
-        return reviewRepository.getReviewListWithProductAndMember();
+    public List<ReviewsResponse> findAll() {
+        return reviewRepository.findAll().stream()
+                .map(ReviewsResponse::from)
+                .toList();
     }
 
     public List<ReviewVO> getReviewListByCategory(String category) {
