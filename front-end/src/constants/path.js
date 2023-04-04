@@ -12,7 +12,6 @@ const BROWSER_PATH = {
   NOT_FOUND: "/notfound",
 };
 
-// TODO: 추후 스프링과 연동하기
 const API_PATH = {
   AUTH: {
     JOIN: "/api/join",
@@ -21,10 +20,10 @@ const API_PATH = {
     RE: "/api/reissue",
   },
   MAIN: {
-    HEADER: "http:localhost:4000/my", // GET API
+    HEADER: "http:localhost:4000/my",
   },
   CART: {
-    BASE: "/auth/cart", // GET API,
+    BASE: "/auth/cart",
     CHECK: "/auth/cart/check",
     QUANTITY: "/auth/cart/quantity",
   },
@@ -34,12 +33,11 @@ const API_PATH = {
     ORDER: "/auth/order",
     ORDER_ALL: "/auth/order/all",
     UPDATE: {
-      ADDRESS: "https://reqres.in/api/users", // POST API
-      PASSWORD: "/auth/member/password", // Put API
+      PASSWORD: "/auth/member/password",
     },
   },
   PRODUCT: {
-    BASE: "/api/product", // GET
+    BASE: "/api/product",
     RELATED: "/api/product/related",
     SEARCH: "/api/product/search",
   },
