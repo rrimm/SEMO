@@ -1,4 +1,5 @@
 import React from "react";
+import { DIRECTIVE } from "../../constants/message";
 
 const PwCheck = ({ handleChange }) => {
   return (
@@ -9,7 +10,7 @@ const PwCheck = ({ handleChange }) => {
         id="pwCheck"
         name="pwCheck"
         onChange={handleChange}
-        placeholder="비밀번호를 한 번 더 입력하세요"
+        placeholder={DIRECTIVE.JOIN.RE_PASSWORD}
         minlength="8"
         maxlength="16"
         required

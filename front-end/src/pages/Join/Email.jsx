@@ -1,17 +1,11 @@
 import React from "react";
+import { DIRECTIVE } from "../../constants/message";
 
 const Email = ({ handleChange }) => {
   return (
     <div className="list-group">
       <label For="email">이메일</label>
-      <input
-        placeholder="이메일 주소 입력, ex)abc1234@gmail.com"
-        type="email"
-        id="email"
-        name="email"
-        onChange={handleChange}
-        required
-      />
+      <input placeholder={DIRECTIVE.JOIN.EMAIL} type="email" id="email" name="email" onChange={handleChange} required />
     </div>
   );
 };

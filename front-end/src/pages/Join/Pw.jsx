@@ -1,4 +1,5 @@
 import React from "react";
+import { DIRECTIVE } from "../../constants/message";
 
 const Pw = ({ handleChange }) => {
   return (
@@ -9,7 +10,7 @@ const Pw = ({ handleChange }) => {
         id="pw"
         name="pw"
         onChange={handleChange}
-        placeholder="숫자와 알파벳만 사용, 8~16자리"
+        placeholder={DIRECTIVE.JOIN.PASSWORD}
         minlength="8"
         maxlength="16"
         required

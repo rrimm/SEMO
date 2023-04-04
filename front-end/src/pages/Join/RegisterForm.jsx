@@ -11,6 +11,7 @@ import Phone from "./Phone";
 
 import { API_PATH, BROWSER_PATH } from "../../constants/path";
 import { EMAIL_REGEX, PHONE_NUMBER_REGEX, BIRTHDAY_REGEX, PW_REGEX } from "../../utils/validate";
+import { CLIENT_ERROR_MESSAGE } from "../../constants/message";
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
@@ -37,27 +38,27 @@ const RegisterForm = () => {
     e.preventDefault();
 
     if (!PW_REGEX.test(formData.pw)) {
-      setPwError("비밀번호를 숫자 + 영문자 조합으로 8자리~16자리 입력해주세요!");
+      setPwError(CLIENT_ERROR_MESSAGE.INVALID_PASSWORD.FORMAT);
       return;
     }
 
     if (formData.pw !== formData.pwCheck) {
-      setPwCheckError("비밀번호가 일치하지 않습니다!");
+      setPwCheckError(CLIENT_ERROR_MESSAGE.INVALID_PASSWORD.CONFIRM);
       return;
     }
 
     if (!BIRTHDAY_REGEX.test(formData.birth)) {
-      setBirthError("생년월일 형식이 올바르지 않습니다!");
+      setBirthError(CLIENT_ERROR_MESSAGE.INVALID_BIRTH);
       return;
     }
 
     if (!EMAIL_REGEX.test(formData.email)) {
-      setEmailError("이메일 형식이 올바르지 않습니다!");
+      setEmailError(CLIENT_ERROR_MESSAGE.INVALID_EMAIL.BASE);
       return;
     }
 
     if (!PHONE_NUMBER_REGEX.test(formData.phone)) {
-      alert("전화번호 형식이 올바르지 않습니다!");
+      alert(CLIENT_ERROR_MESSAGE.INVALID_PHONE_NUMBER.BASE);
       return;
     }
 

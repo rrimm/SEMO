@@ -1,4 +1,5 @@
 import React from "react";
+import { DIRECTIVE } from "../../constants/message";
 
 const Birth = ({ handleChange }) => {
   return (
@@ -9,7 +10,7 @@ const Birth = ({ handleChange }) => {
         id="birth"
         name="birth"
         onChange={handleChange}
-        placeholder="생년월일을 적어주세요. ex)1999-05-24"
+        placeholder={DIRECTIVE.JOIN.BIRTH}
         required
       />
     </div>
