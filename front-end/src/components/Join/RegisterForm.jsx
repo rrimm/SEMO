@@ -77,6 +77,7 @@ const RegisterForm = () => {
       })
       .then(() => {
         navigate(BROWSER_PATH.LOGIN, { replace: true });
+        window.location.reload();
       })
       .catch(error => {
         console.log(error);
