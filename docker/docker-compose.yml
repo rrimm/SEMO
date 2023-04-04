@@ -1,0 +1,28 @@
+version: "3"
+services:
+  jenkins:
+    container_name: semo-jenkins
+    environment:
+      - TZ=Asia/Seoul # Jenkins 시간
+    image: jenkins/jenkins:lts-jdk17
+    ports:
+      - 8090:8080 # Jenkins 접속 포트
+      - 50000:50000 # Jenkins Agent를 통해 통신
+    privileged: true # 컨테이너 시스템의 주요 자원에 접근 허가
+    restart: on-failure
+    user: root
+    volumes:
+      - jenkins_sync:/var/jenkins_home
+  soanr:
+    container_name: semo-sonarqube
+    environment:
+      - TZ=Asia/Seoul # sonarqube 시간
+    image: jukim1124/sonarqube-arm
+    ports:
+      - 9000:9000
+    restart: on-failure
+    volumes:
+      - sonar_sync:/opt/sonarqube/data
+volumes:
+  jenkins_sync:
+  sonar_sync:
