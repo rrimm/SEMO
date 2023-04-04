@@ -38,8 +38,8 @@ function LoginForm() {
       .then(response => {
         setToken(response.data);
         setLogin(true);
-        console.log(response);
         navigate(-1, { replace: true });
+        window.location.reload();
       })
       .catch(() => {
         alert(CLIENT_ERROR_MESSAGE.LOGIN.CONFIRM);
@@ -55,7 +55,7 @@ function LoginForm() {
     if (login || token) {
       navigate(BROWSER_PATH.BASE, { replace: true });
     }
-  });
+  }, [login, navigate, token]);
 
   return (
     <form className="login-form" onSubmit={handleSubmit}>
