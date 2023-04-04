@@ -9,7 +9,7 @@
   justify-content: center;
   align-items: center;
   margin: 15vh auto;
-  font-family: "MICEGothic_Bold";
+  font-family: 'MICEGothic_Bold';
 }
 h2 {
   text-align: center;
@@ -44,13 +44,13 @@ label {
   background-color: #d9d9d9;
   border: none;
   border-bottom: 2px solid #ffffff;
-  font-family: "MICEGothic_Bold";
+  font-family: 'MICEGothic_Bold';
   justify-content: center;
   align-items: center;
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -84,7 +84,7 @@ button.register {
   background: #807675;
   border: 1px solid #807675;
   border-radius: 18px;
-  font-family: "MICEGothic_Bold";
+  font-family: 'MICEGothic_Bold';
 }
 
 button.register:hover {

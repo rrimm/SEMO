@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import * as S from "./index.styled";
-import { Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import { BROWSER_PATH } from "../../../constants/path";
+import * as S from './index.styled';
+import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { BROWSER_PATH } from '../../../constants/path';
 
 function NotFound() {
   const navigate = useNavigate();
@@ -16,7 +16,12 @@ function NotFound() {
     <S.Container>
       <S.Header>장바구니가 비어있습니다.</S.Header>
       <S.Icon>🛒</S.Icon>
-      <Button variant={"contained"} color={"inherit"} size={"large"} onClick={goProduct}>
+      <Button
+        variant={'contained'}
+        color={'inherit'}
+        size={'large'}
+        onClick={goProduct}
+      >
         쇼핑 하러가기
       </Button>
     </S.Container>

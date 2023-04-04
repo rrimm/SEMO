@@ -1,10 +1,10 @@
-import React from "react";
-import Nav from "react-bootstrap/Nav";
-import Tab from "react-bootstrap/Tab";
-import * as S from "./index.styled";
+import React from 'react';
+import Nav from 'react-bootstrap/Nav';
+import Tab from 'react-bootstrap/Tab';
+import * as S from './index.styled';
 
 function MenuTabs({ onRelatedTabClick }) {
-  const handleRelatedTabClick = (event) => {
+  const handleRelatedTabClick = event => {
     event.preventDefault();
     onRelatedTabClick();
   };

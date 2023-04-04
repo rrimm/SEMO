@@ -1,14 +1,14 @@
-import { Global, css } from "@emotion/react";
-import emotionReset from "emotion-reset";
+import { Global, css } from '@emotion/react';
+import emotionReset from 'emotion-reset';
 
-import { fontStyle } from "./fonts";
+import { fontStyle } from './fonts';
 
 const style = css`
   ${emotionReset}
   ${fontStyle}
 
   * {
-    font-family: "GmarketSans";
+    font-family: 'GmarketSans';
   }
 `;
 

@@ -1,14 +1,14 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useRecoilValue } from 'recoil';
 
-import { API_PATH } from "../../../constants/path";
-import { jwtToken } from "../../../stores/auth";
-import Loading from "../../Loading";
-import Output from "../Output";
-import Form from "./ChangeForm";
+import { API_PATH } from '../../../constants/path';
+import { jwtToken } from '../../../stores/auth';
+import Loading from '../../Loading';
+import Output from '../Output';
+import Form from './ChangeForm';
 
-import * as S from "./index.styled";
+import * as S from './index.styled';
 
 function Address() {
   const token = useRecoilValue(jwtToken);
@@ -27,11 +27,11 @@ function Address() {
             Authorization: `Bearer ${token.accessToken}`,
           },
         })
-        .then((response) => {
+        .then(response => {
           setAddress(response.data);
           setLoading(false);
         })
-        .catch((error) => {
+        .catch(error => {
           console.error(error);
         });
     };
@@ -51,12 +51,16 @@ function Address() {
       <S.Line />
       <S.Wrapper>
         <S.Section>
-          <Output directive={"수취인"} value={address[0].recipient} />
-          <Output directive={"우편번호"} value={address[0].zipCode} />
-          <Output directive={"주소"} value={address[0].info} />
+          <Output directive={'수취인'} value={address[0].recipient} />
+          <Output directive={'우편번호'} value={address[0].zipCode} />
+          <Output directive={'주소'} value={address[0].info} />
         </S.Section>
         <S.Section>
-          <Form nowAddress={address[0].info} nowRecipient={address[0].recipient} nowZipCode={address[0].zipCode} />
+          <Form
+            nowAddress={address[0].info}
+            nowRecipient={address[0].recipient}
+            nowZipCode={address[0].zipCode}
+          />
         </S.Section>
       </S.Wrapper>
     </S.Container>

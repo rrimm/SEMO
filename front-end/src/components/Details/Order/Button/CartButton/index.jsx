@@ -1,11 +1,11 @@
-import axios from "axios";
-import React, { useState } from "react";
-import { useRecoilValue } from "recoil";
-import Modal from "react-bootstrap/Modal";
-import * as S from "./index.styled";
-import { API_PATH, BROWSER_PATH } from "../../../../../constants/path";
-import { jwtToken } from "../../../../../stores/auth";
-import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+import React, { useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import Modal from 'react-bootstrap/Modal';
+import * as S from './index.styled';
+import { API_PATH, BROWSER_PATH } from '../../../../../constants/path';
+import { jwtToken } from '../../../../../stores/auth';
+import { useNavigate } from 'react-router-dom';
 
 function CartButton({ productId }) {
   const token = useRecoilValue(jwtToken);
@@ -32,12 +32,12 @@ function CartButton({ productId }) {
           headers: {
             Authorization: `Bearer ${token.accessToken}`,
           },
-        }
+        },
       )
       .then(() => {
         handleShow();
       })
-      .catch((error) => {
+      .catch(error => {
         if (error.response.status === 400) {
           alert(error.response.data.message);
           return;
@@ -64,7 +64,11 @@ function CartButton({ productId }) {
         </Modal.Body>
         <Modal.Footer>
           <S.ButtonContainer>
-            <S.CloseButton className="btn_close" variant="secondary" onClick={handleClose}>
+            <S.CloseButton
+              className="btn_close"
+              variant="secondary"
+              onClick={handleClose}
+            >
               쇼핑 계속하기
             </S.CloseButton>
             <S.ToCartButton className="cart" variant="third" onClick={goCart}>

@@ -1,20 +1,20 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { TextField } from "@mui/material";
+import { TextField } from '@mui/material';
 
-import * as S from "./index.styled";
+import * as S from './index.styled';
 
 function Search() {
   const [value, setValue] = useState({});
   const navigate = useNavigate();
 
-  const getValue = (e) => {
+  const getValue = e => {
     setValue(e.target.value);
   };
 
-  const handleOnKeyPress = (e) => {
-    if (e.key === "Enter") {
+  const handleOnKeyPress = e => {
+    if (e.key === 'Enter') {
       navigate(`/product?search=${value}`);
       e.target.value = null;
     }

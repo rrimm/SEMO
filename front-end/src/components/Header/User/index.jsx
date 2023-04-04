@@ -1,15 +1,15 @@
-import React, { useCallback, useEffect, useState } from "react";
-import axios from "axios";
-import * as S from "./index.styled";
+import React, { useCallback, useEffect, useState } from 'react';
+import axios from 'axios';
+import * as S from './index.styled';
 
-import { API_PATH, BROWSER_PATH } from "../../../constants/path";
-import { useRecoilValue } from "recoil";
-import { isLogin, jwtToken } from "../../../stores/auth";
+import { API_PATH, BROWSER_PATH } from '../../../constants/path';
+import { useRecoilValue } from 'recoil';
+import { isLogin, jwtToken } from '../../../stores/auth';
 
 function User() {
   const hasLogin = useRecoilValue(isLogin);
   const token = useRecoilValue(jwtToken);
-  const [data, setData] = useState("");
+  const [data, setData] = useState('');
 
   const cartQuantityRequest = useCallback(async () => {
     await axios
@@ -21,10 +21,10 @@ function User() {
           Authorization: `Bearer ${token.accessToken}`,
         },
       })
-      .then((response) => {
+      .then(response => {
         setData(response.data);
       })
-      .catch((error) => {
+      .catch(error => {
         if (error.response.status === 401) {
           localStorage.clear();
           return;
@@ -41,9 +41,9 @@ function User() {
       .then(() => {
         localStorage.clear();
         window.location.reload();
-        alert("로그아웃 되었습니다!");
+        alert('로그아웃 되었습니다!');
       })
-      .error((error) => {
+      .error(error => {
         console.error(error);
       });
   };

@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import * as S from "./index.styled";
+import * as S from './index.styled';
 
 function Card({ URL, pic, category }) {
   return (

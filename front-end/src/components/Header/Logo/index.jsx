@@ -1,10 +1,10 @@
-import React from "react";
-import * as S from "./index.styled";
+import React from 'react';
+import * as S from './index.styled';
 
 function Logo() {
   return (
     <S.Container>
-      <S.StyledLink to={"/"}>SEMO</S.StyledLink>
+      <S.StyledLink to={'/'}>SEMO</S.StyledLink>
     </S.Container>
   );
 }

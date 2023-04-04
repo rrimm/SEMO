@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import React, { useState, useEffect, useCallback } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
 
-import { API_PATH, BROWSER_PATH } from "../../constants/path";
+import { API_PATH, BROWSER_PATH } from '../../constants/path';
 
-import Loading from "../../components/Loading";
-import Detail from "../../components/Details";
+import Loading from '../../components/Loading';
+import Detail from '../../components/Details';
 
 function Details() {
   const navigate = useNavigate();
@@ -17,11 +17,11 @@ function Details() {
     setLoading(true);
     await axios
       .get(`${API_PATH.PRODUCT.BASE}/${param.id}`)
-      .then((response) => {
+      .then(response => {
         setData(response.data);
         setLoading(false);
       })
-      .catch((error) => {
+      .catch(error => {
         if (error.response.status === 400) {
           return navigate(BROWSER_PATH.NOT_FOUND, { replace: true });
         }

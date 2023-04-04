@@ -1,11 +1,11 @@
-import React from "react";
-import { useRecoilValue } from "recoil";
+import React from 'react';
+import { useRecoilValue } from 'recoil';
 
-import { isLogin } from "../../stores/auth";
-import { BROWSER_PATH } from "../../constants/path";
-import { TARGET } from "../../constants/category";
+import { isLogin } from '../../stores/auth';
+import { BROWSER_PATH } from '../../constants/path';
+import { TARGET } from '../../constants/category';
 
-import * as S from "./index.styled";
+import * as S from './index.styled';
 
 function Footer() {
   const hasLogin = useRecoilValue(isLogin);
@@ -19,13 +19,19 @@ function Footer() {
       <S.Content>
         <h2>SHOP</h2>
         <S.Text>
-          <S.StyledLink to={`${BROWSER_PATH.PRODUCT}?target=${TARGET.WOMEN}`}>For Women</S.StyledLink>
+          <S.StyledLink to={`${BROWSER_PATH.PRODUCT}?target=${TARGET.WOMEN}`}>
+            For Women
+          </S.StyledLink>
         </S.Text>
         <S.Text>
-          <S.StyledLink to={`${BROWSER_PATH.PRODUCT}?target=${TARGET.MEN}`}>For Men</S.StyledLink>
+          <S.StyledLink to={`${BROWSER_PATH.PRODUCT}?target=${TARGET.MEN}`}>
+            For Men
+          </S.StyledLink>
         </S.Text>
         <S.Text>
-          <S.StyledLink to={`${BROWSER_PATH.PRODUCT}?target=${TARGET.KIDS}`}>For Kids</S.StyledLink>
+          <S.StyledLink to={`${BROWSER_PATH.PRODUCT}?target=${TARGET.KIDS}`}>
+            For Kids
+          </S.StyledLink>
         </S.Text>
       </S.Content>
       <S.Content>

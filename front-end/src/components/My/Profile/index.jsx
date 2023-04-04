@@ -1,8 +1,8 @@
-import React from "react";
-import { PasswordForm } from "./ChangeForm";
-import Output from "../Output";
+import React from 'react';
+import { PasswordForm } from './ChangeForm';
+import Output from '../Output';
 
-import * as S from "./index.styled";
+import * as S from './index.styled';
 
 function Profile({ name, email, phoneNumber }) {
   return (
@@ -11,9 +11,9 @@ function Profile({ name, email, phoneNumber }) {
       <S.Line />
       <S.Wrapper>
         <S.Section>
-          <Output directive={"이름"} value={name} />
-          <Output directive={"이메일"} value={email} />
-          <Output directive={"전화번호"} value={phoneNumber} />
+          <Output directive={'이름'} value={name} />
+          <Output directive={'이메일'} value={email} />
+          <Output directive={'전화번호'} value={phoneNumber} />
         </S.Section>
         <S.Section>
           <S.NavWrapper>

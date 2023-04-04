@@ -1,12 +1,12 @@
-import { Suspense } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-import { RecoilRoot } from "recoil";
+import { Suspense } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
 
-import Routes from "./routes";
-import PageLayout from "./layouts/pages";
-import ScrollToTop from "./components/ScrollToTop";
-import Loading from "./components/Loading";
-import GlobalStyle from "./styles/global";
+import Routes from './routes';
+import PageLayout from './layouts/pages';
+import ScrollToTop from './components/ScrollToTop';
+import Loading from './components/Loading';
+import GlobalStyle from './styles/global';
 
 function App() {
   return (

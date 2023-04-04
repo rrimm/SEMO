@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import * as S from "./index.styled";
+import * as S from './index.styled';
 
 function TextButton({ category }) {
   return (
