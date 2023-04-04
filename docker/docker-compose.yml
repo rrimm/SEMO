@@ -4,7 +4,7 @@ services:
     container_name: semo-jenkins
     environment:
       - TZ=Asia/Seoul # Jenkins 시간
-    image: jenkins/jenkins:lts-jdk11
+    image: jenkins/jenkins:lts-jdk17
     ports:
       - 8090:8080 # Jenkins 접속 포트
       - 50000:50000 # Jenkins Agent를 통해 통신
