@@ -1,7 +1,7 @@
 import React from "react";
 
 import * as S from "./index.styled";
-import Card from "../../Card";
+import Card from "../Card";
 
 import Kids from "../../../assets/Card/kids.png";
 import Men from "../../../assets/Card/men.png";
