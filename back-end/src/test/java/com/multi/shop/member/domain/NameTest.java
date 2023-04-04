@@ -17,20 +17,21 @@ class NameTest {
     @ParameterizedTest
     @ValueSource(ints = {2, 20})
     void isValidName(int length) {
-        String text = "a".repeat(length);
+        String expected = "a".repeat(length);
 
-        Name name = Name.from(text);
+        Name actual = Name.from(expected);
 
-        assertThat(name.getValue()).hasSize(length);
+        assertThat(actual.getValue()).hasSize(length);
+        assertThat(actual.getValue()).isEqualTo(expected);
     }
 
     @DisplayName("이름은 2자 미만 20자 초과이면 예외를 던진다")
     @ParameterizedTest
     @ValueSource(ints = {1, 21})
     void isNotLengthInRange(int length) {
-        String text = "a".repeat(length);
+        String name = "a".repeat(length);
 
-        assertThatThrownBy(() -> Name.from(text))
+        assertThatThrownBy(() -> Name.from(name))
                 .isInstanceOf(MemberException.class)
                 .hasMessageContaining("사용자의 이름은 2자 이상 20자 이하여야 합니다.");
     }

@@ -18,31 +18,40 @@ class EmailTest {
     @DisplayName("이메일은 8자 이상 16자 이하여야 한다.")
     @ParameterizedTest
     @ValueSource(ints = {8, 16})
-    void isValidEmail(int length) {
+    void isValidLength(int length) {
         String text = "a".repeat(length) + EMAIL_ADDRESS;
 
-        Email email = Email.from(text);
+        Email actual = Email.from(text);
 
-        assertThat(email.getValue()).hasSize(length + EMAIL_ADDRESS.length());
+        assertThat(actual.getValue()).hasSize(length + EMAIL_ADDRESS.length());
     }
 
     @DisplayName("이메일의 길이가 8자 미만 16자 초과이면 예외를 던진다.")
     @ParameterizedTest
     @ValueSource(ints = {7, 17})
     void isNotLengthInRange(int length) {
-        String text = "a".repeat(length) + EMAIL_ADDRESS;
+        String email = "a".repeat(length) + EMAIL_ADDRESS;
 
-        assertThatThrownBy(() -> Email.from(text))
+        assertThatThrownBy(() -> Email.from(email))
                 .isInstanceOf(MemberException.class)
                 .hasMessageContaining("사용자의 이메일은 8자 이상 16자 이하여야 합니다.");
+    }
+
+    @DisplayName("이메일의 형식에 맞으면 예외를 던지지 않는다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"apple1234", "wolf2023"})
+    void isValidPattern(String email) {
+        Email actual = Email.from(email + EMAIL_ADDRESS);
+
+        assertThat(actual.getValue()).isEqualTo(email + EMAIL_ADDRESS);
     }
 
     @DisplayName("이메일의 형식에 맞지 않으면 예외를 던진다.")
     @Test
     void isNotValidPattern() {
-        String text = "Banana12" + EMAIL_ADDRESS;
+        String email = "Banana12" + EMAIL_ADDRESS;
 
-        assertThatThrownBy(() -> Email.from(text))
+        assertThatThrownBy(() -> Email.from(email))
                 .isInstanceOf(MemberException.class)
                 .hasMessageContaining("올바르지 않은 이메일 형식입니다.");
     }

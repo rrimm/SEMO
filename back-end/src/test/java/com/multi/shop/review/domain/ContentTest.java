@@ -15,26 +15,21 @@ class ContentTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 10, 100, 250})
     void isValidContent(int length) {
-        // given
-        String text = "a".repeat(length);
+        String expected = "a".repeat(length);
 
-        // when
-        Content content = Content.from(text);
+        Content actual = Content.from(expected);
 
-        // then
-        assertThat(content.getValue()).hasSize(length);
+        assertThat(actual.getValue()).hasSize(length);
+        assertThat(actual.getValue()).isEqualTo(expected);
     }
 
     @DisplayName("리뷰의 내용이 250자를 초과하면 예외를 던진다.")
     @ParameterizedTest
     @ValueSource(ints = {251, 300})
     void isNotValidContent(int length) {
-        // given
-        String text = "a".repeat(length);
+        String content = "a".repeat(length);
 
-        // when
-        // then
-        assertThatThrownBy(() -> Content.from(text))
+        assertThatThrownBy(() -> Content.from(content))
                 .isInstanceOf(ReviewException.class)
                 .hasMessageContaining("리뷰의 내용은 250자 이하여야 합니다.");
     }
