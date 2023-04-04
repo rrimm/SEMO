@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 
 import Card from "../../components/Product/Card";
-import { CategoryNav, TargetNav } from "../../components/FilterNav";
+import { CategoryNav, TargetNav } from "../../components/Product/FilterNav";
 import NotFound from "../../components/Product/NotFound";
 
 import "./index.styled.css";

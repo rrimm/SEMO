@@ -4,7 +4,7 @@ import { ToggleButton } from "@mui/material";
 
 import * as S from "./index.styled";
 
-import { CATEGORIES, TARGETS } from "../../constants/category";
+import { CATEGORIES, TARGETS } from "../../../constants/category";
 
 function CategoryNav({ selectedCategory, onClick }) {
   return (
