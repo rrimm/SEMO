@@ -1,10 +1,9 @@
 package com.multi.shop.cart.controller;
 
 import com.multi.shop.cart.dto.request.CartChangeCheckedRequest;
-import com.multi.shop.cart.dto.request.CartSaveRequest;
 import com.multi.shop.cart.dto.request.CartChangeQuantityRequest;
+import com.multi.shop.cart.dto.request.CartSaveRequest;
 import com.multi.shop.cart.dto.response.CartQuantityResponse;
-import com.multi.shop.cart.dto.response.CartResponse;
 import com.multi.shop.cart.dto.response.CartsResponse;
 import com.multi.shop.cart.service.CartService;
 import jakarta.validation.Valid;
@@ -12,8 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RequestMapping("/auth/cart")
 @RequiredArgsConstructor
@@ -53,7 +50,7 @@ public class CartController {
     }
 
     @DeleteMapping
-    public ResponseEntity<Void> deleteCart(@Param("memberId")Long memberId, @Param("cartId") Long cartId) {
+    public ResponseEntity<Void> deleteCart(@Param("memberId") Long memberId, @Param("cartId") Long cartId) {
         cartService.deleteCart(cartId);
         return ResponseEntity.ok().build();
     }
