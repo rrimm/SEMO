@@ -88,7 +88,7 @@ const Product = () => {
     <>
       <div className="Container">
         <div className="TextBox">
-          <h1>Products</h1>
+          <h1>🛍 Products</h1>
         </div>
         <div className="NavBar">
           <div className="Toggle">

@@ -3,7 +3,7 @@ import * as S from './index.styled';
 import ReviewListTitle from './ReviewTitle';
 import ReviewListItem from './ReviewContent';
 import ReviewModal from './ReviewModal';
-import BoardPage from './ReviewPageNation';
+import BoardPage from './ReviewPage';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { useRecoilValue } from 'recoil';
