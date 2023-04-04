@@ -1,4 +1,4 @@
-import { Cart, Details, Join, Login, Main, My, NotFound, Product, Review, ReviewForm } from "../pages/index";
+import { Cart, Details, Join, Login, Main, My, NotFound, Product, Review, ReviewForm, People } from "../pages/index";
 
 import React from "react";
 import { BROWSER_PATH } from "../constants/path";
@@ -23,6 +23,7 @@ function Routes() {
         <Route path={BROWSER_PATH.REVIEW_FORM} element={<ReviewForm />} />
       </Route>
       <Route path={"*"} element={<NotFound />} />
+      <Route path={BROWSER_PATH.PEOPLE} element={<People/>}/>
     </BrowserRoutes>
   );
 }

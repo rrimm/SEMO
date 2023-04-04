@@ -10,6 +10,7 @@ const BROWSER_PATH = {
   REVIEW: "/review",
   REVIEW_FORM: "/review-form",
   NOT_FOUND: "/notfound",
+  PEOPLE: "/people"
 };
 
 const API_PATH = {
