@@ -53,7 +53,6 @@ function Row({ cart }) {
     updateQuantityRequest(cart.quantity - 1);
   };
 
-  // TODO: useState 동기 처리 구현
   const updateQuantityRequest = useCallback(
     async (quantity) => {
       await axios
@@ -151,4 +150,5 @@ function Row({ cart }) {
     </S.Container>
   );
 }
+
 export { NavRow, Row };

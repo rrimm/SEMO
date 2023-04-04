@@ -15,21 +15,18 @@ function ReviewModal({ CloseModal, data, onDelete, onUpdate, setReviews }) {
     data.memberName.substring(data.memberName.length - 1);
 
   useEffect(() => {
-    //랜더링 될 때, (modal이 켜질 때) 스크롤 방지
-    document.body.style.overflow = "hidden"; //body 부분 hidden
+    document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = ""; // 꺼지면 초기화
+      document.body.style.overflow = "";
     };
   }, []);
 
   const handleDelete = () => {
-    //데이터 삭제 기능
     onDelete(data.id);
     CloseModal();
   };
 
   const handleUpdateClick = () => {
-    // 데이터 수정 폼 모달 열기
     setShowUpdateModal(true);
   };
 

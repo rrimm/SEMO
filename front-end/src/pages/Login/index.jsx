@@ -1,5 +1,5 @@
 import "./index.styled.css";
-import LoginForm from "./LoginForm";
+import LoginForm from "../../components/Login/LoginForm";
 
 function Login() {
   return (

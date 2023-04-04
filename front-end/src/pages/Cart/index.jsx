@@ -97,7 +97,6 @@ function Cart() {
               <S.StyledButton variant={"contained"} color={"inherit"} onClick={goProduct}>
                 계속 쇼핑하기
               </S.StyledButton>
-              {/* TODO: 선택된 제품만 결제하는 API 구현 */}
               <S.StyledButton variant={"contained"} color={"success"} onClick={paymentRequest}>
                 구매하기
               </S.StyledButton>

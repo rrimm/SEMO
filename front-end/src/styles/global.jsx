@@ -5,8 +5,8 @@ import { fontStyle } from "./fonts";
 const style = css`
   ${fontStyle}
 
-  body {
-    font-family: "MICEGothic_Bold";
+  * {
+    font-family: "GmarketSans";
   }
 `;
 

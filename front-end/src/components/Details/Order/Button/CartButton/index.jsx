@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
 import Modal from "react-bootstrap/Modal";
 import * as S from "./index.styled";
-import { API_PATH } from "../../../../../constants/path";
+import { API_PATH, BROWSER_PATH } from "../../../../../constants/path";
 import { jwtToken } from "../../../../../stores/auth";
 import { useNavigate } from "react-router-dom";
 
@@ -19,7 +19,7 @@ function CartButton({ productId }) {
 
   const addCartRequest = async () => {
     if (token === null) {
-      navigate("/login");
+      navigate(BROWSER_PATH.LOGIN);
     }
     await axios
       .post(
@@ -46,7 +46,7 @@ function CartButton({ productId }) {
   };
 
   const goCart = () => {
-    navigate("/cart");
+    navigate(BROWSER_PATH.CART);
     window.location.reload();
   };
 

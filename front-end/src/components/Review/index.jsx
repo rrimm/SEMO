@@ -3,11 +3,12 @@ import * as S from "./index.styled";
 import ReviewListTitle from "./ReviewTitle";
 import ReviewListItem from "./ReviewContent";
 import ReviewModal from "./ReviewModal";
-import BoardPage from "./ReviewPagenation";
+import BoardPage from "./ReviewPageNation";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { useRecoilValue } from "recoil";
 import { jwtToken } from "../../stores/auth";
+import { API_PATH, BROWSER_PATH } from "../../constants/path";
 
 const categories = ["ALL", "HAT", "TOP", "OUTER", "BAG", "PANT", "SHOES", "BASIC"];
 const categoryLabels = {
@@ -45,7 +46,7 @@ function ReviewList(props) {
 
   const onDelete = async (reviewId) => {
     try {
-      await axios.delete(`/auth/review`, {
+      await axios.delete(API_PATH.REVIEW.AUTH, {
         params: {
           reviewId: reviewId,
         },
@@ -53,8 +54,6 @@ function ReviewList(props) {
           Authorization: `Bearer ${token.accessToken}`,
         },
       });
-
-      // 리뷰 목록 다시 불러오기
       window.location.reload();
     } catch (error) {
       console.error(error);
@@ -68,7 +67,7 @@ function ReviewList(props) {
     setCurrentPage(page);
     setSelectedCategory(category);
 
-    axios.get(`/api/review?page=${page}&category=${category}`).then((response) => {
+    axios.get(`${API_PATH.REVIEW.BASE}?page=${page}&category=${category}`).then((response) => {
       setReviews(response.data);
     });
   }, [location.search, selectedCategory]);
@@ -76,7 +75,7 @@ function ReviewList(props) {
   const handleCategoryButtonClick = (category) => {
     setSelectedCategory(category);
     setCurrentPage(1);
-    navigate(`/review?page=1&category=${category}`);
+    navigate(`${BROWSER_PATH.REVIEW}?page=1&category=${category}`);
   };
 
   const filteredContents =
@@ -106,9 +105,9 @@ function ReviewList(props) {
         productName={review.productName}
         content={review.content}
         account={maskedName}
-        openModal={() => openModal(review)} // 모달 열기
-        onUpdate={onUpdate} //업데이트 전달.
-        onDelete={onDelete} //삭제 전달.
+        openModal={() => openModal(review)}
+        onUpdate={onUpdate}
+        onDelete={onDelete}
       />
     );
   });
@@ -127,7 +126,6 @@ function ReviewList(props) {
               {categoryLabels[category]}
             </S.CategoryButton>
           ))}
-          {/* <ReviewSearch/> */}
         </S.CategoryButtonContainer>
         {modal && modalContent && (
           <ReviewModal
