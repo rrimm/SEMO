@@ -1,10 +1,10 @@
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRotateLeft } from "@fortawesome/free-solid-svg-icons";
-import { faHouse } from "@fortawesome/free-solid-svg-icons";
-import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
-import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
-import styled from "@emotion/styled";
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRotateLeft } from '@fortawesome/free-solid-svg-icons';
+import { faHouse } from '@fortawesome/free-solid-svg-icons';
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import styled from '@emotion/styled';
 
 const Container = styled.div``;
 

@@ -1,7 +1,7 @@
 @font-face {
-  font-family: "MICEGothic Bold";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2")
-    format("woff2");
+  font-family: 'MICEGothic Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2')
+    format('woff2');
   font-weight: 400;
   font-style: normal;
 }
@@ -16,7 +16,7 @@
   border-radius: 25px;
   justify-content: center;
   align-items: center;
-  font-family: "MICEGothic Bold";
+  font-family: 'MICEGothic Bold';
 }
 
 h2 {
@@ -52,7 +52,7 @@ form-group label {
   /*border-bottom: 2px solid #ffffff;*/
   margin: 15px 10px;
   padding: 0px 10px;
-  font-family: "MICEGothic Bold";
+  font-family: 'MICEGothic Bold';
 }
 
 #inputEmail:focus,
@@ -79,7 +79,7 @@ button.submit {
   font-size: 19px;
   color: #ffffff;
   align-items: center;
-  font-family: "MICEGothic Bold";
+  font-family: 'MICEGothic Bold';
 }
 button.submit:hover {
   background: #e5cdce;
@@ -116,7 +116,7 @@ button.join {
   border: 1px solid #d9d9d9;
   border-radius: 5px;
   font-size: 17px;
-  font-family: "MICEGothic Bold";
+  font-family: 'MICEGothic Bold';
 }
 
 button.join:hover {

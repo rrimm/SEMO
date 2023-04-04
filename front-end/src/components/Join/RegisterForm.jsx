@@ -1,40 +1,45 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-import Email from "./Email";
-import Pw from "./Pw";
-import PwCheck from "./PwCheck";
-import Name from "./Name";
-import Birth from "./Birth";
-import Phone from "./Phone";
+import Email from './Email';
+import Pw from './Pw';
+import PwCheck from './PwCheck';
+import Name from './Name';
+import Birth from './Birth';
+import Phone from './Phone';
 
-import { API_PATH, BROWSER_PATH } from "../../constants/path";
-import { EMAIL_REGEX, PHONE_NUMBER_REGEX, BIRTHDAY_REGEX, PW_REGEX } from "../../utils/validate";
-import { CLIENT_ERROR_MESSAGE } from "../../constants/message";
+import { API_PATH, BROWSER_PATH } from '../../constants/path';
+import {
+  EMAIL_REGEX,
+  PHONE_NUMBER_REGEX,
+  BIRTHDAY_REGEX,
+  PW_REGEX,
+} from '../../utils/validate';
+import { CLIENT_ERROR_MESSAGE } from '../../constants/message';
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
-    email: "",
-    pw: "",
-    pwCheck: "",
-    name: "",
-    birth: "",
-    phone: "",
+    email: '',
+    pw: '',
+    pwCheck: '',
+    name: '',
+    birth: '',
+    phone: '',
   });
 
   const navigate = useNavigate();
 
-  const [pwError, setPwError] = useState("");
-  const [pwCheckError, setPwCheckError] = useState("");
-  const [birthError, setBirthError] = useState("");
-  const [emailError, setEmailError] = useState("");
+  const [pwError, setPwError] = useState('');
+  const [pwCheckError, setPwCheckError] = useState('');
+  const [birthError, setBirthError] = useState('');
+  const [emailError, setEmailError] = useState('');
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
     if (!PW_REGEX.test(formData.pw)) {
@@ -73,7 +78,7 @@ const RegisterForm = () => {
       .then(() => {
         navigate(BROWSER_PATH.LOGIN, { replace: true });
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
       });
   };

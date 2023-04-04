@@ -1,43 +1,46 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { useRecoilValue } from "recoil";
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useRecoilValue } from 'recoil';
 
-import { TextField, Button } from "@mui/material";
-import * as S from "./index.styled";
+import { TextField, Button } from '@mui/material';
+import * as S from './index.styled';
 
-import { API_PATH } from "../../../../constants/path";
-import { CLIENT_ERROR_MESSAGE } from "../../../../constants/message";
-import { MEMBER_RULE } from "../../../../constants/rule";
-import { jwtToken } from "../../../../stores/auth";
+import { API_PATH } from '../../../../constants/path';
+import { CLIENT_ERROR_MESSAGE } from '../../../../constants/message';
+import { MEMBER_RULE } from '../../../../constants/rule';
+import { jwtToken } from '../../../../stores/auth';
 
 function PasswordForm() {
   const token = useRecoilValue(jwtToken);
-  const [nowPassword, setNowPassword] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [validatePassword, setValidatePassword] = useState("");
+  const [nowPassword, setNowPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [validatePassword, setValidatePassword] = useState('');
 
-  const getNowPassword = (e) => {
+  const getNowPassword = e => {
     setNowPassword(e.target.value);
   };
 
-  const getNewPassword = (e) => {
+  const getNewPassword = e => {
     setNewPassword(e.target.value);
   };
 
-  const getValidatePassword = (e) => {
+  const getValidatePassword = e => {
     setValidatePassword(e.target.value);
   };
 
   const hasNowPassword = () => {
-    return nowPassword !== "";
+    return nowPassword !== '';
   };
 
   const hasNewPassword = () => {
-    return newPassword !== "";
+    return newPassword !== '';
   };
 
-  const validatePasswordByLength = (password) => {
-    return MEMBER_RULE.PASSWORD.MIN_LENGTH <= password.length && password.length <= MEMBER_RULE.PASSWORD.MAX_LENGTH;
+  const validatePasswordByLength = password => {
+    return (
+      MEMBER_RULE.PASSWORD.MIN_LENGTH <= password.length &&
+      password.length <= MEMBER_RULE.PASSWORD.MAX_LENGTH
+    );
   };
 
   const equalsPassword = (pw1, pw2) => {
@@ -53,7 +56,7 @@ function PasswordForm() {
         localStorage.clear();
         window.location.reload();
       })
-      .error((error) => {
+      .error(error => {
         console.error(error);
       });
   };
@@ -71,13 +74,13 @@ function PasswordForm() {
           headers: {
             Authorization: `Bearer ${token.accessToken}`,
           },
-        }
+        },
       )
       .then(() => {
         logoutRequest();
-        alert("비밀번호가 변경되었습니다. 다시 로그인해주세요!");
+        alert('비밀번호가 변경되었습니다. 다시 로그인해주세요!');
       })
-      .error((error) => {
+      .error(error => {
         if (error.response.status === 400) {
           alert(error.response.data.message);
         }
@@ -89,7 +92,7 @@ function PasswordForm() {
     <S.Container>
       <S.StyledForm>
         <TextField
-          type={"password"}
+          type={'password'}
           id="nowPassword"
           onChange={getNowPassword}
           label="현재 비밀번호"
@@ -100,7 +103,7 @@ function PasswordForm() {
           <S.Warning>{CLIENT_ERROR_MESSAGE.INVALID_PASSWORD.LENGTH}</S.Warning>
         )}
         <TextField
-          type={"password"}
+          type={'password'}
           id="newPassword"
           onChange={getNewPassword}
           label="새 비밀번호"
@@ -114,7 +117,7 @@ function PasswordForm() {
           <S.Warning>{CLIENT_ERROR_MESSAGE.INVALID_PASSWORD.CHANGE}</S.Warning>
         )}
         <TextField
-          type={"password"}
+          type={'password'}
           id="validatePassword"
           onChange={getValidatePassword}
           label="새 비밀번호 재입력"

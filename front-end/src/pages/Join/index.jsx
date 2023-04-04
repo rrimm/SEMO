@@ -1,10 +1,10 @@
-import RegisterForm from "../../components/Join/RegisterForm";
-import "./index.styled.css";
-import { useNavigate } from "react-router-dom";
-import { useRecoilValue } from "recoil";
-import { isLogin, jwtToken } from "../../stores/auth";
-import { BROWSER_PATH } from "../../constants/path";
-import { useEffect } from "react";
+import RegisterForm from '../../components/Join/RegisterForm';
+import './index.styled.css';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { isLogin, jwtToken } from '../../stores/auth';
+import { BROWSER_PATH } from '../../constants/path';
+import { useEffect } from 'react';
 
 function Join() {
   const auth = useRecoilValue(isLogin);

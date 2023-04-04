@@ -1,13 +1,13 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
-import NotFound from "../../../components/My/NotFound";
-import { API_PATH } from "../../../constants/path";
-import { jwtToken } from "../../../stores/auth";
-import Loading from "../../Loading";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import NotFound from '../../../components/My/NotFound';
+import { API_PATH } from '../../../constants/path';
+import { jwtToken } from '../../../stores/auth';
+import Loading from '../../Loading';
 
-import * as S from "./index.styled";
-import { Row, NavRow } from "./Row";
+import * as S from './index.styled';
+import { Row, NavRow } from './Row';
 
 function Orders() {
   const token = useRecoilValue(jwtToken);
@@ -26,7 +26,7 @@ function Orders() {
             Authorization: `Bearer ${token.accessToken}`,
           },
         })
-        .then((response) => {
+        .then(response => {
           setOrder(response.data);
           setLoading(false);
         });
@@ -41,13 +41,13 @@ function Orders() {
 
   return (
     <S.Container>
-      <h3>주문 / 배송</h3>
+      <S.Header>주문 / 배송</S.Header>
       <S.BoldLine />
       <NavRow />
       {order.length === 0 ? (
         <NotFound />
       ) : (
-        order.map((order) => {
+        order.map(order => {
           return <Row key={order.orderId} order={order} />;
         })
       )}

@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 const Container = styled.div`
   display: flex;
@@ -63,4 +63,16 @@ const TextCount = styled.h5`
 
 const Info = styled.h4``;
 
-export { Container, Wrapper, RowWrapper, ColumnWrapper, ButtonWrapper, Line, Pic, Header, TextArea, TextCount, Info };
+export {
+  Container,
+  Wrapper,
+  RowWrapper,
+  ColumnWrapper,
+  ButtonWrapper,
+  Line,
+  Pic,
+  Header,
+  TextArea,
+  TextCount,
+  Info,
+};

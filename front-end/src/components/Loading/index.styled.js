@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 const Container = styled.div`
   display: flex;
@@ -21,7 +21,16 @@ const Text = styled.h1`
   padding-top: 10%;
   padding-bottom: 30%;
 
-  background: linear-gradient(90deg, #e5cdce, #ede3d7 15%, #0f010d 35%, #e5cdce 50%, #ede3d7 65%, #0f010d 85%, #e5cdce);
+  background: linear-gradient(
+    90deg,
+    #e5cdce,
+    #ede3d7 15%,
+    #0f010d 35%,
+    #e5cdce 50%,
+    #ede3d7 65%,
+    #0f010d 85%,
+    #e5cdce
+  );
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: gradient 3.5s linear infinite;

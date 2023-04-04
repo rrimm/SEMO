@@ -1,84 +1,83 @@
 .TextBox {
-    width: 100%;
-    max-width: 1600px;
-    margin: 2rem auto;
-    font-weight: 700;
-    font-size: 40px;
-  }
-  
-  .card_area {
-    width: 100%;
-    max-width: 1600px;
-    min-width: 400px;
-    height: auto;
-    min-height: 700px;
-    padding: 1.5rem 1rem;
-    margin: 3rem auto;
-    background-color: #f8f9fa;
-  }
-  
-  .card_area > h3 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-transform: capitalize;
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-  
-  .card_wrap {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: stretch;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
+  width: 100%;
+  max-width: 1600px;
+  margin: 2rem auto;
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.card_area {
+  width: 100%;
+  max-width: 1600px;
+  min-width: 400px;
+  height: auto;
+  min-height: 700px;
+  padding: 1.5rem 1rem;
+  margin: 3rem auto;
+  background-color: #f8f9fa;
+}
+
+.card_area > h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.card_wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card_wrap > li {
+  width: calc((100% - 2rem) / 4);
+  max-width: 300px;
+  height: auto;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem;
+  list-style: none;
+}
+
+@media (max-width: 1200px) {
   .card_wrap > li {
-    width: calc((100% - 2rem) / 4);
-    max-width: 300px;
-    height: auto;
-    margin-bottom: 1.5rem;
-    padding: 0.5rem;
-    list-style: none;
+    width: calc((100% - 2rem) / 3);
   }
-  
-  @media (max-width: 1200px) {
-    .card_wrap > li {
-      width: calc((100% - 2rem) / 3);
-    }
-  }
-  
-  .img_set {
-    width: 300px;
-    height: 300px;
-    border-radius: 30px 10px 50px;
-    align-items: center;
-    justify-content: center;
-    background-color: #ddd;
-  }
-  
-  .card_wrap dl {
-    width: 100%;
-    height: auto;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .card_wrap dt {
-    font-weight: 700;
-    font-size: 25px;
-    text-transform: capitalize;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid #b6b6b6;
-  }
-  
-  .card_wrap dd {
-    font-size: 0.9rem;
-    color: #555;
-    margin-left: 0;
-    margin-bottom: 5px;
-  }
-  
+}
+
+.img_set {
+  width: 300px;
+  height: 300px;
+  border-radius: 30px 10px 50px;
+  align-items: center;
+  justify-content: center;
+  background-color: #ddd;
+}
+
+.card_wrap dl {
+  width: 100%;
+  height: auto;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.card_wrap dt {
+  font-weight: 700;
+  font-size: 25px;
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #b6b6b6;
+}
+
+.card_wrap dd {
+  font-size: 0.9rem;
+  color: #555;
+  margin-left: 0;
+  margin-bottom: 5px;
+}

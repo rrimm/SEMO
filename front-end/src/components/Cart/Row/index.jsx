@@ -1,18 +1,18 @@
-import React, { useCallback, useState } from "react";
-import { useRecoilValue } from "recoil";
-import axios from "axios";
+import React, { useCallback, useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import axios from 'axios';
 
-import { Button } from "@mui/material";
-import { Checkbox } from "@mui/material";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { faMinus } from "@fortawesome/free-solid-svg-icons";
-import * as S from "./index.styled";
+import { Button } from '@mui/material';
+import { Checkbox } from '@mui/material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faMinus } from '@fortawesome/free-solid-svg-icons';
+import * as S from './index.styled';
 
-import { jwtToken } from "../../../stores/auth";
-import { API_PATH, BROWSER_PATH } from "../../../constants/path";
-import { MEMBER_RULE } from "../../../constants/rule";
-import { CLIENT_ERROR_MESSAGE } from "../../../constants/message";
+import { jwtToken } from '../../../stores/auth';
+import { API_PATH, BROWSER_PATH } from '../../../constants/path';
+import { MEMBER_RULE } from '../../../constants/rule';
+import { CLIENT_ERROR_MESSAGE } from '../../../constants/message';
 
 function NavRow() {
   return (
@@ -35,7 +35,9 @@ function Row({ cart }) {
   const token = useRecoilValue(jwtToken);
 
   const formatPrice = Number(cart.productPrice).toLocaleString();
-  const formatTotalPrice = Number(cart.productPrice * cart.quantity).toLocaleString();
+  const formatTotalPrice = Number(
+    cart.productPrice * cart.quantity,
+  ).toLocaleString();
 
   const plusQuantity = async () => {
     if (cart.quantity === MEMBER_RULE.CART.MAX_QUANTITY) {
@@ -54,7 +56,7 @@ function Row({ cart }) {
   };
 
   const updateQuantityRequest = useCallback(
-    async (quantity) => {
+    async quantity => {
       await axios
         .put(
           `${API_PATH.CART.QUANTITY}`,
@@ -66,16 +68,16 @@ function Row({ cart }) {
             headers: {
               Authorization: `Bearer ${token.accessToken}`,
             },
-          }
+          },
         )
         .then(() => {
           window.location.reload();
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
-    [cart, token]
+    [cart, token],
   );
 
   const updateCheckedRequest = async () => {
@@ -90,7 +92,7 @@ function Row({ cart }) {
           headers: {
             Authorization: `Bearer ${token.accessToken}`,
           },
-        }
+        },
       )
       .then(() => {
         setChecked(!checked);
@@ -98,7 +100,7 @@ function Row({ cart }) {
       });
   };
 
-  const removeRequest = async (cart_id) => {
+  const removeRequest = async cart_id => {
     await axios
       .delete(`${API_PATH.CART.BASE}`, {
         params: {
@@ -112,7 +114,7 @@ function Row({ cart }) {
       .then(() => {
         window.location.reload();
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
       });
   };
@@ -121,7 +123,11 @@ function Row({ cart }) {
     <S.Container>
       <S.ProductList>
         <S.Index>
-          <Checkbox checked={checked} sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }} onClick={updateCheckedRequest} />
+          <Checkbox
+            checked={checked}
+            sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}
+            onClick={updateCheckedRequest}
+          />
         </S.Index>
         <S.Wrapper>
           <S.StyledLink to={`${BROWSER_PATH.DETAILS}/${cart.productId}`}>
@@ -141,7 +147,11 @@ function Row({ cart }) {
         <S.Price>{formatPrice}</S.Price>
         <S.EachPrice>{formatTotalPrice}</S.EachPrice>
         <S.OrderManagement>
-          <Button variant="outlined" color="error" onClick={() => removeRequest(cart.cartId)}>
+          <Button
+            variant="outlined"
+            color="error"
+            onClick={() => removeRequest(cart.cartId)}
+          >
             삭제하기
           </Button>
         </S.OrderManagement>

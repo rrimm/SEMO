@@ -1,5 +1,5 @@
-import React from "react";
-import { DIRECTIVE } from "../../constants/message";
+import React from 'react';
+import { DIRECTIVE } from '../../constants/message';
 
 const Pw = ({ handleChange }) => {
   return (

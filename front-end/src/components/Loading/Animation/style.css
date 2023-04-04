@@ -26,7 +26,7 @@
 
 .ani:before,
 .ani:after {
-  content: "";
+  content: '';
   background-color: #e5cdce;
   transform: scale(0);
   animation: animation 1.5s infinite ease-in-out;

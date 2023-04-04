@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { Link } from "react-router-dom";
+import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   display: flex;
@@ -13,6 +13,7 @@ const StyledLink = styled(Link)`
   color: #0f010d;
   text-decoration: none;
   transition: all 0.3s;
+  font-size: 1.4rem;
 
   &: hover {
     transform: scale(1.1);

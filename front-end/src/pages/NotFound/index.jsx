@@ -1,12 +1,12 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { House, RotateLeft } from "../../components/svg/index";
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
-import * as S from "./index.styled";
+import { House, RotateLeft } from '../../components/svg/index';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import * as S from './index.styled';
 
-import Image from "../../assets/NotFound/pic.png";
+import Image from '../../assets/NotFound/pic.png';
 
 function NotFound() {
   const navigate = useNavigate();

@@ -1,6 +1,6 @@
-import React from "react";
-import * as S from "./index.styled";
-import BoardPage from "../ReviewPageNation";
+import React from 'react';
+import * as S from './index.styled';
+import BoardPage from '../ReviewPageNation';
 
 function ReviewListFooter() {
   return (

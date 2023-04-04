@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { Link } from "react-router-dom";
+import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   display: flex;
@@ -20,6 +20,7 @@ const Section = styled.div`
 `;
 
 const Header = styled.h1`
+  font-size: 2.3rem;
   margin-bottom: 10vh;
 `;
 

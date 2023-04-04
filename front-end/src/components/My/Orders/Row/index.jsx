@@ -1,17 +1,19 @@
-import { Button } from "@mui/material";
-import axios from "axios";
-import React from "react";
-import { useNavigate } from "react-router";
-import { useRecoilValue } from "recoil";
-import { API_PATH, BROWSER_PATH } from "../../../../constants/path";
-import { jwtToken } from "../../../../stores/auth";
+import { Button } from '@mui/material';
+import axios from 'axios';
+import React from 'react';
+import { useNavigate } from 'react-router';
+import { useRecoilValue } from 'recoil';
+import { API_PATH, BROWSER_PATH } from '../../../../constants/path';
+import { jwtToken } from '../../../../stores/auth';
 
-import * as S from "./index.styled";
+import * as S from './index.styled';
 
 function Row({ order }) {
   const navigate = useNavigate();
   const formatPrice = Number(order.price).toLocaleString();
-  const totalFormatPrice = Number(order.quantity * order.price).toLocaleString();
+  const totalFormatPrice = Number(
+    order.quantity * order.price,
+  ).toLocaleString();
   const token = useRecoilValue(jwtToken);
 
   const orderCancelRequest = async () => {
@@ -25,13 +27,13 @@ function Row({ order }) {
           headers: {
             Authorization: `Bearer ${token.accessToken}`,
           },
-        }
+        },
       )
       .then(() => {
-        alert("주문이 취소되었습니다.");
+        alert('주문이 취소되었습니다.');
         window.location.reload();
       })
-      .catch((error) => {
+      .catch(error => {
         console.error(error);
       });
   };
@@ -47,7 +49,10 @@ function Row({ order }) {
           {order.orderDate}/{order.orderId}
         </S.OrderInfo>
         <S.OrderSummary>
-          <S.ProdLink to={`${BROWSER_PATH.DETAILS}/${order.productId}`} target={"_blank"}>
+          <S.ProdLink
+            to={`${BROWSER_PATH.DETAILS}/${order.productId}`}
+            target={'_blank'}
+          >
             {order.productName}
           </S.ProdLink>
           /{order.quantity}개
@@ -55,21 +60,25 @@ function Row({ order }) {
         <S.OrderPrice>{formatPrice}원</S.OrderPrice>
         <S.OrderPrice>{totalFormatPrice}원</S.OrderPrice>
         <S.OrderStatus>{order.status}</S.OrderStatus>
-        {order.status === "결제" && (
+        {order.status === '결제' && (
           <>
             <S.ButtonArea>
-              <Button variant={"outlined"} onClick={addReview}>
+              <Button variant={'outlined'} onClick={addReview}>
                 리뷰 작성
               </Button>
             </S.ButtonArea>
             <S.ButtonArea>
-              <Button variant={"outlined"} color={"warning"} onClick={orderCancelRequest}>
+              <Button
+                variant={'outlined'}
+                color={'warning'}
+                onClick={orderCancelRequest}
+              >
                 결제 취소
               </Button>
             </S.ButtonArea>
           </>
         )}
-        {order.status === "주문확정" && (
+        {order.status === '주문확정' && (
           <S.StatusArea>
             <p>리뷰 작성 완료</p>
           </S.StatusArea>

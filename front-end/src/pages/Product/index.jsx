@@ -1,33 +1,33 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import axios from "axios";
+import React, { useCallback, useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import axios from 'axios';
 
-import Card from "../../components/Product/Card";
-import { CategoryNav, TargetNav } from "../../components/Product/FilterNav";
-import NotFound from "../../components/Product/NotFound";
+import Card from '../../components/Product/Card';
+import { CategoryNav, TargetNav } from '../../components/Product/FilterNav';
+import NotFound from '../../components/Product/NotFound';
 
-import "./index.styled.css";
+import './index.styled.css';
 
-import { API_PATH } from "../../constants/path";
-import Loading from "../../components/Loading";
+import { API_PATH } from '../../constants/path';
+import Loading from '../../components/Loading';
 
 const Product = () => {
   const [loading, setLoading] = useState(false);
   const [product, setProduct] = useState([]);
   const [params] = useSearchParams();
-  const search = params.get("search") ?? undefined;
-  const [category, setCategory] = useState("ALL");
-  const [target, setTarget] = useState("ALL");
+  const search = params.get('search') ?? undefined;
+  const [category, setCategory] = useState('ALL');
+  const [target, setTarget] = useState('ALL');
 
   const getCategoryParam = useCallback(async () => {
-    const param = params.get("category");
+    const param = params.get('category');
     if (param !== null) {
       await setCategory(param.toLocaleUpperCase());
     }
   }, [params]);
 
   const getTargetParam = useCallback(async () => {
-    const param = params.get("target");
+    const param = params.get('target');
     if (param !== null) {
       await setTarget(param.toLocaleUpperCase());
     }
@@ -41,11 +41,11 @@ const Product = () => {
           search: search,
         },
       })
-      .then((response) => {
+      .then(response => {
         setProduct(response.data);
         setLoading(false);
       })
-      .catch((error) => {
+      .catch(error => {
         console.error(error);
       });
   }, [search]);
@@ -62,18 +62,23 @@ const Product = () => {
     getProductRequest();
   }, [getProductRequest]);
 
-  const handleCategoryClick = useCallback(async (category) => {
+  const handleCategoryClick = useCallback(async category => {
     setCategory(category);
   }, []);
 
-  const handleTargetClick = useCallback(async (target) => {
+  const handleTargetClick = useCallback(async target => {
     setTarget(target);
   }, []);
 
-  const filteredData = category === "ALL" ? product : product.filter((product) => product.category === category);
+  const filteredData =
+    category === 'ALL'
+      ? product
+      : product.filter(product => product.category === category);
 
   const CompleteFilteredData =
-    target === "ALL" ? filteredData : filteredData.filter((product) => product.target === target);
+    target === 'ALL'
+      ? filteredData
+      : filteredData.filter(product => product.target === target);
 
   if (loading) {
     return <Loading />;
@@ -83,12 +88,15 @@ const Product = () => {
     <>
       <div className="Container">
         <div className="TextBox">
-          <h1>Products</h1>
+          <h1>🛍 Products</h1>
         </div>
         <div className="NavBar">
           <div className="Toggle">
             <TargetNav selectedTarget={target} onClick={handleTargetClick} />
-            <CategoryNav selectedCategory={category} onClick={handleCategoryClick} />
+            <CategoryNav
+              selectedCategory={category}
+              onClick={handleCategoryClick}
+            />
           </div>
           <div className="Count">
             <p className="Text">{CompleteFilteredData.length} 상품</p>
@@ -99,7 +107,7 @@ const Product = () => {
           {CompleteFilteredData.length === 0 ? (
             <NotFound />
           ) : (
-            CompleteFilteredData.map((product) => {
+            CompleteFilteredData.map(product => {
               return <Card key={product.id} product={product} />;
             })
           )}

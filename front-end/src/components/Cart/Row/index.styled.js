@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { Link } from "react-router-dom";
+import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div``;
 
@@ -42,7 +42,7 @@ const Pic = styled.img`
 `;
 
 const Name = styled.li`
-  font-family: "GmarketSans";
+  font-family: 'GmarketSans';
 `;
 
 const Quantity = styled.li`

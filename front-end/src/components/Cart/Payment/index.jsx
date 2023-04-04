@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import * as S from "./index.styled";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { faEquals } from "@fortawesome/free-solid-svg-icons";
+import * as S from './index.styled';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faEquals } from '@fortawesome/free-solid-svg-icons';
 
 function Payment({ price, courierFee }) {
   const courierPrice = 3000;

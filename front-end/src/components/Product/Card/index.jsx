@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import "./index.styled.css";
-import { Link } from "react-router-dom";
-import { BROWSER_PATH } from "../../../constants/path";
+import './index.styled.css';
+import { Link } from 'react-router-dom';
+import { BROWSER_PATH } from '../../../constants/path';
 
 // id : 제품의 고유 번호
 // img : 제품의 대표 이미지

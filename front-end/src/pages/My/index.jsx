@@ -1,16 +1,16 @@
-import React, { useCallback, useEffect, useState } from "react";
-import axios from "axios";
+import React, { useCallback, useEffect, useState } from 'react';
+import axios from 'axios';
 
-import Profile from "../../components/My/Profile";
-import Orders from "../../components/My/Orders";
-import Loading from "../../components/Loading/index";
+import Profile from '../../components/My/Profile';
+import Orders from '../../components/My/Orders';
+import Loading from '../../components/Loading/index';
 
-import * as S from "./index.styled";
+import * as S from './index.styled';
 
-import { API_PATH, BROWSER_PATH } from "../../constants/path";
-import { useRecoilValue } from "recoil";
-import { jwtToken } from "../../stores/auth";
-import { useNavigate } from "react-router-dom";
+import { API_PATH, BROWSER_PATH } from '../../constants/path';
+import { useRecoilValue } from 'recoil';
+import { jwtToken } from '../../stores/auth';
+import { useNavigate } from 'react-router-dom';
 
 function My() {
   const navigate = useNavigate();
@@ -30,11 +30,11 @@ function My() {
           Authorization: `Bearer ${token.accessToken}`,
         },
       })
-      .then((response) => {
+      .then(response => {
         setMember(response.data);
         setLoading(false);
       })
-      .catch((error) => {
+      .catch(error => {
         console.error(error);
         navigate(BROWSER_PATH.LOGIN);
       });
@@ -44,7 +44,7 @@ function My() {
     findMemberRequest();
   }, [findMemberRequest, token]);
 
-  const changeOption = (number) => {
+  const changeOption = number => {
     setOption(number);
   };
 
@@ -71,7 +71,11 @@ function My() {
             <S.SelectHeader>회원 정보</S.SelectHeader>
             {/* <S.Header onClick={() => changeOption(2)}>주소정보</S.Header> */}
           </S.NavWrapper>
-          <Profile name={member.name} email={member.email} phoneNumber={member.phoneNumber} />
+          <Profile
+            name={member.name}
+            email={member.email}
+            phoneNumber={member.phoneNumber}
+          />
         </S.Section>
       )}
       {/* {option === 2 && (

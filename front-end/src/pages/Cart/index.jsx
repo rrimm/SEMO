@@ -1,15 +1,15 @@
-import React, { useCallback, useEffect, useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+import React, { useCallback, useEffect, useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
 
-import { NavRow, Row } from "../../components/Cart/Row";
-import NotFound from "../../components/Cart/NotFound";
-import Payment from "../../components/Cart/Payment";
-import * as S from "./index.styled";
+import { NavRow, Row } from '../../components/Cart/Row';
+import NotFound from '../../components/Cart/NotFound';
+import Payment from '../../components/Cart/Payment';
+import * as S from './index.styled';
 
-import { jwtToken } from "../../stores/auth";
-import { API_PATH, BROWSER_PATH } from "../../constants/path";
+import { jwtToken } from '../../stores/auth';
+import { API_PATH, BROWSER_PATH } from '../../constants/path';
 
 function Cart() {
   const navigate = useNavigate();
@@ -29,11 +29,11 @@ function Cart() {
           Authorization: `Bearer ${token.accessToken}`,
         },
       })
-      .then((response) => {
+      .then(response => {
         setData(response.data);
         setLoading(false);
       })
-      .catch((error) => {
+      .catch(error => {
         navigate(BROWSER_PATH.LOGIN);
         console.error(error);
       });
@@ -41,8 +41,8 @@ function Cart() {
 
   const paymentRequest = async () => {
     const filterCarts = await data.carts
-      .filter((cart) => cart.checked)
-      .map((cart) => ({
+      .filter(cart => cart.checked)
+      .map(cart => ({
         cartId: cart.cartId,
         memberId: token.memberId,
         productId: cart.productId,
@@ -53,14 +53,14 @@ function Cart() {
       .post(API_PATH.MY.ORDER, JSON.stringify(filterCarts), {
         headers: {
           Authorization: `Bearer ${token.accessToken}`,
-          Accept: "application/json",
-          "Content-Type": "application/json",
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
         },
       })
       .then(() => {
         navigate(BROWSER_PATH.MY);
       })
-      .catch((error) => {
+      .catch(error => {
         console.error(error);
       });
   };
@@ -86,18 +86,30 @@ function Cart() {
         {data.size === 0 ? (
           <NotFound />
         ) : (
-          data.carts.map((cart) => {
+          data.carts.map(cart => {
             return <Row key={cart.cartId} cart={cart} />;
           })
         )}
         {data.size !== 0 && (
           <>
-            <Payment price={data.price} courierFee={data.courierFee} empty={data.empty} />
+            <Payment
+              price={data.price}
+              courierFee={data.courierFee}
+              empty={data.empty}
+            />
             <S.ButtonWrapper>
-              <S.StyledButton variant={"contained"} color={"inherit"} onClick={goProduct}>
+              <S.StyledButton
+                variant={'contained'}
+                color={'inherit'}
+                onClick={goProduct}
+              >
                 계속 쇼핑하기
               </S.StyledButton>
-              <S.StyledButton variant={"contained"} color={"success"} onClick={paymentRequest}>
+              <S.StyledButton
+                variant={'contained'}
+                color={'success'}
+                onClick={paymentRequest}
+              >
                 구매하기
               </S.StyledButton>
             </S.ButtonWrapper>

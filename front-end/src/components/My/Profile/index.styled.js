@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 const Container = styled.div`
   margin-top: 5vh;
@@ -54,6 +54,11 @@ const TextSection = styled.div`
   margin-bottom: 10%;
 `;
 
+const Header = styled.h3`
+  font-size: 1.6rem;
+  margin-bottom: 3vh;
+`;
+
 const ThinText = styled.h4`
   opacity: 0.5;
 `;
@@ -70,5 +75,6 @@ export {
   StyledForm,
   TextSection,
   ThinText,
+  Header,
   Text,
 };

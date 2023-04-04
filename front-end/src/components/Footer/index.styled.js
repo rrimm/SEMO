@@ -1,9 +1,7 @@
-import styled from "@emotion/styled";
-import { Link } from "react-router-dom";
+import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
-  // position: absolute;
-
   width: 100%;
   height: 250px;
 
@@ -20,17 +18,28 @@ const Content = styled.div`
   padding-left: 2.4%;
 `;
 
+const ShopHeader = styled.h1`
+  font-size: 2.3rem;
+`;
+
+const Header = styled.h2`
+  font-size: 1.8rem;
+`;
+
 const Text = styled.p`
+  margin-top: 20px;
+  font-size: 1.3rem;
   color: #0f010d;
 `;
 
 const StyledLink = styled(Link)`
-  color: #0f010d;
+  font-size: 1.3rem;
   text-decoration: none;
+  color: #0f010d;
   opacity: 0.5;
   &: hover {
     opacity: 1;
   }
 `;
 
-export { Container, Content, Text, StyledLink };
+export { Container, Content, ShopHeader, Header, Text, StyledLink };
