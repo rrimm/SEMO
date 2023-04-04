@@ -56,7 +56,9 @@
 
 ### 프론트엔드
 
-1
+<img src="https://user-images.githubusercontent.com/74192619/229897841-0e8aabb4-0bef-491c-91a7-8f2e95e48043.png" height="400" />
+
+</br>
 
 ### 백엔드
 
