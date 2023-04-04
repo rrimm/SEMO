@@ -57,10 +57,11 @@ function ReviewModal({ CloseModal, data, onDelete, onUpdate, setReviews }) {
                   <S.Review_Modal_BuyItemName>&nbsp;&nbsp;{data?.productName}</S.Review_Modal_BuyItemName>
                 </S.Review_Modal_BuyItemBox>
                 {token && data.memberId === token.memberId && (
-                  <>
+                  <S.Review_Modal_ButtonSection>
                     <S.Review_Modal_Button onClick={handleDelete}>삭제</S.Review_Modal_Button>
+                    &nbsp;&nbsp;
                     <S.Review_Modal_Button onClick={handleUpdateClick}>수정</S.Review_Modal_Button>
-                  </>
+                  </S.Review_Modal_ButtonSection>
                 )}
               </S.Review_Modal_ContentSection>
             </S.Review_Modal_Body_section2>
