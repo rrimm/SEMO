@@ -3,11 +3,11 @@ import Carousel from "react-material-ui-carousel";
 import { Link } from "react-router-dom";
 
 import * as S from "./index.styled";
-import men from "../../assets/Banner/men.jpg";
-import women from "../../assets/Banner/women.jpg";
-import kids from "../../assets/Banner/kids.jpg";
-import { BROWSER_PATH } from "../../constants/path";
-import { TARGET } from "../../constants/category";
+import men from "../../../assets/Banner/men.jpg";
+import women from "../../../assets/Banner/women.jpg";
+import kids from "../../../assets/Banner/kids.jpg";
+import { BROWSER_PATH } from "../../../constants/path";
+import { TARGET } from "../../../constants/category";
 
 function Banner() {
   return (

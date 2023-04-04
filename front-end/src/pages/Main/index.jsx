@@ -1,9 +1,9 @@
 import React from "react";
-import Banner from "../../components/Banner";
-import Category from "../../components/Category";
-import Cards from "./Cards";
-import Explore from "./Explore";
-import Text from "./Text";
+import Banner from "../../components/Main/Banner";
+import Cards from "../../components/Main/Cards";
+import Category from "../../components/Main/Category";
+import Text from "../../components/Main/Text/index";
+import Explore from "../../components/Main/Explore/index";
 
 function Main() {
   return (

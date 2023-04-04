@@ -2,9 +2,9 @@ import React from "react";
 
 import * as S from "./index.styled";
 
-import { Bag, Basic, Hat, Outer, Pant, Shoes, Top, Total } from "../../assets/Category/image";
-import { BROWSER_PATH } from "../../constants/path";
-import { CATEGORY } from "../../constants/category";
+import { Bag, Basic, Hat, Outer, Pant, Shoes, Top, Total } from "../../../assets/Category/image";
+import { BROWSER_PATH } from "../../../constants/path";
+import { CATEGORY } from "../../../constants/category";
 
 const MAIN_CATEGORIES = [
   {
