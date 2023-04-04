@@ -13,11 +13,11 @@ function Footer() {
   return (
     <S.Container>
       <S.Content>
-        <h1>Shop</h1>
+        <S.ShopHeader>SEMO</S.ShopHeader>
         <S.Text>COPYRIGHT (C) Project ALL RIGHTS RESERVED.</S.Text>
       </S.Content>
       <S.Content>
-        <h2>SHOP</h2>
+        <S.Header>Product</S.Header>
         <S.Text>
           <S.StyledLink to={`${BROWSER_PATH.PRODUCT}?target=${TARGET.WOMEN}`}>
             For Women
@@ -35,7 +35,7 @@ function Footer() {
         </S.Text>
       </S.Content>
       <S.Content>
-        <h2>Company</h2>
+        <S.Header>Company</S.Header>
         {hasLogin ? (
           <>
             <S.Text>
@@ -57,7 +57,7 @@ function Footer() {
         )}
       </S.Content>
       <S.Content>
-        <h2>SUPPORT & CONTACT</h2>
+        <S.Header>SUPPORT & CONTACT</S.Header>
         <S.Text>FAQs</S.Text>
         <S.Text>Size Guide</S.Text>
         <S.Text>02-1234-5678</S.Text>

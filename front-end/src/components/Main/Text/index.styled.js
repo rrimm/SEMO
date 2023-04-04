@@ -14,15 +14,19 @@ const Wrapper = styled.div`
   width: 75vh;
 `;
 
-const Header = styled.h2``;
-
-const Text = styled.p`
-  font-size: 15px;
-  margin-top: -5px;
+const Header = styled.h1`
+  font-size: 1.5rem;
 `;
 
-const SmallText = styled.h5`
+const Text = styled.p`
+  font-size: 1.1rem;
+  margin-top: 10px;
+`;
+
+const SmallText = styled.p`
+  font-size: 0.9rem;
   opacity: 0.7;
+  margin-top: 10px;
 `;
 
 export { Container, Wrapper, Header, Text, SmallText };
