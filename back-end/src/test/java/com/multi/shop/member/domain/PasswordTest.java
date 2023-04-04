@@ -20,10 +20,10 @@ class PasswordTest {
     @DisplayName("비밀번호는 8자 이상 16자 이하여야 하며 영문자와 숫자로 이루어져 있다.")
     @ParameterizedTest
     @ValueSource(strings = {"apple1234", "Banana1973"})
-    void isValidPassword(String actual) {
-        Password expected = Password.encode(actual, passwordEncoder);
+    void isValidPassword(String expected) {
+        Password actual = Password.encode(expected, passwordEncoder);
 
-        assertThat(passwordEncoder.matches(actual, expected.getValue())).isTrue();
+        assertThat(passwordEncoder.matches(expected, actual.getValue())).isTrue();
     }
 
     @DisplayName("비밀번호은 8자 미만 16자 초과일 경우 예외를 던진다")
