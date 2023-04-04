@@ -8,6 +8,7 @@ import PasswordInput from "./PwInput";
 import { API_PATH, BROWSER_PATH } from "../../constants/path";
 import { useRecoilState } from "recoil";
 import { isLogin, jwtToken } from "../../stores/auth";
+import { CLIENT_ERROR_MESSAGE } from "../../constants/message";
 
 function LoginForm() {
   const [login, setLogin] = useRecoilState(isLogin);
@@ -22,7 +23,7 @@ function LoginForm() {
 
   const loginHandler = () => {
     if (inputEmail === "" || inputPw === "") {
-      alert("이메일과 비밀번호를 입력해주세요!");
+      alert(CLIENT_ERROR_MESSAGE.LOGIN.NOT_NULL);
       return;
     }
   };
@@ -40,9 +41,8 @@ function LoginForm() {
         console.log(response);
         navigate(-1, { replace: true });
       })
-      .catch((error) => {
-        console.log(error);
-        alert("이메일과 비밀번호를 다시 확인해주세요!");
+      .catch(() => {
+        alert(CLIENT_ERROR_MESSAGE.LOGIN.CONFIRM);
       });
   };
 

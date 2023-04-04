@@ -36,6 +36,10 @@ const CLIENT_ERROR_MESSAGE = {
       MIN: `장바구니는 최소 ${MEMBER_RULE.CART.MIN_QUANTITY}개 까지 가능합니다!`,
     },
   },
+  LOGIN: {
+    NOT_NULL: "이메일과 비밀번호를 입력해주세요!",
+    CONFIRM: "이메일과 비밀번호가 일치하지 않습니다!",
+  },
 };
 
 const DIRECTIVE = {
