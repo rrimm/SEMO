@@ -8,12 +8,14 @@ import com.multi.shop.order.dto.request.OrderSaveRequest;
 import com.multi.shop.order.service.OrderService;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@Profile("dev")
 @RequiredArgsConstructor
 @Component
 public class InitDb {
