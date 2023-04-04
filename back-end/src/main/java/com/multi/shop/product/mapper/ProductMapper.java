@@ -2,6 +2,7 @@ package com.multi.shop.product.mapper;
 
 import com.multi.shop.product.domain.Product;
 import com.multi.shop.product.domain.vo.FindRelatedProductVO;
+import com.multi.shop.product.dto.request.ProductSaveRequest;
 import com.multi.shop.product.dto.response.StockUpdateRequest;
 
 import java.util.List;
@@ -18,4 +19,5 @@ public interface ProductMapper {
 
     void updateStock(StockUpdateRequest request);
 
+    Long save(ProductSaveRequest request);
 }

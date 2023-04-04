@@ -1,9 +1,7 @@
 package com.multi.shop.review.domain;
 
-import com.multi.shop.review.exception.ReviewErrorCode;
 import com.multi.shop.review.exception.ReviewException;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -37,6 +35,7 @@ class ContentTest {
         // when
         // then
         assertThatThrownBy(() -> Content.from(text))
-                .isInstanceOf(ReviewException.class);
+                .isInstanceOf(ReviewException.class)
+                .hasMessageContaining("리뷰의 내용은 250자 이하여야 합니다.");
     }
 }

@@ -3,6 +3,7 @@ package com.multi.shop.product.repository;
 import com.multi.shop.product.domain.Product;
 import com.multi.shop.product.domain.vo.FindRelatedProductVO;
 import com.multi.shop.product.domain.vo.ProductVO;
+import com.multi.shop.product.dto.request.ProductSaveRequest;
 import com.multi.shop.product.dto.response.StockUpdateRequest;
 import com.multi.shop.product.mapper.ProductMapper;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,10 @@ import java.util.Optional;
 @Repository
 public class ProductRepository {
     private final ProductMapper productMapper;
+
+    public Long save(ProductSaveRequest request) {
+        return productMapper.save(request);
+    }
 
     public List<String> findCarouselById(Long id) {
         return productMapper.findCarouselById(id);
