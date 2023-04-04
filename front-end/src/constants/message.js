@@ -51,6 +51,9 @@ const DIRECTIVE = {
     PASSWORD: "숫자와 영문자로 이루어진 8~16자 사이의 비밀번호를 입력하세요.",
     RE_PASSWORD: "비밀번호를 한 번 더 입력하세요",
   },
+  REVIEW: {
+    CONTENT: "리뷰를 작성해주세요.",
+  },
 };
 
 export { CLIENT_ERROR_MESSAGE, DIRECTIVE };

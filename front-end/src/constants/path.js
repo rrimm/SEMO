@@ -44,7 +44,8 @@ const API_PATH = {
     SEARCH: "/api/product/search",
   },
   REVIEW: {
-    BASE: "/auth/review",
+    BASE: "/api/review",
+    AUTH: "/auth/review",
     FORM: "/auth/review/form",
   },
 };

@@ -3,25 +3,24 @@ import * as S from "./index.styled";
 import axios from "axios";
 import { useRecoilValue } from "recoil";
 import { jwtToken } from "../../../stores/auth";
+import { API_PATH } from "../../../constants/path";
+import { DIRECTIVE } from "../../../constants/message";
 
 function ReviewUpdateModal({ CloseModal, data, onUpdate, setReviews }) {
   const token = useRecoilValue(jwtToken);
   const [content, setContent] = useState(data.content);
 
   useEffect(() => {
-    //랜더링 될 때, (modal이 켜질 때) 스크롤 방지
-    document.body.style.overflow = "hidden"; //body 부분 hidden
+    document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = ""; // 꺼지면 초기화
+      document.body.style.overflow = "";
     };
   }, []);
 
   const handleUpdateClick = async () => {
-    //수정 로직
-    console.log(data.id);
     try {
       const response = await axios.put(
-        `/auth/review`,
+        API_PATH.REVIEW.AUTH,
         {
           id: data.id,
           content: content,
@@ -36,6 +35,9 @@ function ReviewUpdateModal({ CloseModal, data, onUpdate, setReviews }) {
       window.location.reload();
       CloseModal();
     } catch (error) {
+      if (error.response.status === 400) {
+        alert(error.response.data.message);
+      }
       console.error(error);
     }
   };
@@ -63,7 +65,7 @@ function ReviewUpdateModal({ CloseModal, data, onUpdate, setReviews }) {
             <S.Review_Modal_ContentTextarea
               value={content}
               onChange={handleContentChange}
-              placeholder="리뷰를 작성해주세요."
+              placeholder={DIRECTIVE.REVIEW.CONTENT}
             />
             <S.Review_Modal_ContentSection>
               <S.Review_Modal_BuyItemBox>
