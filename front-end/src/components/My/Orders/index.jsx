@@ -41,7 +41,7 @@ function Orders() {
 
   return (
     <S.Container>
-      <h3>주문 / 배송</h3>
+      <S.Header>주문 / 배송</S.Header>
       <S.BoldLine />
       <NavRow />
       {order.length === 0 ? (

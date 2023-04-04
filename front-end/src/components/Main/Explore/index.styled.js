@@ -42,7 +42,7 @@ const StyledLink = styled(Link)`
 `;
 
 const Header = styled.h2`
-  font-weight: bold;
+  font-size: 1.8rem;
 `;
 
 const Pic = styled.img`

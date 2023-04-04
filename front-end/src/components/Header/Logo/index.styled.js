@@ -10,8 +10,7 @@ const Container = styled.div`
 const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
-
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #0f010d;
   text-decoration: none;
 `;

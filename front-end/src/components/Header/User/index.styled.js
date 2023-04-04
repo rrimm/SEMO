@@ -14,7 +14,7 @@ const StyledLink = styled(Link)`
   color: #0f010d;
   text-decoration: none;
   transition: all 0.3s;
-
+  font-size: 1.4rem;
   &: hover {
     transform: scale(1.1);
   }
@@ -36,8 +36,8 @@ const Text = styled.p`
   align-items: center;
   color: #0f010d;
   text-decoration: none;
+  font-size: 1.4rem;
   transition: all 0.3s;
-
   &: hover {
     transform: scale(1.1);
   }

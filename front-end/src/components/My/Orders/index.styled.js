@@ -12,6 +12,11 @@ const BoldLine = styled.div`
   height: 2px;
 `;
 
+const Header = styled.h3`
+  font-size: 1.6rem;
+  margin-bottom: 3vh;
+`;
+
 const Line = styled.div`
   background-color: black;
   width: 60vw;
@@ -23,4 +28,4 @@ const Wrapper = styled.div`
   width: 60vw;
 `;
 
-export { Container, BoldLine, Line, Wrapper };
+export { Container, BoldLine, Header, Line, Wrapper };

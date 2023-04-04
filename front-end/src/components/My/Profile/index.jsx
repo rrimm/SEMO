@@ -7,7 +7,7 @@ import * as S from './index.styled';
 function Profile({ name, email, phoneNumber }) {
   return (
     <S.Container>
-      <h3>회원정보 변경</h3>
+      <S.Header>회원정보 변경</S.Header>
       <S.Line />
       <S.Wrapper>
         <S.Section>
