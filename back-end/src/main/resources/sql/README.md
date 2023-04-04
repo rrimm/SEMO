@@ -2,12 +2,12 @@
 
 해당 스키마는 `MySQL`로 구성하였습니다.</br>
 해당 스키마의 생성을 위한 `sql`
-문은 [schema.sql](https://github.com/MultiProject23/Shop_SemiProject/blob/main/back-end/src/main/resources/sql/schema/schema.sql)
+문은 [schema.sql](https://github.com/MultiProject23/SEMO/blob/main/back-end/src/main/resources/sql/schema/schema.sql)
 에서 확인할 수 있습니다.
 
 ## ER 다이어그램
 
-![ERD](https://user-images.githubusercontent.com/74192619/228433185-423b2fcd-8718-4932-a436-8f7efcb74365.png)
+![erd](https://user-images.githubusercontent.com/74192619/229756949-bf9afd84-4c0f-4cfe-acb8-3a40ba47c71d.jpeg)
 
 ## 테이블 구성
 
@@ -32,8 +32,8 @@
 | Image    | MediumBlob   | String        |     |     | O   | 제품 이미지   |
 | Info     | varchar(255) | String        |     |     | O   | 제품 설명     |
 | Name     | varchar(100) | String        |     |     | O   | 제품 이름     |
-| Price    | integer      | int           |     |     | O   | 제품 가격     |
-| Stock    | integer      | int           |     |     | O   | 제품 재고     |
+| Price    | int          | int           |     |     | O   | 제품 가격     |
+| Stock    | int          | int           |     |     | O   | 제품 재고     |
 | Target   | varchar(10)  | Enum          |     |     | O   | 제품 고객층   |
 
 ### 3. Carousel
@@ -49,12 +49,12 @@
 ### 4. Cart
 
 | Column     | DataType | Java DataType | PK  | FK  | NN  | Description     |
-| ---------- | -------- | ------------- | --- | --- | --- | --------------- |
+| ---------- |----------| ------------- | --- | --- | --- | --------------- |
 | Id         | bigint   | Long          | O   |     |     | 장바구니 식별자 |
 | Member_Id  | bigint   | Long          |     | O   | O   | 멤버 식별자     |
 | Product_Id | bigint   | Long          |     | O   | O   | 제품 식별자     |
-| Checked    | boolean  | boolean       |     |     | O   | 선택 유무       |
-| Quantity   | integer  | int           |     |     | O   | 제품 수량       |
+| Checked    | bit(1)   | boolean       |     |     | O   | 선택 유무       |
+| Quantity   | int      | int           |     |     | O   | 제품 수량       |
 
 - `Member ----< Cart`
 - `Product ----< Cart`
@@ -67,7 +67,7 @@
 | Member_Id     | bigint      | Long          |     | O   | O   | 멤버 식별자      |
 | Product_Id    | bigint      | Long          |     | O   | O   | 제품 식별자      |
 | Date          | date        | LocalDate     |     |     | O   | 주문 날자        |
-| Quantity      | integer     | int           |     |     | O   | 주문 수량        |
+| Quantity      | int         | int           |     |     | O   | 주문 수량        |
 | Oroder_Status | varchar(20) | Enum          |     |     | O   | 주문 상태        |
 
 - `Member ----< Order`
