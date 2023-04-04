@@ -1,6 +1,5 @@
 package com.multi.shop.review.controller;
 
-import com.multi.shop.review.domain.dto.request.ReviewRequest;
 import com.multi.shop.review.dto.request.ReviewSaveRequest;
 import com.multi.shop.review.dto.request.ReviewUpdateRequest;
 import com.multi.shop.review.dto.response.ReviewFormResponse;
@@ -9,7 +8,6 @@ import com.multi.shop.review.service.ReviewService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,7 +39,7 @@ public class ReviewController {
     }
 
     @PutMapping("/auth/review")
-    public ResponseEntity<Void> update(@RequestBody @Valid ReviewUpdateRequest request){
+    public ResponseEntity<Void> update(@RequestBody @Valid ReviewUpdateRequest request) {
         reviewService.updateReview(request);
         return ResponseEntity.ok().build();
     }

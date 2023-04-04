@@ -2,7 +2,6 @@ package com.multi.shop.product.repository;
 
 import com.multi.shop.product.domain.Product;
 import com.multi.shop.product.domain.vo.FindRelatedProductVO;
-import com.multi.shop.product.domain.vo.ProductVO;
 import com.multi.shop.product.dto.request.ProductSaveRequest;
 import com.multi.shop.product.dto.response.StockUpdateRequest;
 import com.multi.shop.product.mapper.ProductMapper;
