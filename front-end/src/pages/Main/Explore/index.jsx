@@ -8,9 +8,9 @@ import People from "../../../assets/Explore/dev.jpg";
 function Explore() {
   return (
     <S.Container>
-      <S.Header>Explore $(4팀)</S.Header>
+      <S.Header>Explore SEMO</S.Header>
       <S.Wrapper>
-        <S.StyledA href={"https://github.com/MultiProject23/React-Project"} target={"_blank"} rel="noreferrer">
+        <S.StyledA href={"https://github.com/MultiProject23/SEMO"} target={"_blank"} rel="noreferrer">
           <S.Text>Github</S.Text>
           <S.Pic src={Github}></S.Pic>
         </S.StyledA>
