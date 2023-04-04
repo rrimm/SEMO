@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import { House, RotateLeft } from "../../components/FontAwesome";
+import { House, RotateLeft } from "../../components/svg/index";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import * as S from "./index.styled";
