@@ -56,7 +56,7 @@
 
 ### 프론트엔드
 
-<img src="https://user-images.githubusercontent.com/74192619/229897841-0e8aabb4-0bef-491c-91a7-8f2e95e48043.png" height="400" />
+<img src="https://user-images.githubusercontent.com/74192619/229897841-0e8aabb4-0bef-491c-91a7-8f2e95e48043.png" width="600" />
 
 </br>
 
@@ -65,6 +65,8 @@
 - Java 17
 - SpringBoot 3.0.5
 - MySQL
+
+<img src="https://user-images.githubusercontent.com/74192619/229940254-60d33ed2-139d-43f7-aedb-7c888fa08501.png" width="600" />
 
 ## 팀원
 
