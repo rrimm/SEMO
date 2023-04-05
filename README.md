@@ -68,6 +68,14 @@
 
 <img src="https://user-images.githubusercontent.com/74192619/229962681-246e73ed-9b23-4d24-b267-600ab9c9f6f0.png" width="600" />
 
+</br>
+
+### 인프라 구조
+
+<img src="https://user-images.githubusercontent.com/74192619/229963003-748aba93-f3b7-4f59-9367-39182d3d1025.png" width="600">
+
+</br>
+
 ## 팀원
 
 |                                                          조장                                                           |                                                          조원                                                          |                                                         조원                                                          |                                                          조원                                                          |                                                          조원                                                          |                                                          조원                                                          |                                                          조원                                                           |
