@@ -6,7 +6,7 @@ import Card from '../../components/Product/Card';
 import { CategoryNav, TargetNav } from '../../components/Product/FilterNav';
 import NotFound from '../../components/Product/NotFound';
 
-import './index.styled.css';
+import * as S from './index.styled';
 
 import { API_PATH } from '../../constants/path';
 import Loading from '../../components/Loading';
@@ -86,24 +86,24 @@ const Product = () => {
 
   return (
     <>
-      <div className="Container">
-        <div className="TextBox">
+      <S.Container>
+        <S.TextBox>
           <h1>🛍 Products</h1>
-        </div>
-        <div className="NavBar">
-          <div className="Toggle">
+        </S.TextBox>
+        <S.NavBar>
+          <S.Toggle>
             <TargetNav selectedTarget={target} onClick={handleTargetClick} />
             <CategoryNav
               selectedCategory={category}
               onClick={handleCategoryClick}
             />
-          </div>
-          <div className="Count">
-            <p className="Text">{CompleteFilteredData.length} 상품</p>
-          </div>
-        </div>
+          </S.Toggle>
+          <S.Count>
+            <S.Text>{CompleteFilteredData.length} 상품</S.Text>
+          </S.Count>
+        </S.NavBar>
         {search !== undefined && <p>"{search}" 검색한 결과입니다.</p>}
-        <div className="Wrapper">
+        <S.Wrapper>
           {CompleteFilteredData.length === 0 ? (
             <NotFound />
           ) : (
@@ -111,8 +111,8 @@ const Product = () => {
               return <Card key={product.id} product={product} />;
             })
           )}
-        </div>
-      </div>
+        </S.Wrapper>
+      </S.Container>
     </>
   );
 };

@@ -1,27 +1,23 @@
 import React from 'react';
 
-import './index.styled.css';
 import { Link } from 'react-router-dom';
 import { BROWSER_PATH } from '../../../constants/path';
+import * as S from './index.styled';
 
-// id : 제품의 고유 번호
-// img : 제품의 대표 이미지
-// name : 제품의 이름
-// price : 제품의 가격
 function Card({ product }) {
   const formatPrice = Number(product.price).toLocaleString();
   return (
-    <div className="img-container">
+    <S.Container>
       <Link to={`${BROWSER_PATH.DETAILS}/${product.id}`}>
-        <img className="image" src={product.image} alt=""></img>
+        <S.Image src={product.image} alt=""></S.Image>
       </Link>
       <div>
-        <div className="text-container">
-          <p className="text">{product.name}</p>
-          <p className="text">{formatPrice}원</p>
-        </div>
+        <S.Wrapper>
+          <S.Text>{product.name}</S.Text>
+          <S.Text>{formatPrice}원</S.Text>
+        </S.Wrapper>
       </div>
-    </div>
+    </S.Container>
   );
 }
 export default Card;
