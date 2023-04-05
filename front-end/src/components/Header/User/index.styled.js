@@ -20,6 +20,20 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const Text = styled.p`
+  display: flex;
+  align-items: center;
+  color: #0f010d;
+  text-decoration: none;
+  font-size: 1.4rem;
+  transition: all 0.3s;
+  cursor: pointer;
+  margin: 0;
+  &: hover {
+    transform: scale(1.1);
+  }
+`;
+
 const Wrapper = styled.div`
   background-color: #e5cdce;
   width: 20px;
@@ -29,18 +43,6 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
-
-const Text = styled.p`
-  display: flex;
-  align-items: center;
-  color: #0f010d;
-  text-decoration: none;
-  font-size: 1.4rem;
-  transition: all 0.3s;
-  &: hover {
-    transform: scale(1.1);
-  }
 `;
 
 export { Container, Wrapper, StyledLink, Text };
