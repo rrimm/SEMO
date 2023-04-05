@@ -66,7 +66,15 @@
 - SpringBoot 3.0.5
 - MySQL
 
-<img src="https://user-images.githubusercontent.com/74192619/229940254-60d33ed2-139d-43f7-aedb-7c888fa08501.png" width="600" />
+<img src="https://user-images.githubusercontent.com/74192619/229962681-246e73ed-9b23-4d24-b267-600ab9c9f6f0.png" width="600" />
+
+</br>
+
+### 인프라 구조
+
+<img src="https://user-images.githubusercontent.com/74192619/229963003-748aba93-f3b7-4f59-9367-39182d3d1025.png" width="600">
+
+</br>
 
 ## 팀원
 
