@@ -1,10 +1,12 @@
 import React from 'react';
 
+import * as S from './index.styled';
+
 function PwInput({ value, onChange }) {
   return (
-    <div className="form-group">
-      <label>Password</label>
-      <input
+    <S.Container>
+      <S.Label>Password</S.Label>
+      <S.Input
         type="password"
         id="inputPw"
         value={value}
@@ -12,7 +14,7 @@ function PwInput({ value, onChange }) {
         placeholder="비밀번호"
         required
       />
-    </div>
+    </S.Container>
   );
 }
 

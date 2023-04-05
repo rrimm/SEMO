@@ -10,13 +10,14 @@ import Birth from './Birth';
 import Phone from './Phone';
 
 import { API_PATH, BROWSER_PATH } from '../../constants/path';
+import { CLIENT_ERROR_MESSAGE } from '../../constants/message';
+
 import {
   EMAIL_REGEX,
   PHONE_NUMBER_REGEX,
   BIRTHDAY_REGEX,
   PW_REGEX,
 } from '../../utils/validate';
-import { CLIENT_ERROR_MESSAGE } from '../../constants/message';
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
@@ -85,7 +86,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <form className="join-form" onSubmit={handleSubmit}>
+    <from className="join-form" onSubmit={handleSubmit}>
       <h2>회원가입</h2>
       <Email handleChange={handleChange} value={formData.email} />
       <p>{emailError}</p>
@@ -100,7 +101,7 @@ const RegisterForm = () => {
       <button type="submit" className="register" onSubmit={handleSubmit}>
         가입하기
       </button>
-    </form>
+    </from>
   );
 };
 

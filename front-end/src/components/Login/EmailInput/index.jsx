@@ -1,10 +1,12 @@
 import React from 'react';
 
+import * as S from './index.styled';
+
 function EmailInput({ value, onChange }) {
   return (
-    <div className="form-group">
-      <label>Email</label>
-      <input
+    <S.Container>
+      <S.Label>Email</S.Label>
+      <S.Input
         type="text"
         id="inputEmail"
         value={value}
@@ -12,7 +14,7 @@ function EmailInput({ value, onChange }) {
         placeholder="이메일"
         required
       />
-    </div>
+    </S.Container>
   );
 }
 

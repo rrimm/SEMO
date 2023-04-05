@@ -1,11 +1,14 @@
-import './index.styled.css';
 import LoginForm from '../../components/Login/LoginForm';
+
+import './index.styled.css';
+
+import * as S from './index.styled';
 
 function Login() {
   return (
-    <div className="centered-container">
+    <S.Container>
       <LoginForm />
-    </div>
+    </S.Container>
   );
 }
 export default Login;
