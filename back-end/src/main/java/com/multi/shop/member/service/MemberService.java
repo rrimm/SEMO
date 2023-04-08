@@ -30,7 +30,7 @@ public class MemberService {
         Email email = Email.from(request.getEmail());
         Name name = Name.from(request.getName());
         Password password = Password.encode(request.getPassword(), passwordEncoder);
-        Phone phone = Phone.from(request.getPhone());
+        Phone phone = Phone.of(request.getPhone());
 
         MemberVO saveMemberVO = MemberVO.from(request, email, name,password, phone);
 
