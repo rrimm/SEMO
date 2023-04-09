@@ -20,7 +20,7 @@ public class Phone {
         this.value = value;
     }
 
-    public static Phone from(String value) {
+    public static Phone of(String value) {
         validatePatternIsValid(value);
         return new Phone(value);
     }

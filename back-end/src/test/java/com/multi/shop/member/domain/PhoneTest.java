@@ -16,7 +16,7 @@ class PhoneTest {
     @ParameterizedTest
     @ValueSource(strings = {"010-1234-5678", "010-123-4567"})
     void isValid(String expected) {
-        Phone actual = Phone.from(expected);
+        Phone actual = Phone.of(expected);
 
         assertThat(actual.getValue()).isEqualTo(expected);
     }
@@ -26,7 +26,7 @@ class PhoneTest {
     @ValueSource(strings = {"010-1234-567a", "010-123-456@", "010-12 3-4567",
             "01012345678", "010-12-1234", "010-1234-56"})
     void isNotValidPattern(String actual) {
-        assertThatThrownBy(() -> Phone.from(actual))
+        assertThatThrownBy(() -> Phone.of(actual))
                 .isInstanceOf(MemberException.class)
                 .hasMessageContaining("올바르지 않은 전화번호 형식입니다.");
     }

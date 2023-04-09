@@ -6,6 +6,8 @@ import com.multi.shop.member.dto.request.MemberJoinRequest;
 import com.multi.shop.member.service.MemberService;
 import com.multi.shop.order.dto.request.OrderSaveRequest;
 import com.multi.shop.order.service.OrderService;
+import com.multi.shop.review.dto.request.ReviewSaveRequest;
+import com.multi.shop.review.service.ReviewService;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;
@@ -39,16 +41,16 @@ public class InitDb {
         public void init() {
             MemberJoinRequest saveMember1 = MemberJoinRequest.builder()
                     .birth(LocalDate.now())
-                    .email("test1234@gmail.com")
+                    .email("apple1124@gmail.com")
                     .name("홍길동")
                     .password("12345678")
                     .phone("010-1234-5678")
                     .build();
             MemberJoinRequest saveMember2 = MemberJoinRequest.builder()
                     .birth(LocalDate.now())
-                    .email("test5678@gmail.com")
+                    .email("banana1124@gmail.com")
                     .name("전우치")
-                    .password("apple1234")
+                    .password("12345678")
                     .phone("010-5678-1234")
                     .build();
             MemberJoinRequest saveMember3 = MemberJoinRequest.builder()
