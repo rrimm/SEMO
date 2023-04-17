@@ -32,12 +32,12 @@ function CartButton({ productId }) {
           headers: {
             Authorization: `Bearer ${token.accessToken}`,
           },
-        },
+        }
       )
       .then(() => {
         handleShow();
       })
-      .catch(error => {
+      .catch((error) => {
         if (error.response.status === 400) {
           alert(error.response.data.message);
           return;
@@ -63,18 +63,12 @@ function CartButton({ productId }) {
           <S.MessageContainer>장바구니에 상품이 담겼습니다.</S.MessageContainer>
         </Modal.Body>
         <Modal.Footer>
-          <S.ButtonContainer>
-            <S.CloseButton
-              className="btn_close"
-              variant="secondary"
-              onClick={handleClose}
-            >
+            <S.CloseButton className="btn_close" variant="secondary" onClick={handleClose}>
               쇼핑 계속하기
             </S.CloseButton>
             <S.ToCartButton className="cart" variant="third" onClick={goCart}>
               장바구니로 이동
             </S.ToCartButton>
-          </S.ButtonContainer>
         </Modal.Footer>
       </Modal>
     </div>
