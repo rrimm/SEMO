@@ -1,8 +1,8 @@
-import React from 'react';
-import StockButton from './Button/StockButton';
-import DeliveryButton from './Button/DeliveryButton';
-import CartButton from './Button/CartButton';
-import * as S from './index.styled';
+import React from "react";
+import StockButton from "./Button/StockButton";
+import DeliveryButton from "./Button/DeliveryButton";
+import CartButton from "./Button/CartButton";
+import * as S from "./index.styled";
 
 const OrderContainer = ({ name, price, id, info, stock }) => {
   const formatPrice = Number(price).toLocaleString();
@@ -23,7 +23,7 @@ const OrderContainer = ({ name, price, id, info, stock }) => {
         <S.Info>{info}</S.Info>
         <br />
         <CartButton productId={id} />
-        <S.BottomLine />
+      <S.BottomLine/>
       </ul>
       <br />
       <StockButton stock={stock} />

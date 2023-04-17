@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
-import { Link } from 'react-router-dom';
+import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
 const Button = styled.button`
   background-color: #0f010d;
@@ -11,27 +11,19 @@ const Button = styled.button`
 `;
 
 const CloseButton = styled.button`
-  background-color: #807675;
+  background-color: #cbc2b6;
   color: white;
-  font-size: 20px;
+  font-size: 17px;
   padding: 15px;
   border-style: none;
-  margin: 10px 30px;
 `;
 
 const ToCartButton = styled.button`
   background-color: #807675;
   color: white;
-  font-size: 20px;
+  font-size: 17px;
   padding: 15px;
   border-style: none;
-  margin: 10px 35px 10px 30px;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 
 const StyledLink = styled(Link)`
@@ -46,11 +38,4 @@ const MessageContainer = styled.div`
   padding: 40px 0;
 `;
 
-export {
-  Button,
-  CloseButton,
-  ToCartButton,
-  MessageContainer,
-  ButtonContainer,
-  StyledLink,
-};
+export { Button, CloseButton, ToCartButton, MessageContainer, StyledLink };

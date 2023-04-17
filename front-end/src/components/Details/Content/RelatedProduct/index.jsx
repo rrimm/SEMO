@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import axios from 'axios';
-import { BsChevronLeft } from 'react-icons/bs';
-import { BsChevronRight } from 'react-icons/bs';
-import * as S from './index.styled';
-import { API_PATH, BROWSER_PATH } from '../../../../constants/path';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect, useCallback } from "react";
+import axios from "axios";
+import { BsChevronLeft } from "react-icons/bs";
+import { BsChevronRight } from "react-icons/bs";
+import * as S from "./index.styled";
+import { API_PATH, BROWSER_PATH } from "../../../../constants/path";
+import { useParams } from "react-router-dom";
 
 function RelatedProduct() {
   const [data, setData] = useState([]);
@@ -13,10 +13,10 @@ function RelatedProduct() {
   const relatedProductsRequest = useCallback(async () => {
     await axios
       .get(`${API_PATH.PRODUCT.RELATED}/${param.id}`)
-      .then(response => {
+      .then((response) => {
         setData(response.data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
       });
   }, [param]);
@@ -52,7 +52,7 @@ function RelatedProduct() {
         <BsChevronLeft />
       </S.Button>
       {data &&
-        visibleData.map(product => (
+        visibleData.map((product) => (
           <S.ImageContainer key={product.id}>
             <S.StyledLink to={`${BROWSER_PATH.DETAILS}/${product.id}`}>
               <S.Image src={product.image} alt="carousel-thumbnail" />
