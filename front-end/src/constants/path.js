@@ -11,6 +11,7 @@ const BROWSER_PATH = {
   REVIEW_FORM: '/review-form',
   NOT_FOUND: '/notfound',
   PEOPLE: '/people',
+  ADMIN: '/admin',
 };
 
 const API_PATH = {
@@ -46,6 +47,12 @@ const API_PATH = {
     BASE: '/api/review',
     AUTH: '/auth/review',
     FORM: '/auth/review/form',
+  },
+  ADMIN: {
+    BASE: '/api/admin',
+    AUTH: '/auth/admin',
+    MEMBER: '/api/admin/member',
+    PRODUCT: '/api/admin/product',
   },
 };
 

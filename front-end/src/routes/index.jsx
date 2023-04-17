@@ -1,16 +1,4 @@
-import {
-  Cart,
-  Details,
-  Join,
-  Login,
-  Main,
-  My,
-  NotFound,
-  Product,
-  Review,
-  ReviewForm,
-  People,
-} from '../pages/index';
+import { Cart, Details, Join, Login, Main, My, Admin, NotFound, Product, Review, ReviewForm } from '../pages/index';
 
 import React from 'react';
 import { BROWSER_PATH } from '../constants/path';
@@ -26,7 +14,6 @@ function Routes() {
       <Route path={BROWSER_PATH.DETAILS}>
         <Route path={':id'} element={<Details />} />
       </Route>
-
       <Route path={BROWSER_PATH.PRODUCT} element={<Product />} />
       <Route path={BROWSER_PATH.REVIEW} element={<Review />} />
       <Route element={<PrivateWrapper />}>
@@ -34,8 +21,11 @@ function Routes() {
         <Route path={BROWSER_PATH.MY} element={<My />} />
         <Route path={BROWSER_PATH.REVIEW_FORM} element={<ReviewForm />} />
       </Route>
+      <Route path={BROWSER_PATH.ADMIN} element={<Admin />}>
+        <Route path={':member'} element={<Admin />} />
+        <Route path={':product'} element={<Admin />} />
+      </Route>
       <Route path={'*'} element={<NotFound />} />
-      <Route path={BROWSER_PATH.PEOPLE} element={<People />} />
     </BrowserRoutes>
   );
 }
