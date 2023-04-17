@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Carousel } from "react-carousel-minimal";
-import Loading from "../../Loading";
-import * as S from "./index.styled";
+import React, { useEffect, useState } from 'react';
+import { Carousel } from 'react-carousel-minimal';
+import Loading from '../../Loading';
+import * as S from './index.styled';
 
 function SimpleSlider({ images }) {
   const [loading, setLoading] = useState(true);
@@ -16,7 +16,7 @@ function SimpleSlider({ images }) {
   if (loading) {
     return <Loading />;
   } else {
-    images.map((img) => data.push({ image: img }));
+    images.map(img => data.push({ image: img }));
   }
 
   return (

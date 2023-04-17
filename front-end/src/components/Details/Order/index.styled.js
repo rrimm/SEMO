@@ -1,7 +1,7 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 const List = styled.li`
-  list-style-type: "";
+  list-style-type: '';
 `;
 
 const BottomLine = styled.div`
