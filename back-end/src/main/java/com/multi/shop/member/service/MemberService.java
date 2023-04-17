@@ -14,6 +14,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Slf4j
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -32,7 +34,7 @@ public class MemberService {
         Password password = Password.encode(request.getPassword(), passwordEncoder);
         Phone phone = Phone.of(request.getPhone());
 
-        MemberVO saveMemberVO = MemberVO.from(request, email, name,password, phone);
+        MemberVO saveMemberVO = MemberVO.from(request, email, name, password, phone);
 
         return memberRepository.save(saveMemberVO);
     }
@@ -57,6 +59,15 @@ public class MemberService {
     public MemberResponse findInfoById(Long id) {
         Member findMember = findById(id);
         return MemberResponse.from(findMember);
+    }
+
+    public List<Member> findMembers() {
+        return memberRepository.findAll();
+    }
+
+    @Transactional
+    public void deleteById(Long id) {
+        memberRepository.remove(id);
     }
 
     @Transactional

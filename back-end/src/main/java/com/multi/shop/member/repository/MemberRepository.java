@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -26,6 +27,14 @@ public class MemberRepository {
 
     public Optional<MemberVO> findByMemberEmail(String email) {
         return memberMapper.findByMemberEmail(email);
+    }
+
+    public List<Member> findAll() {
+        return memberMapper.findAll();
+    }
+
+    public int remove(Long id){
+        return memberMapper.remove(id);
     }
 
     public void updatePassword(MemberModifyPWRequest request) {

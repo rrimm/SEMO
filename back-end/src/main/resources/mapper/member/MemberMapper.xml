@@ -19,11 +19,22 @@
         WHERE email = #{email}
     </select>
 
+    <select id="findAll" parameterType="String" resultType="Member">
+        SELECT *
+        FROM member
+    </select>
+
     <update id="updatePassword" parameterType="MemberModifyPWRequest">
         UPDATE member
         SET password = #{newPassword}
         WHERE id = #{memberId}
     </update>
+
+    <delete id="remove" parameterType="Long">
+        DELETE
+        FROM member
+        WHERE id = #{id}
+    </delete>
 
     <select id="existByMemberEmail" parameterType="String" resultType="boolean">
         SELECT if(count(*) = 1, 1, 0)
