@@ -11,6 +11,7 @@ const Product = lazy(() => import('./Product/index'));
 const Review = lazy(() => import('./Review/index'));
 const ReviewForm = lazy(() => import('../components/Review/ReviewForm/index'));
 const People = lazy(() => import('./People/index'));
+const Admin = lazy(() => import('./Admin/index'));
 
 export {
   Cart,
@@ -24,4 +25,5 @@ export {
   Review,
   ReviewForm,
   People,
+  Admin,
 };
