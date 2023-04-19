@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 const Text = styled.div`
   margin: 30px;
@@ -62,6 +62,7 @@ const ProductlistContainer = styled.div`
 const ProductlistTd = styled.td`
   width: 13.3%;
   text-align: center;
+  vertical-align: middle;
   border-bottom: 1px solid #807675;
   border-top: 1px solid #807675;
 `;
@@ -100,6 +101,11 @@ const ChangeButton = styled.button`
   }
 `;
 
+const Image = styled.img`
+  width: 100px;
+  height: 120px;
+`;
+
 export {
   Text,
   Info,
@@ -113,4 +119,5 @@ export {
   Footer,
   Button,
   ChangeButton,
+  Image,
 };

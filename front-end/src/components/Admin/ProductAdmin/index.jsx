@@ -1,42 +1,30 @@
-import React, {useState} from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import * as S from "./index.styled";
+import axios from "axios";
+import { API_PATH } from "../../../constants/path";
+import { useParams } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+
 
 function ProductAdmin({ id, image, target, category, name, price }) {
-  // 더미데이터
-  const data = [
-    {
-        "id": 1,
-        "image": "img/03.jpg",
-        "target": "women",
-        "category": "top",
-        "name": "데님 자켓",
-        "price": 100000
-    },
-    {
-        "id": 2,
-        "image": "img/04.jpg",
-        "target": "women",
-        "category": "pant",
-        "name": "청바지",
-        "price": 96000
-    },
-    {
-        "id": 3,
-        "image": "img/05.jpg",
-        "target": "women",
-        "category": "pant",
-        "name": "청바지",
-        "price": 96000
-    },
-    {
-        "id": 4,
-        "image": "img/06.jpg",
-        "target": "women",
-        "category": "pant",
-        "name": "청바지",
-        "price": 96000
-    }
-];
+  const [data, setData] = useState([]);
+  const param = useParams();
+
+const readRequest = useCallback(async () => {
+  await axios
+    .get(`${API_PATH.ADMIN.PRODUCT}`)
+    .then((response) => {
+      setData(response.data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}, [param]);
+
+useEffect(() => {
+  readRequest();
+}, [readRequest]);
+
 const [actionMode, setActionMode] = useState(0);
 const handleUpdateForm = (e) => {
   if (actionMode === 0) {
@@ -92,14 +80,14 @@ if(actionMode===0){
         </tr>
         </thead>
         <tbody>
-        {data.map((data, index) => (
-              <tr key={index}>
-                <S.ProductlistTd>{data.id}</S.ProductlistTd>
-                <S.ProductlistTd>{data.image}</S.ProductlistTd>
-                <S.ProductlistTd>{data.target}</S.ProductlistTd>
-                <S.ProductlistTd>{data.category}</S.ProductlistTd>
-                <S.ProductlistTd>{data.name}</S.ProductlistTd>
-                <S.ProductlistTd>{data.price}</S.ProductlistTd>
+        {data.map((product) => (
+              <tr key={product.id}>
+                <S.ProductlistTd>{product.id}</S.ProductlistTd>
+                <S.ProductlistTd><S.Image src={product.image} alt=""></S.Image></S.ProductlistTd>
+                <S.ProductlistTd>{product.target}</S.ProductlistTd>
+                <S.ProductlistTd>{product.category}</S.ProductlistTd>
+                <S.ProductlistTd>{product.name}</S.ProductlistTd>
+                <S.ProductlistTd>{product.price}</S.ProductlistTd>
                 <S.ProductlistTd>
                   <input type="checkbox"/>
                 </S.ProductlistTd>
