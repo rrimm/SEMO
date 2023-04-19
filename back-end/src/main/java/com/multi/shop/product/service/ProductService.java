@@ -1,5 +1,6 @@
 package com.multi.shop.product.service;
 
+import com.multi.shop.member.domain.Member;
 import com.multi.shop.order.dto.request.OrderSaveRequest;
 import com.multi.shop.product.domain.Product;
 import com.multi.shop.product.domain.vo.FindRelatedProductVO;
@@ -24,6 +25,10 @@ public class ProductService {
     public Product findById(Long id) {
         return productRepository.findById(id)
                 .orElseThrow(() -> new ProductException(ProductErrorCode.PRODUCT_NOT_FOUND));
+    }
+
+    public List<Product> findProducts() {
+        return productRepository.findAll();
     }
 
     public ProductResponse findDetailById(Long id) {

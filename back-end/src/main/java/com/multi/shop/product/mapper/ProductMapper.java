@@ -1,5 +1,6 @@
 package com.multi.shop.product.mapper;
 
+import com.multi.shop.member.domain.Member;
 import com.multi.shop.product.domain.Product;
 import com.multi.shop.product.domain.vo.FindRelatedProductVO;
 import com.multi.shop.product.dto.request.ProductSaveRequest;
@@ -10,6 +11,8 @@ import java.util.Optional;
 
 public interface ProductMapper {
     Optional<Product> findById(Long id);
+
+    List<Product> findAll();
 
     List<String> findCarouselById(Long id);
 

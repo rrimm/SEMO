@@ -1,5 +1,8 @@
 package com.multi.shop.product.controller;
 
+import com.multi.shop.member.domain.Member;
+import com.multi.shop.member.dto.response.MembersResponse;
+import com.multi.shop.product.domain.Product;
 import com.multi.shop.product.dto.response.ProductResponse;
 import com.multi.shop.product.dto.response.ProductsResponse;
 import com.multi.shop.product.service.ProductService;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -29,6 +33,15 @@ public class ProductController {
     public ResponseEntity<ProductResponse> findByProductId(@PathVariable Long id) {
         ProductResponse response = productService.findDetailById(id);
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/api/admin/product")
+    public ResponseEntity<List<ProductsResponse>> list() {
+        List<Product> products = productService.findProducts();
+        List<ProductsResponse> responses = products.stream()
+                .map(ProductsResponse::from)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(responses);
     }
 
     @GetMapping("/api/product/related/{id}")
