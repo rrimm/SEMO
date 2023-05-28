@@ -13,6 +13,11 @@
         WHERE id = #{id}
     </select>
 
+    <select id="findAll" parameterType="String" resultType="Product">
+        SELECT *
+        FROM product
+    </select>
+
     <select id="findCarouselById" parameterType="Long" resultType="String">
         SELECT img
         FROM carousel

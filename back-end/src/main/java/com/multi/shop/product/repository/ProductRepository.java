@@ -1,5 +1,6 @@
 package com.multi.shop.product.repository;
 
+import com.multi.shop.member.domain.Member;
 import com.multi.shop.product.domain.Product;
 import com.multi.shop.product.domain.vo.FindRelatedProductVO;
 import com.multi.shop.product.dto.request.ProductSaveRequest;
@@ -18,6 +19,10 @@ public class ProductRepository {
 
     public Long save(ProductSaveRequest request) {
         return productMapper.save(request);
+    }
+
+    public List<Product> findAll() {
+        return productMapper.findAll();
     }
 
     public List<String> findCarouselById(Long id) {
